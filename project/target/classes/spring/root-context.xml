@@ -37,7 +37,7 @@
 		<property name="dataSource" ref="ds" />
 	</bean>
 	
-	<mybatis-spring:scan base-package="com.gls.ppldv.mapper" />
+	<mybatis-spring:scan base-package="com.gls.ppldv.*.mapper" />
 	
 	
 	<!-- Hybernate JPA 설정 -->
@@ -69,7 +69,7 @@
       </property>
    </bean>
    
-   <jpa:repositories base-package="com.gls.ppldv.repository" />
+   <jpa:repositories base-package="com.gls.ppldv.*.repository" />
 		
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory"></property>
