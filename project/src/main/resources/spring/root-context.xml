@@ -39,7 +39,6 @@
 	
 	<mybatis-spring:scan base-package="com.gls.ppldv.*.mapper" />
 	
-	
 	<!-- Hybernate JPA 설정 -->
 	<bean id="hikariConfig2" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName" value="${jdbc.driver}" />
@@ -72,7 +71,7 @@
    <jpa:repositories base-package="com.gls.ppldv.*.repository" />
 		
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-		<property name="entityManagerFactory" ref="entityManagerFactory"></property>
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 		
 	

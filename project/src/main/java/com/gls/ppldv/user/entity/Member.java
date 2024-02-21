@@ -1,5 +1,7 @@
 package com.gls.ppldv.user.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -9,15 +11,33 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * id (회원 식별자) - uno <br/>
+ * name (회원 이름) - uname <br/>
+ * email (회원 아이디-이메일형식) - uid <br/>
+ * password (회원 비밀번호) - upw <br/>
+ * birth (회원 생년월일) - birth_date <br/>
+ * phoneNo (회원 패스워드) - phone <br/>
+ * address (회원 주소) - address <br/>
+ * role (BUSINESS,DEVELOPER) <br/>
+ * gender (MALE,FEMALE) <br/>
+ * bname (회사 명) - business_name <br/>
+ * baddress(회사 주소) - business_address <br/>
+ * bphone(회사 전화번호) - business_phone <br/>
+ */
 @Entity
 @Table(name="member")
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class Member {
 	
 	@Id
@@ -25,11 +45,17 @@ public class Member {
 	@Column(name = "uno")
 	private Long id;
 	
+	@Column(name = "name", nullable = false)
+	private String name;
+	
 	@Column(name="uid", nullable = false)
 	private String email;
 	
 	@Column(name="upw", nullable = false)
 	private String password;
+	
+	@Column(name="birth_date", nullable = false)
+	private Date birth;
 	
 	@Column(name="phone", nullable = false)
 	private String phoneNo;
@@ -42,4 +68,13 @@ public class Member {
 	
 	@Enumerated(EnumType.STRING)
 	private Gender gender;
+	
+	@Column(name="business_name", nullable=true)
+	private String bname;
+	
+	@Column(name="business_address", nullable=true)
+	private String baddress;
+	
+	@Column(name="business_phone", nullable=true)
+	private String bphone;
 }

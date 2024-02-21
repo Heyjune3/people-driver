@@ -38,6 +38,8 @@
 				<li><a href="/">home</a></li>
 				<li><a href="/login">로그인</a></li>
 				<li><a href="/logon">회원가입</a></li>
+				<li><a href="/register">회원가입2</a></li>
+				<li><a href="/search">프로젝트 찾기</a>
 			</ul>
 		</nav>
 	</header>
