@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HomeController {
 	
+	@PostConstruct
+	public void init() {
+		System.out.println("test");
+	}
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
 		return "main/home";
