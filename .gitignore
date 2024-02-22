@@ -1,3 +1,6 @@
 # ignore directory
 .metadata/
 Servers/
+
+# aws 키 ignore
+aws.properties

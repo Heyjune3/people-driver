@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MemberController {
 
+	
+	// 회원가입 처리
 	@PostMapping("/register")
 	public ResponseEntity<String> register(){
 		String message = "성공";
