@@ -10,7 +10,7 @@
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.11.xsd">
 	
 	<!-- properties 파일에 등록되면 키를 통해 값을 불러올 수 있게 해주는 것 -->
-	<context:property-placeholder location="classpath:prop/db.properties" />
+	<context:property-placeholder location="classpath:prop/db-aws.properties" />
 	
 	<!-- hikari cp 를 사용하기 위한 설정 정보를 저장하는 객체 -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">

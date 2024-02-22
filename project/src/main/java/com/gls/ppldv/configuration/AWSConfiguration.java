@@ -15,7 +15,7 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 
 @Configuration
 @EnableWebMvc
-@PropertySource("classpath:prop/db.properties") // ÇÁ·ÎÆÛÆ¼ ÆÄÀÏ
+@PropertySource("classpath:prop/db-aws.properties") // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼ ï¿½ï¿½ï¿½ï¿½
 public class AWSConfiguration implements WebMvcConfigurer {
 	@Value("${aws.accesskey}")
 	private String accessKey;

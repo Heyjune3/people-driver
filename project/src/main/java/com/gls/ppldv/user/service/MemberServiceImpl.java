@@ -19,7 +19,7 @@ import com.gls.ppldv.user.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 
 @Service
-@PropertySource("classpath:prop/db.properties") // ÇÁ·ÎÆÛÆ¼ ÆÄÀÏ
+@PropertySource("classpath:prop/db-aws.properties") // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼ ï¿½ï¿½ï¿½ï¿½
 @RequiredArgsConstructor
 public class MemberServiceImpl implements MemberService {
 
@@ -33,35 +33,35 @@ public class MemberServiceImpl implements MemberService {
 	
 	
 	@Override
-	@Transactional // 2°³ÀÇ µî·Ï°ú ¾÷µ¥ÀÌÆ®°¡ ½ÇÆÐµÇÁö ¾Êµµ·Ï ¼³Á¤
+	@Transactional // 2ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ ï¿½Êµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public String register(Member member, MultipartFile file) throws Exception {
-		mr.save(member); // ¹Þ¾Æ¿Â °´Ã¼¸¦ ÀúÀåÇÏ¸é imgUrlÀº »ý·«ÀÌ µÇ¾îÀÖÀ» °ÍÀÓ
-		// uploadFile ½ÇÇà (¿¹¿ÜÃ³¸®)
-		// ¸¸¾à ÀÌ¹ÌÁö ÆÄÀÏÀÌ ¾÷·Îµå µÇÁö ¾Ê¾ÒÀ» °æ¿ìµµ »ý°¢ÇØºÁ¾ßÇÔ
+		mr.save(member); // ï¿½Þ¾Æ¿ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ imgUrlï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		// uploadFile ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½)
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾ï¿½ï¿½ï¿½ ï¿½ï¿½ìµµ ï¿½ï¿½ï¿½ï¿½ï¿½Øºï¿½ï¿½ï¿½ï¿½ï¿½
 		return null;
 	}
 	
 	
 	/**
-	 * ÁöÁ¤ÇÑ À§Ä¡¿¡ ÆÄÀÏÀ» ¾÷·Îµå ÈÄ ¾÷·ÎµåµÈ ÆÄÀÏ ÀÌ¸§ ¹ÝÈ¯ (S3)
-	 * @param file - Å¬¶óÀÌ¾ðÆ®·Î ºÎÅÍ ¹ÞÀº ÀÌ¹ÌÁö ÆÄÀÏ
-	 * @return - ÆÄÀÏ ÀÌ¸§ ¹ÝÈ¯(¾÷·Îµå µÈ) s3 url+ÆÄÀÏÀÌ¸§
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½È¯ (S3)
+	 * @param file - Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	 * @return - ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½È¯(ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½) s3 url+ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½
 	 */
 	public String uploadFile(MultipartFile file) throws IOException {
-		String originalFileName = file.getOriginalFilename(); // ¿øº» ÆÄÀÏ ÀÌ¸§
-		String ext = originalFileName.substring(originalFileName.lastIndexOf(".")); // È®ÀåÀÚ
-		String savedFileName = ""; // ÀúÀåÇÒ ÆÄÀÏ ÀÌ¸§
-		String uuid = UUID.randomUUID().toString(); // ÃÑ 32°³ÀÇ ·£´ý ¹®ÀÚ + 4°³ÀÇ -À¸·Î Á¶ÇÕµÈ 36ÀÚ¸® ¹®ÀÚ
-		savedFileName = uuid.replace("-", "")+"_"+originalFileName; // ÀúÀåµÇ´Â ÆÄÀÏ ÀÌ¸§
+		String originalFileName = file.getOriginalFilename(); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
+		String ext = originalFileName.substring(originalFileName.lastIndexOf(".")); // È®ï¿½ï¿½ï¿½ï¿½
+		String savedFileName = ""; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
+		String uuid = UUID.randomUUID().toString(); // ï¿½ï¿½ 32ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ + 4ï¿½ï¿½ï¿½ï¿½ -ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Õµï¿½ 36ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½ï¿½
+		savedFileName = uuid.replace("-", "")+"_"+originalFileName; // ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
 		
 		// com.amazonaws.services.model
-		ObjectMetadata metadata = new ObjectMetadata(); // ¸ÞÅ¸ µ¥ÀÌÅÍ
-		metadata.setContentType("image/"+ext); // ÀÌ¹ÌÁö ÆÄÀÏ¸¸ ¿Ã¸± °ÍÀÌ±â ¶§¹®¿¡
+		ObjectMetadata metadata = new ObjectMetadata(); // ï¿½ï¿½Å¸ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		metadata.setContentType("image/"+ext); // ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½Ã¸ï¿½ ï¿½ï¿½ï¿½Ì±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-		// S3clinet¸¦ ÀÌ¿ëÇØ S3¿¡ ÆÄÀÏ ¾÷·Îµå (¹öÅ¶ÀÌ¸§, ¾÷·ÎµåÇÒ ÆÄÀÏ ÀÌ¸§, ÆÄÀÏ ¸í, ÀÔ·Â½ºÆ®¸², ¸ÞÅ¸µ¥ÀÌÅÍ)
+		// S3clinetï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½ï¿½ S3ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ (ï¿½ï¿½Å¶ï¿½Ì¸ï¿½, ï¿½ï¿½ï¿½Îµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½, ï¿½Ô·Â½ï¿½Æ®ï¿½ï¿½, ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
 		S3Client.putObject(new PutObjectRequest(bucketname, savedFileName, file.getInputStream(), metadata));
 		
-		// ¿©±â¼­ ÀúÀåµÈ ÆÄÀÏ °æ·Î¸¦ DB¿¡ ÀúÀåÇÏ´Â ¸Þ¼­µå¸¦ ±¸ÃàÇØ¾ßÇÔ
+		// ï¿½ï¿½ï¿½â¼­ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Î¸ï¿½ DBï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Þ¼ï¿½ï¿½å¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ï¿½ï¿½
 		// TODO 
 		
 		return savedFileName;
