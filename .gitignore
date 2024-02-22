@@ -3,4 +3,4 @@
 Servers/
 
 # aws 키 ignore
-aws.properties
+*.properties
