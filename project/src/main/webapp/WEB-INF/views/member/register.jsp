@@ -114,7 +114,6 @@
 				</td>
 			</tr>
 		</table>
-		
 	<div id="map" style="width:500px;height:400px;"></div>
 	
 </c:set>
@@ -170,10 +169,14 @@ $("#postcodify_search_button2").postcodifyPopUp({
 $("#profileImage").on("change", function() {
 	let files = this.files; // 한개만 올린다고 해도 파일은 여러개의 리스트로 가져옴
 	
-	let file = files[0];
 	// 사용자 컴퓨터에서 사용자가 선택한 파일이 저장된 실제 위치 정보를 HTML 문서가 해석할 수 있는 URL 경로로 반환
-	let path = window.URL.createObjectURL(file);
-	$("#sampleImg").attr("src", path);
+	if (files.length === 0) { // 파일이 없다면
+		$("#sampleImg").attr("src", "resources/img/profile.jpg");
+	} else {
+		let file = files[0];
+		let path = window.URL.createObjectURL(file);
+		$("#sampleImg").attr("src", path);	
+	}
 });
 
 /* 회원가입 요청 처리 */
@@ -185,11 +188,14 @@ function join(){
 	let u_birth = $("#birth"); // user 생년월일
 	let u_phone_f = $("#phone"); // 휴대전화(일반회원용)
 	let postcode5 = $("#postcode1"); // 일반회원 우편번호 (도로명주소도 자동으로 생성됨)
-	let address = $("#postcode3"); // 일반회원 상세주소
-	let gender = $(".gender"); // 성별
+	let address = $("#postcode2"); // 도로명 주소
+	let detail = $("#postcode3"); // 일반회원 상세주소
+	let role = $(".role:checked"); // 개발자,비즈니스
+	let gender = $(".gender:checked"); // 성별
 	let bname = $("#bname"); // 회사 명 // 처음 값을 초기화 할 때, 없을 수 도 있다. (참고) -- 여기서부터
 	let b_postcode5 = $("#postcode4"); // 기업 우편번호
-	let baddress = $("#postcode6"); // 기업 상세주소
+	let baddress = $("#postcode5"); // 도로명 주소
+	let bdetail = $("#postcode6"); // 기업 상세주소
 	let bphone = $("#phone2"); // 일반전화(기업용)
 	
 	// 정규식
@@ -205,14 +211,14 @@ function join(){
 		u_name.focus();
 	} else if (u_name.val().length <2 || u_name.val().length > 20) {
 		alert('이름은 2자 이상 20자 이내입니다.');
-		u_name.value = "";
+		u_name.val('');
 		u_name.focus();
 	}
 	
 	// 이메일 필드
 	else if(!regexEmail.test(u_id.val())){
 		alert('이메일 형식이 맞지 않습니다.');
-		u_id.value = "";
+		u_id.val('');
 		u_id.focus();
 	}
 	
@@ -249,37 +255,124 @@ function join(){
 		$("#postcodify_search_button").click();
 	}
 	
-	else if(address.val() === '') {
+	else if(detail.val() === '') {
 		alert('거주하고 있는 주소지의 상세주소를 입력해주세요. 실 거주지여야 우편배송이 가능합니다.');
 		address.focus();
 	}
 	
 	// 이제 비즈니스 형태 타입 확인 후 조건 2개로 나누기
-	else if($(".role:checked").val() === 'DEVELOPER') {
-		console.log("개발자 테스트 완료");
+	else if(role.val() === 'DEVELOPER') {
 		// ajax로 post 요청 보내기;
-		
+		let formData = new FormData(); // 가상의 폼 태그를 의미
+		let files = $("#profileImage")[0].files; // 한개만 올린다고 해도 파일은 여러개의 리스트로 가져옴 
+		//if (files.length !== 0) { // 이미지 파일이 있다면
+		let file = files[0];
+		formData.append("file", file); // 이미지 파일 등록	
+		//}
+		let Tdata = { // 이미지 파일을 뺀 나머지 txt 데이터
+				name : u_name.val(),
+				email : u_id.val(),
+				password : u_pass.val(),
+				birth : u_birth.val(),
+				phoneNo : u_phone_f.val(),
+				pc5 : postcode5.val(),
+				address : address.val(),
+				detail : detail.val(),
+				role : role.val(),
+				gender : gender.val()	
+		};
+		// 나머지 데이터도 FormData에 추가
+		Object.keys(Tdata).forEach(key => {
+			formData.append(key, Tdata[key]);
+		});
+		$.ajax ({
+			type : "POST",
+			url : "/user/register",
+			data : formData,
+			contentType : false,
+			processData : false,
+			dataType : "text",
+			success : function(result) {
+				alert(result);
+				if (result === "아이디 중복입니다. 다시 선택해주세요.") {
+					u_id.val('');
+					u_id.focus();
+				} else {
+					// 로그인 화면으로 이동
+					window.location.href= "login";	
+				}
+			},
+			error : function(res) {
+				alert(res.responseText);
+			}
+		});
 		return false;
 	}
 	
-	else if($(".role:checked").val() === 'BUSINESS') { // click 되었을 때 이벤트 다시 생각해야함
+	else if(role.val() === 'BUSINESS') { // click 되었을 때 이벤트 다시 생각해야함
 		if (bname.val() === '') {
 			alert('회사 명을 입력해주세요.');
 			bname.focus();
 		} else if(b_postcode5.val() === '') {
 			alert('기업의 주소를 입력해주세요.');
 			$("#postcodify_search_button2").click();
-		} else if(baddress.val() === '') {
+		} else if(bdetail.val() === '') {
 			alert('기업 주소지의 상세주소를 입력해주세요. 실 거주지여야 우편배송이 가능합니다.');
 			baddress.focus();
 		} else if(!regexPhone.test(bphone.val()) && !regexLocalPhone.test(bphone.val()) ) {
 			alert('휴대전화 또는 일반전화 형태로 작성해주세요. (-는 빼주세요)');
 			bphone.val('');
 			bphone.focus();
+		} else {
+			// ajax로 post 요청 보내기;
+			let formData = new FormData(); // 가상의 폼 태그를 의미
+			let files = $("#profileImage")[0].files; // 한개만 올린다고 해도 파일은 여러개의 리스트로 가져옴 
+			let file = files[0];
+			formData.append("file", file); // 이미지 파일 등록	
+			let Tdata = { // 이미지 파일을 뺀 나머지 txt 데이터
+				name : u_name.val(),
+				email : u_id.val(),
+				password : u_pass.val(),
+				birth : u_birth.val(),
+				phoneNo : u_phone_f.val(),
+				pc5 : postcode5.val(),
+				address : address.val(),
+				detail : detail.val(),
+				role : role.val(),
+				gender : gender.val(),
+				bname : bname.val(),
+				bpc5 : b_postcode5.val(),
+				baddress : baddress.val(),
+				bdetail : bdetail.val(),
+				bphone : bphone.val()	
+			};
+			// 나머지 데이터도 FormData에 추가
+			Object.keys(Tdata).forEach(key => {
+				formData.append(key, Tdata[key]);
+			});
+			
+			$.ajax ({
+				type : "POST",
+				url : "/user/register",
+				data : formData,
+				contentType : false,
+				processData : false,
+				dataType : "text",
+				success : function(result) {
+					alert(result);
+					if (result === "아이디 중복입니다. 다시 선택해주세요.") {
+						u_id.val('');
+						u_id.focus();
+					} else {
+						// 로그인 화면으로 이동 redirect
+						window.location.href= "login";	
+					}
+				},
+				error : function(res) {
+					alert(res.responseText);
+				}
+			});
 		}
-	}
-	else{
-		// 여기서 ajax로 post 요청 보내기;
 	}
 }
 </script>

@@ -74,8 +74,8 @@
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 	
-		
-	<!-- AWS S3 설정 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver" />	
+	<!-- AWS S3 설정	
 	<bean id="awsCredentials" class="com.amazonaws.auth.BasicAWSCredentials">
 		<constructor-arg value="${aws.accesskey}" />
 		<constructor-arg value="${aws.secretkey}" />
@@ -84,4 +84,5 @@
 	<bean id="amazonS3Client" class="com.amazonaws.services.s3.AmazonS3Client">
 		<constructor-arg ref="awsCredentials" />
 	</bean>
+	-->
 </beans>

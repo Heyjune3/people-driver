@@ -7,10 +7,17 @@ import com.gls.ppldv.user.entity.Member;
 public interface MemberService {
 	
 	/**
-	 * È¸¿ø µî·Ï
-	 * @param member - È¸¿ø µî·ÏÀ» À§ÇÑ °´Ã¼
-	 * @param file - Å¬¶óÀÌ¾ğÆ®·ÎºÎÅÍ ¹ŞÀº ÆÄÀÏ
-	 * @return - ¸Ş¼¼Áö
+	 * íšŒì› ë“±ë¡
+	 * @param member - íšŒì› ë“±ë¡ì„ ìœ„í•œ ê°ì²´
+	 * @param file - í´ë¼ì´ì–¸íŠ¸ë¡œë¶€í„° ë°›ì€ íŒŒì¼
+	 * @return - ë©”ì„¸ì§€
 	 */
 	public String register(Member member, MultipartFile file) throws Exception;
+	
+	/**
+	 * íšŒì› ë“±ë¡
+	 * @param member - íšŒì› ë“±ë¡ì„ ìœ„í•œ ê°ì²´
+	 * @return - ë©”ì„¸ì§€
+	 */
+	public String register(Member member) throws Exception;
 }

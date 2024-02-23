@@ -11,27 +11,27 @@ import org.springframework.stereotype.Component;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-@Aspect // AOPAdvice Å¬·¡½ºÀÓÀ» ¸í½Ã
+@Aspect // AOPAdvice í´ë˜ìŠ¤ì„ì„ ëª…ì‹œ
 @Slf4j
-@Component // component µî·Ï
+@Component // component ë“±ë¡
 @NoArgsConstructor
 public class AOPAdvice {
 	
-	// target joinPoint(method)°¡ ½ÇÇà µÇ±â Àü È£Ãâ (execution({¹İÈ¯Å¸ÀÔ} {ÁöÁ¤ÇÑ ¸Ş¼Òµå À§Ä¡}))
-		// @Before("execution(* com.bitc.service.*.*(..))") - ¸ğµç ¹İÈ¯Å¸ÀÔ, Æ®¸®ÀÇ ¸ğµç Å¬·¡½ºÁß¿¡¼­ ¸ğµç ¸Ş¼Òµå ¸ğµç ¸Å°³º¯¼ö(Å¸ÀÔ, °³¼ö) (com.gyumin.service(Æ®¸®) .*(¸ğµçÅ¬·¡½º).*(¸ğµç¸Ş¼­µå) (..)(¸ğµç¸Å°³º¯¼ö)
-		@Before("execution(* com.gls.ppldv.user.service().*.*(..))")
+	// target joinPoint(method)ê°€ ì‹¤í–‰ ë˜ê¸° ì „ í˜¸ì¶œ (execution({ë°˜í™˜íƒ€ì…} {ì§€ì •í•œ ë©”ì†Œë“œ ìœ„ì¹˜}))
+	// @Before("execution(* com.bitc.service.*.*(..))") - ëª¨ë“  ë°˜í™˜íƒ€ì…, íŠ¸ë¦¬ì˜ ëª¨ë“  í´ë˜ìŠ¤ì¤‘ì—ì„œ ëª¨ë“  ë©”ì†Œë“œ ëª¨ë“  ë§¤ê°œë³€ìˆ˜(íƒ€ì…, ê°œìˆ˜) (com.gyumin.service(íŠ¸ë¦¬) .*(ëª¨ë“ í´ë˜ìŠ¤).*(ëª¨ë“ ë©”ì„œë“œ) (..)(ëª¨ë“ ë§¤ê°œë³€ìˆ˜)
+		@Before("execution(* com.gls.ppldv.user.service.*.*(..))")
 		public void startLog(JoinPoint jp) {
 			log.info("--------------------------------------");
 			log.info("--------------------------------------");
 			log.info("------------- START LOG --------------");
-			log.info("target : {}", jp.getTarget()); // ¿ì¸®°¡ ÆĞÅÏÀ¸·Î ÁöÁ¤ÇÑ Å¬·¡½º(execution)
-			log.info("type : {}", jp.getKind()); // Å¸°ÙÀÇ Á¾·ù ¾Ë·ÁÁÜ (È£ÃâµÈ ´ë»óÀÚ°¡ method¸é method-execution)
-			log.info("parameters : {}", Arrays.toString(jp.getArgs())); // ¸Ş¼ÒµåÀÇ ¸Å°³º¯¼ö´Â ¿©·¯°³ÀÏ ¼ö ÀÖÀ¸¹Ç·Î
-			log.info("name : {}", jp.getSignature().getName()); // Å¸°ÙÀÌ µÇ´Â joinpoint ¸Ş¼Òµå ÀÌ¸§
+			log.info("target : {}", jp.getTarget()); // ìš°ë¦¬ê°€ íŒ¨í„´ìœ¼ë¡œ ì§€ì •í•œ í´ë˜ìŠ¤(execution)
+			log.info("type : {}", jp.getKind()); // íƒ€ê²Ÿì˜ ì¢…ë¥˜ ì•Œë ¤ì¤Œ (í˜¸ì¶œëœ ëŒ€ìƒìê°€ methodë©´ method-execution)
+			log.info("parameters : {}", Arrays.toString(jp.getArgs())); // ë©”ì†Œë“œì˜ ë§¤ê°œë³€ìˆ˜ëŠ” ì—¬ëŸ¬ê°œì¼ ìˆ˜ ìˆìœ¼ë¯€ë¡œ
+			log.info("name : {}", jp.getSignature().getName()); // íƒ€ê²Ÿì´ ë˜ëŠ” joinpoint ë©”ì†Œë“œ ì´ë¦„
 			log.info("----------- START LOG END ------------");
 		}
 		
-		@After("execution(* com.gls.ppldv.service.().*(..))")
+		@After("execution(* com.gls.ppldv.user.service.MemberServiceImpl.*(..))")
 		public void endLog() {
 			log.info("------------END AFTER LOG-------------");
 			log.info("--------------------------------------");

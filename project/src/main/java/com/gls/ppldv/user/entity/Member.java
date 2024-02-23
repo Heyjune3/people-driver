@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,26 +20,26 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * id (È¸¿ø ½Äº°ÀÚ) - uno <br/>
- * name (È¸¿ø ÀÌ¸§) - uname <br/>
- * email (È¸¿ø ¾ÆÀÌµğ-ÀÌ¸ŞÀÏÇü½Ä) - uid <br/>
- * password (È¸¿ø ºñ¹Ğ¹øÈ£) - upw <br/>
- * birth (È¸¿ø »ı³â¿ùÀÏ) - birth_date <br/>
- * phoneNo (È¸¿ø ÆĞ½º¿öµå) - phone <br/>
- * pc5 (È¸¿ø ¿ìÆí¹øÈ£) - postcode <br/>
- * address (È¸¿ø ÁÖ¼Ò) - address <br/>
- * detail (»ó¼¼ ÁÖ¼Ò) - address_detail <br/>
+ * id (íšŒì› ì‹ë³„ì) - uno <br/>
+ * name (íšŒì› ì´ë¦„) - uname <br/>
+ * email (íšŒì› ì•„ì´ë””-ì´ë©”ì¼í˜•ì‹) - uid <br/>
+ * password (íšŒì› ë¹„ë°€ë²ˆí˜¸) - upw <br/>
+ * birth (íšŒì› ìƒë…„ì›”ì¼) - birth_date <br/>
+ * phoneNo (íšŒì› íŒ¨ìŠ¤ì›Œë“œ) - phone <br/>
+ * pc5 (íšŒì› ìš°í¸ë²ˆí˜¸) - postcode <br/>
+ * address (íšŒì› ì£¼ì†Œ) - address <br/>
+ * detail (ìƒì„¸ ì£¼ì†Œ) - address_detail <br/>
  * role (BUSINESS,DEVELOPER) <br/>
  * gender (MALE,FEMALE) <br/>
- * bname (È¸»ç ¸í) - business_name <br/>
- * bpc5 (È¸»ç ¿ìÆí¹øÈ£) - business_postcode <br/>
- * baddress(È¸»ç ÁÖ¼Ò) - business_address <br/>
- * bdetail (È¸»ç »ó¼¼ÁÖ¼Ò) - business_address_detail <br/>
- * bphone(È¸»ç ÀüÈ­¹øÈ£) - business_phone <br/>
- * imgUrl (ÇÁ·ÎÇÊ ÀÌ¹ÌÁö) - image_url <br/>
+ * bname (íšŒì‚¬ ëª…) - business_name <br/>
+ * bpc5 (íšŒì‚¬ ìš°í¸ë²ˆí˜¸) - business_postcode <br/>
+ * baddress(íšŒì‚¬ ì£¼ì†Œ) - business_address <br/>
+ * bdetail (íšŒì‚¬ ìƒì„¸ì£¼ì†Œ) - business_address_detail <br/>
+ * bphone(íšŒì‚¬ ì „í™”ë²ˆí˜¸) - business_phone <br/>
+ * imgUrl (í”„ë¡œí•„ ì´ë¯¸ì§€) - image_url <br/>
  * 
  * 
- * Áö±İÀº ÇÊ¿ä¾øÁö¸¸, ¸¸¾à ÇÊ¿äÇÏ´Ù¸é È¸¿ø µî·Ï½Ã°£, È¸¿ø ¼öÁ¤½Ã°£, È¸¿ø »èÁ¦½Ã°£ Ãß°¡
+ * ì§€ê¸ˆì€ í•„ìš”ì—†ì§€ë§Œ, ë§Œì•½ í•„ìš”í•˜ë‹¤ë©´ íšŒì› ë“±ë¡ì‹œê°„, íšŒì› ìˆ˜ì •ì‹œê°„, íšŒì› ì‚­ì œì‹œê°„ ì¶”ê°€
  */
 @Entity
 @Table(name="member")
@@ -53,16 +55,17 @@ public class Member {
 	@Column(name = "uno")
 	private Long id;
 	
-	@Column(name = "name", nullable = false)
+	@Column(name = "uname", nullable = false)
 	private String name;
 	
-	@Column(name="uid", nullable = false)
+	@Column(name="uid", nullable = false, unique=true)
 	private String email;
 	
 	@Column(name="upw", nullable = false)
 	private String password;
 	
 	@Column(name="birth_date", nullable = false)
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date birth;
 	
 	@Column(name="phone", nullable = false)
