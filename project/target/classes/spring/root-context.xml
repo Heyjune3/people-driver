@@ -39,35 +39,11 @@
 		<property name="dataSource" ref="ds" />
 	</bean>
 	
-	<!-- Mybatis Transaction Manager -->
-	<bean id="mybatisTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="ds" />
-	</bean>
-	
 	<mybatis-spring:scan base-package="com.gls.ppldv.*.mapper" />
 	
-	<!-- Hybernate JPA 설정 -->
-	<bean id="hikariConfig2" class="com.zaxxer.hikari.HikariConfig">
-		<property name="driverClassName" value="${jdbc.driver}" />
-		<property name="jdbcUrl" value="${jdbc.url}" />
-		<property name="username" value="${jdbc.username}" />
-		<property name="password" value="${jdbc.password}" />
-		<!-- 최대로 생성 할 수 있는 connection 객체 수 default = 10 -->
-	<property name="maximumPoolSize" value="20" />
-	<!-- 일을 하지 않아도 풀에 유지되는 connection 객체 수 default = maximumPoolSize -->
-	<property name="minimumIdle" value="20" />
-	<!-- pool에서 connection 정보를 가져오기 위해 대기하는 시간 default="250ms" -->
-	<property name="connectionTimeout" value="300000" />
-	<!-- 일을 하지 않는 connection 객체를 제거하기 위해 대기(유지)하는 시간 default="60000ms" -->
-		<property name="idleTimeout" value="200000" />
-	</bean>
-	
-	<bean id="ds2" class="com.zaxxer.hikari.HikariDataSource">
-		<constructor-arg ref="hikariConfig2" />
-	</bean>
-	
+	<!-- jpa entityManagerFactory -->
 	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-	     <property name="dataSource" ref="ds2" />
+	     <property name="dataSource" ref="ds" />
 	     <!-- JpaVendorAdapter implementation for Hibernate EntityManager.
 	        Exposes Hibernate's persistence provider and EntityManager extension interface -->
 	   <property name="jpaVendorAdapter">
@@ -77,8 +53,8 @@
 	
 	<jpa:repositories base-package="com.gls.ppldv.*.repository" />
 		
-	<!-- jpa Transaction Manager -->
-	<bean id="jpaTransactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+	<!-- jpa, mybatis Transaction Manager -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 	

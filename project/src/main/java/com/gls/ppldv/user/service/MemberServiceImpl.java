@@ -1,7 +1,14 @@
 package com.gls.ppldv.user.service;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
@@ -12,9 +19,11 @@ import org.springframework.web.multipart.MultipartFile;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.gls.ppldv.configuration.userException.LoginFailedException;
 import com.gls.ppldv.user.entity.Member;
 import com.gls.ppldv.user.mapper.MemberMapper;
 import com.gls.ppldv.user.repository.MemberRepository;
+import com.gls.ppldv.user.util.CookieUtils;
 
 import lombok.RequiredArgsConstructor;
 
@@ -78,6 +87,62 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	
+	
+	@Override
+	public Member login(Member member) throws Exception {
+		Member m = mr.findByEmailAndPassword(member.getEmail(),member.getPassword());
+		if (m != null) {
+			// 로그인 성공
+			return m;
+		} else {
+			// 로그인 실패
+			throw new LoginFailedException("이메일 또는 비밀번호가 일치하지 않습니다.");
+		}
+	}
+	
+	@Override
+	public String logOut(HttpServletRequest request, HttpServletResponse response) {
+		request.getSession().removeAttribute("loginMember");
+		
+		// 혹시 쿠키 등록되어 있다면, 삭제
+		Cookie cookie = new Cookie("id", "");
+		cookie.setPath("/");
+		cookie.setMaxAge(0);
+		response.addCookie(cookie);
+		
+		return "로그아웃 완료";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	/**
+	 * 자동 로그인
+	 * @param request - session 정보와 Cookie 정보를 받아올 request
+	 */
+	public void loginCheck(HttpServletRequest request) {
+		Cookie[] cookies = request.getCookies();
+		HttpSession session = request.getSession();
+		if (session.getAttribute("loginMember") == null && cookies != null) {
+			// 로그인되지 않은 상태에서 쿠키 정보가 있을 시
+			for (Cookie c : cookies) {
+				if (c.getName().equals("id")) {
+					String decryptedEmail = CookieUtils.decrypt(c.getValue());
+					Member loginMember = mr.findByEmail(decryptedEmail);
+					if (loginMember != null) {
+						session.setAttribute("loginMember", loginMember);
+					}
+					break;
+				}
+			}
+		}
+	}
+	
+	
 	/**
 	 * S3에 파일을 업로드 하고 DB에 imgUrl 저장
 	 * @param file - 받은 파일
@@ -101,4 +166,9 @@ public class MemberServiceImpl implements MemberService {
 		
 		return S3Client.getUrl(bucketname, savedFileName).toString();
 	}
+
+
+
+
+	
 }

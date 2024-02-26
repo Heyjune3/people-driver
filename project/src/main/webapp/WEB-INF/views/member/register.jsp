@@ -2,11 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ page session="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<!-- 카카오맵 API -->
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8bfd085ed59957246b59c9466c5d09d7"></script>
-<!-- Postcodify (주소) -->
-<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
 <style>
 	.aaaa{
 		display:none;

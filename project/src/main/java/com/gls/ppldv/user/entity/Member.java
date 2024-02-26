@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -42,7 +43,7 @@ import lombok.ToString;
  * 지금은 필요없지만, 만약 필요하다면 회원 등록시간, 회원 수정시간, 회원 삭제시간 추가
  */
 @Entity
-@Table(name="member")
+@Table(name="member", uniqueConstraints = @UniqueConstraint(columnNames= "uid"))
 @Getter
 @Setter
 @ToString
