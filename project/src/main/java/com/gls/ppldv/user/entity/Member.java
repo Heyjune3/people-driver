@@ -103,4 +103,7 @@ public class Member {
 	
 	@Column(name="image_url", nullable=true)
 	private String imgUrl;
+	
+	@Column(name="delete_YN", nullable=true)
+	private char deleteYN = 'N';
 }
