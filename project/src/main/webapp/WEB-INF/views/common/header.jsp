@@ -11,6 +11,7 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8bfd085ed59957246b59c9466c5d09d7"></script>
 <meta charset="UTF-8">
 <title>Web Site</title>
+<link rel="stylesheet" type="text/css" href="/resources/css/common.css"/>
 <style type="text/css">
 	header, footer, main {
 		border:1px solid black;

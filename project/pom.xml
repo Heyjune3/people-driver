@@ -238,6 +238,14 @@
 		    <artifactId>aws-java-sdk-s3</artifactId>
 		    <version>1.12.663</version>
 		</dependency>
+		
+		<!-- javax.mail -->
+		<!-- https://mvnrepository.com/artifact/com.sun.mail/javax.mail -->
+		<dependency>
+		    <groupId>com.sun.mail</groupId>
+		    <artifactId>javax.mail</artifactId>
+		    <version>1.6.2</version>
+		</dependency>
 				
 		
 	</dependencies>

@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.gls.ppldv.configuration.userException.LoginFailedException;
 import com.gls.ppldv.user.entity.Member;
+import com.gls.ppldv.user.entity.PassCode;
 import com.gls.ppldv.user.service.MemberService;
 import com.gls.ppldv.user.util.CookieUtils;
 
@@ -114,6 +115,60 @@ public class MemberController {
 		String message = ms.logOut(request, response);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "text/plain;charset=utf-8");
+		return new ResponseEntity<>(message, headers, HttpStatus.OK);
+	}
+	
+	// 비밀번호 찾기 처리
+	@PostMapping("/findPass")
+	public ResponseEntity<String> findPass (
+		Member member,
+		HttpServletRequest request
+	) {
+		String message = null;
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "text/plain;charset=utf-8");
+		try {
+			message = ms.findPassSubmit(member, request);
+		} catch (NullPointerException e) {
+			return new ResponseEntity<>(e.getMessage(), headers, HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			// TODO 현재는 에러메시지를 출력해주고 있지만, 나중에 수정 (에러가 나는 원인은 네트워크 문제거나 메일 발송 실패)
+			return new ResponseEntity<>(e.getMessage(), headers, HttpStatus.BAD_REQUEST);
+		}
+		return new ResponseEntity<>(message, headers, HttpStatus.OK);
+	}
+	
+	// 코드 일치 확인
+	@PostMapping("/passAccept")
+	public ResponseEntity<String> passAccept(
+		PassCode passCode
+	) {
+		String message = ms.changePassCode(passCode);
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "text/plain;charset=utf-8");
+		if (message.equals("코드 일치")) {
+			return new ResponseEntity<>(message, headers, HttpStatus.OK);
+		} else {
+			// 코드 인증 실패
+			return new ResponseEntity<>(message, headers, HttpStatus.OK);
+		}
+	}
+	
+	// 비밀번호 변경
+	@PostMapping("/changePass")
+	public ResponseEntity<String> changePass (
+		Member member 
+	) {
+		String message = null;
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "text/plain;charset=utf-8");
+		try {
+			message = ms.changePass(member);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(e.getMessage(), headers, HttpStatus.BAD_REQUEST);
+		}
 		return new ResponseEntity<>(message, headers, HttpStatus.OK);
 	}
 	

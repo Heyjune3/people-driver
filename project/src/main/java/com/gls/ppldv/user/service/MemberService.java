@@ -10,7 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.gls.ppldv.user.entity.Member;
 
-public interface MemberService {
+public interface MemberService extends FindPassService {
 	
 	/**
 	 * 회원 등록(이미지 포함)

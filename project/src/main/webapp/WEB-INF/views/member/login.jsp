@@ -3,14 +3,6 @@
 <%@ page session="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style>
-section {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 30px;
-}
-
-
 .login {
 	display: flex;
 	flex-direction: column;
@@ -49,7 +41,7 @@ section {
 			<input type="checkbox" name="loginSession" id="loginSession"/>
 			<label for="loginSession">로그인 상태 유지</label>
 			
-			<button>비밀번호 찾기</button>
+			<button onclick="location.href='/findPass'">비밀번호 찾기</button>
 		</div>
 		<div>
 			<button onclick="login()">로그인</button>
@@ -71,6 +63,7 @@ section {
 		console.log(chkLogin.is(":checked"));
 	}
 
+	// 로그인
 	function login() {
 		let email = $("#email");
 		let pass = $("#pass");
