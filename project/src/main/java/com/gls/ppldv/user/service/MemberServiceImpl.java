@@ -1,18 +1,12 @@
 package com.gls.ppldv.user.service;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.Date;
 import java.util.UUID;
 
 import javax.mail.Message;
-import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.Transport;
-import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.Cookie;
@@ -31,7 +25,7 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.gls.ppldv.configuration.userException.LoginFailedException;
-import com.gls.ppldv.configuration.userException.MessageFailedException;
+import com.gls.ppldv.user.dto.LoginDTO;
 import com.gls.ppldv.user.entity.Member;
 import com.gls.ppldv.user.entity.PassCode;
 import com.gls.ppldv.user.mapper.MemberMapper;
@@ -109,7 +103,7 @@ public class MemberServiceImpl implements MemberService {
 	
 	
 	@Override
-	public Member login(Member member) throws Exception {
+	public Member login(LoginDTO member) throws Exception {
 		Member m = mr.findByEmailAndPassword(member.getEmail(),member.getPassword());
 		if (m != null) {
 			// 로그인 성공
@@ -145,8 +139,6 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	@Transactional
 	public String findPassSubmit(Member member, HttpServletRequest request) throws Exception {
-		
-		
 		
 		Member m = mr.findByEmailAndName(member.getEmail(), member.getName());
 		
@@ -290,10 +282,4 @@ public class MemberServiceImpl implements MemberService {
 		return S3Client.getUrl(bucketname, savedFileName).toString();
 	}
 
-
-
-
-
-
-	
 }

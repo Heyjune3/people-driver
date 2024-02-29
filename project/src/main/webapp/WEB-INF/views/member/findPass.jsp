@@ -26,9 +26,36 @@
 		margin-bottom: 10px;
 	}
 	
+	.mail-ready {
+		display: none;
+		position: fixed;
+		z-index: 1000;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+	
+	.mail-ready-content {
+		background-color: #fefefe;
+		margin: 15% auto;
+		padding: 20px;
+		border: 1px solid #888;
+		width: 80%;
+		max-width: 400px;
+	}
+	
 </style>
 <c:set var="content">
+	
 	<section>
+	<div class="mail-ready">
+		<div class="mail-ready-content">
+			<p>메일을 전송하는 중입니다. 잠시 기다려주세요...</p>
+		</div>
+	</div>
 		<div class="form">
 			<h1>비밀번호 찾기</h1>
 			<p>회원가입 시 등록 한 아이디(email)와 이름을 입력해주세요.</p>
@@ -51,8 +78,13 @@
 		let email = $("#email");
 		let name = $("#name");
 		
+		// 메일 전송 대기 창
+		let ready = $(".mail-ready");
+		
 		// 정규식
 		var regexEmail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/; // 정규표현식 이메일
+		
+		ready.css("display", "block");
 		
 		if (email.val() === '') {
 			alert("이메일을 입력해주세요.");
@@ -67,7 +99,6 @@
 		} else {
 			$.ajax({
 				type : "post",
-				async : false,
 				url : "/user/findPass",
 				data : {
 					email : email.val(),
@@ -82,7 +113,6 @@
 						email.focus();
 					} else {
 						// 메일 발송 성공
-						console.log(result);
 						alert(result);
 						$("#formSubmit").click();
 					}

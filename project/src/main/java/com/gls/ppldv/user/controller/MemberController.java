@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.gls.ppldv.configuration.userException.LoginFailedException;
+import com.gls.ppldv.user.dto.LoginDTO;
 import com.gls.ppldv.user.entity.Member;
 import com.gls.ppldv.user.entity.PassCode;
 import com.gls.ppldv.user.service.MemberService;
@@ -69,8 +70,7 @@ public class MemberController {
 	// 로그인 처리
 	@PostMapping("/login")
 	public ResponseEntity<Object> login (
-		Member member,
-		Boolean checked,
+		LoginDTO member,
 		HttpServletRequest request,
 		HttpServletResponse response
 	) {
@@ -83,9 +83,8 @@ public class MemberController {
 			m = ms.login(member);
 			session.setAttribute("loginMember", m); // 로그인 된 회언 정보를 세션에 담아 보내주고
 			
-			if (checked) {
-				// checked 되어 있으면 쿠키에 값을 저장해서 전송
-				String encryptedEmail = CookieUtils.encrypt(member.getEmail());
+			if (member.isChecked()) {
+				String encryptedEmail = CookieUtils.encrypt(m.getEmail());
 				Cookie cookie = new Cookie("id", encryptedEmail);
 				cookie.setMaxAge(60*60*24); // 1일
 				cookie.setPath("/"); // 이 홈페이지의 모든 곳

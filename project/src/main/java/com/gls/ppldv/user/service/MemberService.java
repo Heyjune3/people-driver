@@ -1,13 +1,11 @@
 package com.gls.ppldv.user.service;
 
-import java.util.Map;
-
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.gls.ppldv.user.dto.LoginDTO;
 import com.gls.ppldv.user.entity.Member;
 
 public interface MemberService extends FindPassService {
@@ -33,7 +31,7 @@ public interface MemberService extends FindPassService {
 	 * @param member - 회원 찾기를 위한 객체
 	 * @return - 존재하는 회원 정보
 	 */
-	public Member login(Member member) throws Exception;
+	public Member login(LoginDTO member) throws Exception;
 	
 	/**
 	 * 로그아웃

@@ -34,7 +34,7 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath:/spring/appServlet/servlet-context.xml</param-value>
+			<param-value>classpath:/spring/appServlet/*-context.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 		<multipart-config> <!-- 인코딩 되지 않은 데이터를 처리할 수 있도록 -->

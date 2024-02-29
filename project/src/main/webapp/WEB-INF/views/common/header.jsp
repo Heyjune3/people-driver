@@ -12,6 +12,7 @@
 <meta charset="UTF-8">
 <title>Web Site</title>
 <link rel="stylesheet" type="text/css" href="/resources/css/common.css"/>
+
 <style type="text/css">
 	header, footer, main {
 		border:1px solid black;
@@ -19,7 +20,6 @@
 	}
 	
 	header ul {
-		
 		list-style-type: none; /* 목록 기호 제거 */
 		text-align: right;
 		margin: 0;
@@ -31,11 +31,61 @@
 		margin-right: 10px;
 	}
 	
-	#logout:hover {
+	header #logout:hover {
 		cursor: pointer;
 		text-decoration: underline;
 		color: blue;
 	}
+	
+	header .prifileImage {
+		box-sizing: border-box; /* border와 padding을 포함한 전체 요소 크기 지정 */
+	}
+	
+	header .profileImage:hover {
+		box-shadow: 0 0 0 3px green;
+		cursor: pointer;
+	}
+	
+	header .profileImage2:hover {
+		cursor: default;
+		box-shadow: none;
+	}
+	
+	header .modal {
+            position: absolute;
+            display: none;
+            align-items: center;
+            flex-direction: column;
+            width: 300px;
+            height: 300px;
+            border: 1px solid black;
+
+            justify-content: center;
+            background-color: rgba(255,255,255);
+        }
+        header .modal_body {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 20px;
+        }
+
+        header .modal_info {
+            padding: 10px 0;
+            
+        }
+
+        header .modal_info * {
+            display: flex;
+            flex-direction: column;
+            margin: 5px;
+            border: none;
+            padding: 0;
+        }
+
+        header .modal_footer {
+            display: flex;
+            gap : 10px;
+        }
 	
 </style>
 
@@ -58,14 +108,69 @@
 					<c:otherwise>
 					<!-- 로그인 된 사용자 -->
 						<li><a href="/search">프로젝트 찾기</a>
-						<li id="logout" onclick="logout()">로그아웃</li>
+						<img onclick="modalShow($(this))" class="profileImage" src="${sessionScope.loginMember.imgUrl}" style="width:50px; height:50px; border-radius: 50%; object-fit: cover;" />
+						<div class="modal">
+					        <h2>프로필</h2>
+					        <div class="modal_body">
+					            <div>
+					                <img class="profileImage profileImage2" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;" src="${sessionScope.loginMember.imgUrl}" />
+					            </div>
+					            <div class="modal_info">
+					                <input style="width:190px;" value="이름 : ${sessionScope.loginMember.name}" readonly >
+					                <input style="width:190px;" value="아이디 : ${sessionScope.loginMember.email}" readonly >
+					                <input style="width:190px;" value="역할 : ${sessionScope.loginMember.role}" readonly >
+					                <input style="width:190px;" value="성별 : ${sessionScope.loginMember.gender}" readonly >
+					                <input style="width:190px;" value="전화번호 : ${sessionScope.loginMember.phoneNo}" readonly >
+					            </div>
+					        </div>
+					        <div class="modal_footer">
+					            <a href="#">회원정보 수정</a>
+					            <a href="#">프로필 등록</a>
+					            <span id="logout" onclick="logout()">로그아웃</span>
+					        </div>
+					    </div>
 					</c:otherwise>
 				</c:choose>
-				
 			</ul>
 		</nav>
 	</header>
 <script>
+	var image = $(".profileImage");
+	var modal = $(".modal");
+	var flag = false; // 닫혀있는 상태
+	
+	if (!image.attr("src")) {
+		image.attr("src", "resources/img/profile.jpg");
+	}
+	
+	$(window).resize(function() {
+		if (flag === true) {
+			let position = image.offset();
+			modal.css({
+				"top": position.top + image.outerHeight(),
+				"left": position.left - 300 + image.outerWidth()
+			});
+		}
+	});
+	
+	function modalShow(e) {
+		// 현재 이벤트가 발생한 객체 위치
+		let position = e.offset();
+		if (flag === false) {
+			modal.css({
+				"display": "flex",
+				"top": position.top + e.outerHeight(),
+				"left": position.left - 300 + e.outerWidth()
+			});	
+			flag = true;
+		} else {
+			modal.css({
+				"display": "none"
+			});
+			flag = false;
+		}
+	}
+
 	function logout() {
 		$.ajax({
 			type : "POST",

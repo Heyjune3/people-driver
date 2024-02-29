@@ -6,111 +6,136 @@
 	.aaaa{
 		display:none;
 	}
+
+	#table {
+		border: 1px solid rgba(200,200,200,0.5);
+		margin: 10px auto;
+		width: 500px;
+	}
+	
+		#table div {
+			text-align: center;
+			align-items: center;
+		}
+		
+		#table div input {
+			width: 300px;
+			height: 50px;
+			margin-bottom: 10px;
+		}
+	
+	#logo {
+		display: block; /* img 태그는 inline 요소이므로 */
+		margin: 0 auto;
+		max-width: 300px;
+		height: auto;
+	}
+	
+	#map {
+		text-align: center;
+	}
+	
 </style>
 <c:set var="content">
 	<input type="hidden" class="postcodify_postcode5"/>
 	<input type="hidden" class="postcodify_address"/>
-		<table id="table">
-			<tr>
-				<td colspan="2"><h1>회원가입</h1></td>
-			</tr>
-			<tr>
-				<td><img src="resources/img/profile.jpg" id="sampleImg"  style="width:100px; height:100px; border-radius: 50%; object-fit: cover;"/></td>
-				<td>
-					<input type="file" name="file" id="profileImage" accept=".gif, .jpg, .jpeg, .png" />
-				</td>
-			</tr>
-			<tr>
-				<td>이름</td>
-				<td><input type="text" id="name" autofocus required placeholder="이름 작성" /></td>
-			</tr>
-			<tr>
-				<td>아이디</td>
-				<td><input type="email" id="email" required placeholder="이메일 작성" /></td>
-			</tr>
-			<tr>
-				<td>비밀번호</td>
-				<td><input type="password" id="pass" required placeholder="비밀번호 작성"/></td>
-			</tr>
-			<tr>
-				<td>비밀번호 확인</td>
-				<!-- 서버에서도 비밀번호 확인할 수 있도록 name 추가 -->
-				<td><input type="password" id="re_pass" required placeholder="비밀번호 확인"/></td>
-			</tr>
-			<tr>
-				<td>생년월일</td>
-				<td><input type="date" id="birth" required/> </td>
-			</tr>
-			<tr>
-				<td>전화번호</td>
-				<td><input type="text" id="phone" value="010" placeholder="휴대전화 입력" required />
-				</td>
-			</tr>
-			<tr>
-				<td>우편번호</td>
-				<td>
-					<input type="text" id="postcode1" readOnly />
-					<button type="button" id="postcodify_search_button">검색</button>
-				</td>
-			</tr>
-			<tr>
-				<td>도로명주소</td>
-				<td><input type="text" id="postcode2" readOnly /></td>
-			</tr>
-			<tr>
-				<td>상세주소</td>
-				<td><input type="text" id="postcode3" placeholder="상세주소 입력" required/></td>
-			</tr>
-			<tr>
-				<td>성별</td>
-				<td>
-					<label>
-						<input type="radio" name="gender" class="gender" value="MALE" checked/> 남성
-						<input type="radio" name="gender" class="gender" value="FEMALE"/> 여성
-					</label>
-				</td>
-			</tr>
-			<tr>
-				<td>원하는 비즈니스 형태 선택</td>
-				<td>
-					<label>
-						<input type="radio" name="role" class="role" value="DEVELOPER" checked/> 개발자
-						<input type="radio" name="role" class="role" value="BUSINESS"/> 사업가
-					</label>
-				</td>
-			</tr>
-			<tr class="aaaa">
-				<td>회사 명</td>
-				<td><input type="text" id="bname" required placeholder="회사 명 작성" /></td>
-			</tr>
-			<tr class="aaaa">
-				<td>회사 우편 번호</td>
-				<td>
-					<input type="text" id="postcode4" readonly />
-					<button type="button" id="postcodify_search_button2">검색</button>
-				</td>
-			</tr>
-			<tr class="aaaa">
-				<td>회사 도로명 주소</td>
-				<td><input type="text" id="postcode5" readonly /></td>
-			</tr>
-			<tr class="aaaa">
-				<td>회사 상세 주소</td>
-				<td><input type="text" id="postcode6" required placeholder="상세주소 입력" /></td>
-			</tr>
-			<tr class="aaaa">
-				<td>회사 연락 번호</td>
-				<td><input type="text" id="phone2" placeholder="회사 일반 전화 작성(또는 담당자 전화)" required />
-				</td>
-			</tr>
-			<tr>
-				<td colspan=2>
-				<input type="button" onclick="javascript:join();" value="회원가입" />
-				</td>
-			</tr>
-		</table>
-	<div id="map" style="width:500px;height:400px;"></div>
-	
+	<img src="resources/img/logo/logo2.png" id="logo" />
+		<div id="table">
+			<div>
+				<h2>회원가입</h2>
+			</div>
+			
+			<div>
+				<img src="resources/img/profile.jpg" id="sampleImg"  style="width:100px; height:100px; border-radius: 50%; object-fit: cover;"/>
+				<input type="file" name="file" id="profileImage" accept=".gif, .jpg, .jpeg, .png" />
+			</div>
+			
+			<div>
+				<input type="text" id="name" autofocus required placeholder="이름 작성" />
+			</div>
+			
+			<div>
+				<input type="email" id="email" required placeholder="이메일 작성" />
+			</div>
+			
+			<div>
+				<input type="password" id="pass" required placeholder="비밀번호 작성"/>
+			</div>
+			
+			<div>
+				<input type="password" id="re_pass" required placeholder="비밀번호 확인"/>
+			</div>
+			
+			<div>
+				<p>생년월일</p>
+				<input type="date" id="birth" required/>
+			</div>
+			
+			<div>
+				<p>전화번호</p>
+				<input type="text" id="phone" value="010" placeholder="휴대전화 입력" required />
+			</div>
+			
+			<div>
+				<p>우편번호</p>
+				<input type="text" id="postcode1" readOnly />
+	            <button type="button" id="postcodify_search_button">검색</button>
+            </div>
+            
+            <div>
+	            <p>도로명주소</p>
+	            <input type="text" id="postcode2" readOnly />
+            </div>
+            
+            <div>
+	            <p>상세주소</p>
+	            <input type="text" id="postcode3" placeholder="상세주소 입력" required/>
+            </div>
+            
+            <div>
+	            <p>성별</p>
+	            <label>
+	                <input type="radio" name="gender" class="gender" value="MALE" checked/> 남성
+	                <input type="radio" name="gender" class="gender" value="FEMALE"/> 여성
+	            </label>
+            </div>
+            
+            <div>
+	            <p>원하는 비즈니스 형태 선택</p>
+	            <label>
+	                <input type="radio" name="role" class="role" value="DEVELOPER" checked/> 개발자
+	                <input type="radio" name="role" class="role" value="BUSINESS"/> 사업가
+	            </label>
+            </div>
+            
+            <div class="aaaa">
+            	<p>회사명</p>
+            	<input type="text" id="bname" required placeholder="회사 명 작성" />
+            </div>
+            
+            <div class="aaaa">
+            	<p>회사 우편 번호</p>
+            	<input type="text" id="postcode4" readonly />
+            	<button type="button" id="postcodify_search_button2">검색</button>
+            </div>
+            
+            <div class="aaaa">
+            	<p>회사 상세 주소</p>
+            	<input type="text" id="postcode6" required placeholder="상세주소 입력" />
+            </div>
+            
+            <div class="aaaa">
+            	<p>회사 연락 번호</p>
+            	<input type="text" id="phone2" placeholder="회사 일반 전화 작성(또는 담당자 전화)" required />
+            </div>
+            
+            <div>
+            	<input type="button" onclick="javascript:join();" value="회원가입" />
+            </div>
+			
+			<div id="map" style="width:500px;height:400px;"></div>
+		</div>
+		
 </c:set>
 
 <%@ include file="/WEB-INF/views/common/frame.jsp" %>

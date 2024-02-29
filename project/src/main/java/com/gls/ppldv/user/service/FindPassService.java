@@ -1,7 +1,6 @@
 package com.gls.ppldv.user.service;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import com.gls.ppldv.user.entity.Member;
 import com.gls.ppldv.user.entity.PassCode;
