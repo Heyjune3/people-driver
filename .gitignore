@@ -3,5 +3,9 @@
 Servers/
 target/
 
+target/m2e-wtp/
 # aws 키 ignore
 *.properties
+
+project/.classpath
+project/.factorypath
