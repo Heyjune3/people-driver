@@ -96,9 +96,16 @@
             </div>
             
             <div class="aaaa">
+	            <p>회사 도로명주소</p>
+	            <input type="text" id="postcode5" readOnly />
+            </div>
+            
+            <div class="aaaa">
             	<p>회사 상세 주소</p>
             	<input type="text" id="postcode6" required placeholder="상세주소 입력" />
             </div>
+            
+            
             
             <div class="aaaa">
             	<p>회사 연락 번호</p>

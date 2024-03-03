@@ -125,7 +125,7 @@
 					            </div>
 					        </div>
 					        <div class="modal_footer">
-					            <a href="#">회원정보 수정</a>
+					            <a href="/user/editProfile">회원정보 수정</a>
 					            <a href="#">프로필 등록</a>
 					            <span id="logout" onclick="logout()">로그아웃</span>
 					        </div>
@@ -136,12 +136,17 @@
 		</nav>
 	</header>
 <script>
+const msg = '${message}';
+if (msg != '') {
+	alert(msg);
+}
+
 	var image = $(".profileImage");
 	var modal = $(".modal");
 	var flag = false; // 닫혀있는 상태
 	
 	if (!image.attr("src")) {
-		image.attr("src", "resources/img/profile.jpg");
+		image.attr("src", "${path}/resources/img/profile.jpg");
 	}
 	
 	$(window).resize(function() {
@@ -173,14 +178,7 @@
 	}
 
 	function logout() {
-		$.ajax({
-			type : "POST",
-			url : "/user/logout",
-			dataType : "text",
-			success : function(result) {
-				alert(result);
-				window.location.href="/";
-			}	
-		});
+		alert("로그아웃 완료");
+		window.location.href="/user/logout";
 	}
 </script>

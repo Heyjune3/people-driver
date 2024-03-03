@@ -8,9 +8,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -105,18 +104,6 @@ public class MemberController {
 		}
 	}
 	
-	// 로그아웃 처리
-	@PostMapping("/logout")
-	public ResponseEntity<String> logout(
-		HttpServletRequest request,
-		HttpServletResponse response
-	) {
-		String message = ms.logOut(request, response);
-		HttpHeaders headers = new HttpHeaders();
-		headers.add("Content-Type", "text/plain;charset=utf-8");
-		return new ResponseEntity<>(message, headers, HttpStatus.OK);
-	}
-	
 	// 비밀번호 찾기 처리
 	@PostMapping("/findPass")
 	public ResponseEntity<String> findPass (
@@ -170,6 +157,4 @@ public class MemberController {
 		}
 		return new ResponseEntity<>(message, headers, HttpStatus.OK);
 	}
-	
-	
 }

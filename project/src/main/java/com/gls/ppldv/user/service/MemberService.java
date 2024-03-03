@@ -1,10 +1,13 @@
 package com.gls.ppldv.user.service;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.gls.ppldv.user.dto.EditDTO;
 import com.gls.ppldv.user.dto.LoginDTO;
 import com.gls.ppldv.user.entity.Member;
 
@@ -34,10 +37,34 @@ public interface MemberService extends FindPassService {
 	public Member login(LoginDTO member) throws Exception;
 	
 	/**
-	 * 로그아웃
-	 * @param request - session, cookie 정보 불러오기 위한 request
-	 * @param response - cookie 정보를 반환해주기 위한 response
-	 * @return - 로그아웃 메시지 반환
+	 * 회원정보 수정 
+	 * @param member - 회원 정보 받아올 것
+	 * @param file - 회원이 수정한 이미지
+	 * @return - 수정 완료 메시지 반환
 	 */
-	public String logOut(HttpServletRequest request, HttpServletResponse response);
+	public String editProfile(EditDTO member, MultipartFile file) throws Exception;
+	
+	/**
+	 * 회원정보 수정 - 이미지 변화 없음
+	 * @param member - 회원 정보 받아올 것
+	 * @return - 수정 완료 메시지 반환
+	 */
+	public String editProfile(EditDTO member) throws Exception;
+	
+	/**
+	 * 회원 삭제
+	 */
+	public String removeUser(String email) throws Exception;
+	
+	
+	
+	
+	
+	
+	
+	
+	/**
+	 * email을 통해 멤버 찾기
+	 */
+	public Member findMember(String email) throws Exception;
 }

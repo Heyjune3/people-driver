@@ -30,4 +30,9 @@ public interface MemberRepository extends JpaRepository<Member, Long>{
 	 * @return - 존재하는 회원 반환
 	 */
 	Member findByEmailAndName(String email, String name);
+
+	/**
+	 * @param email - 삭제할 아이디
+	 */
+	void deleteByEmail(String email);
 }

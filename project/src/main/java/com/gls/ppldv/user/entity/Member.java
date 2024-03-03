@@ -38,9 +38,8 @@ import lombok.ToString;
  * bdetail (회사 상세주소) - business_address_detail <br/>
  * bphone(회사 전화번호) - business_phone <br/>
  * imgUrl (프로필 이미지) - image_url <br/>
+ * fileName (이미지 명) - image_name
  * 
- * 
- * 지금은 필요없지만, 만약 필요하다면 회원 등록시간, 회원 수정시간, 회원 삭제시간 추가
  */
 @Entity
 @Table(name="member", uniqueConstraints = @UniqueConstraint(columnNames= "uid"))
@@ -105,6 +104,7 @@ public class Member {
 	@Column(name="image_url", nullable=true)
 	private String imgUrl;
 	
-	@Column(name="delete_YN", nullable=true)
-	private char deleteYN = 'N';
+	@Column(name="image_name", nullable=true)
+	private String fileName;
+	
 }

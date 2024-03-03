@@ -2,40 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ page session="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<style>
-	.aaaa{
-		display:none;
-	}
 
-	#table {
-		border: 1px solid rgba(200,200,200,0.5);
-		margin: 10px auto;
-		width: 500px;
-	}
-	
-		#table div {
-			text-align: center;
-			align-items: center;
-		}
-		
-		#table div input {
-			width: 300px;
-			height: 50px;
-			margin-bottom: 10px;
-		}
-	
-	#logo {
-		display: block; /* img 태그는 inline 요소이므로 */
-		margin: 0 auto;
-		max-width: 300px;
-		height: auto;
-	}
-	
-	#map {
-		text-align: center;
-	}
-	
-</style>
+<link rel="stylesheet" type="text/css" href="${path}/resources/css/member/register.css"/>
+
 <c:set var="content">
 	<input type="hidden" class="postcodify_postcode5"/>
 	<input type="hidden" class="postcodify_address"/>
@@ -55,7 +24,7 @@
 			</div>
 			
 			<div>
-				<input type="email" id="email" required placeholder="이메일 작성" />
+				<input type="email" id="email" required placeholder="(아이디)이메일 작성" />
 			</div>
 			
 			<div>
@@ -78,8 +47,10 @@
 			
 			<div>
 				<p>우편번호</p>
-				<input type="text" id="postcode1" readOnly />
-	            <button type="button" id="postcodify_search_button">검색</button>
+				<div class="bbbb">
+					<input type="text" id="postcode1" readOnly />
+	            	<button type="button" id="postcodify_search_button">검색</button>
+	            </div>
             </div>
             
             <div>
@@ -88,24 +59,27 @@
             </div>
             
             <div>
-	            <p>상세주소</p>
 	            <input type="text" id="postcode3" placeholder="상세주소 입력" required/>
             </div>
             
             <div>
 	            <p>성별</p>
-	            <label>
-	                <input type="radio" name="gender" class="gender" value="MALE" checked/> 남성
-	                <input type="radio" name="gender" class="gender" value="FEMALE"/> 여성
-	            </label>
+	            <div>
+	                <input type="radio" id="gender" name="gender" class="gender" value="MALE" checked/>
+	                <label for="gender">남성</label>
+	                <input type="radio" id="gender2" name="gender" class="gender" value="FEMALE"/>
+		           	<label for="gender2">여성</label>
+	           	</div>
             </div>
             
             <div>
 	            <p>원하는 비즈니스 형태 선택</p>
-	            <label>
-	                <input type="radio" name="role" class="role" value="DEVELOPER" checked/> 개발자
-	                <input type="radio" name="role" class="role" value="BUSINESS"/> 사업가
-	            </label>
+	            <div>
+	                <input type="radio" id="role1" name="role" class="role" value="DEVELOPER" checked/>
+	                <label for="role1">개발자</label>
+	                <input type="radio" id="role2" name="role" class="role" value="BUSINESS"/>
+	                <label for="role2">사업가</label>
+	            </div>
             </div>
             
             <div class="aaaa">
@@ -115,8 +89,10 @@
             
             <div class="aaaa">
             	<p>회사 우편 번호</p>
-            	<input type="text" id="postcode4" readonly />
-            	<button type="button" id="postcodify_search_button2">검색</button>
+            	<div class="bbbb">
+	            	<input type="text" id="postcode4" readonly />
+	            	<button type="button" id="postcodify_search_button2">검색</button>
+            	</div>
             </div>
             
             <div class="aaaa">
@@ -130,7 +106,7 @@
             </div>
             
             <div>
-            	<input type="button" onclick="javascript:join();" value="회원가입" />
+            	<input style="color: white; box-shadow: 0 3px 0 #CCCCCC; background-color: rgba(3,199,90);" type="button" onclick="javascript:join();" value="회원가입" />
             </div>
 			
 			<div id="map" style="width:500px;height:400px;"></div>
@@ -150,13 +126,35 @@ var options= {
 };
 var map = new kakao.maps.Map(container, options); // 지도 생성 및 객체 리턴
 
+function slowScrollTo(element, to, duration) {
+	if (duration <= 0) return;
+	let difference = to - (element === window ? window.scrollY : element.scrollTop);
+	let perTick = difference / duration * 10;
+	
+	setTimeout(function() {
+		if (element === window) {
+			window.scrollTo(0,window.scrollY + perTick);
+		} else {
+			element.scrollTop += perTick;	
+		}
+		
+		if ((element === window ? window.scrollY : element.scrollTop) === to) return;
+		slowScrollTo(element, to, duration - 10);
+	}, 10);
+}
+
 // 사업가, 개발자 라디오 선택
 $(".role").click(function(){
 	if($(".role:checked").val() === 'BUSINESS'){
-		$(".aaaa").show();
+		$(".aaaa").slideDown();
+		// 윈도우 창도 함께 아래로 내력기
+		let scrollHeight = document.body.scrollHeight;
+		slowScrollTo(window, scrollHeight, 100);
 	} else {
 		// 입력된 값 초기화
 		$(".aaaa input").val('');
+		// 윈도우 창도 함꼐 위로 올라가기
+		slowScrollTo(window, 100, 500);
 		// 다시 숨기기
 		$(".aaaa").hide();
 	}
