@@ -22,20 +22,18 @@ public class AWSConfiguration implements WebMvcConfigurer {
 
 	@Value("${aws.secretkey}")
 	private String secretKey;
-	
+
 	@Bean
 	public BasicAWSCredentials AwsCredentials() {
-		BasicAWSCredentials AwsCreds = new BasicAWSCredentials(accessKey, secretKey);	
+		BasicAWSCredentials AwsCreds = new BasicAWSCredentials(accessKey, secretKey);
 		return AwsCreds;
-	}	
-	
+	}
+
 	@Bean
 	public AmazonS3 AwsS3Client() {
-		
-		AmazonS3 s3Builder = AmazonS3ClientBuilder.standard()
-				.withRegion(Regions.AP_NORTHEAST_2)
-				.withCredentials(new AWSStaticCredentialsProvider(this.AwsCredentials()))
-				.build();	
+
+		AmazonS3 s3Builder = AmazonS3ClientBuilder.standard().withRegion(Regions.AP_NORTHEAST_2)
+				.withCredentials(new AWSStaticCredentialsProvider(this.AwsCredentials())).build();
 
 		return s3Builder;
 	}

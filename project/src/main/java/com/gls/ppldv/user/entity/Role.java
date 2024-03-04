@@ -1,6 +1,6 @@
 package com.gls.ppldv.user.entity;
 
 public enum Role {
-	BUSINESS,	// »ç¾÷ÀÚ
-	DEVELOPER	// °³¹ßÀÚ
+	BUSINESS, // ï¿½ï¿½ï¿½ï¿½ï¿½
+	DEVELOPER // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 }

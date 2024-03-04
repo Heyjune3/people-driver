@@ -2,6 +2,7 @@
 .metadata/
 Servers/
 target/
+bin/
 
 target/m2e-wtp/
 # aws 키 ignore

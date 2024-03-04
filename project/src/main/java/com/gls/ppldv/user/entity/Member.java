@@ -39,72 +39,72 @@ import lombok.ToString;
  * bphone(회사 전화번호) - business_phone <br/>
  * imgUrl (프로필 이미지) - image_url <br/>
  * fileName (이미지 명) - image_name
- * 
+ *
  */
 @Entity
-@Table(name="member", uniqueConstraints = @UniqueConstraint(columnNames= "uid"))
+@Table(name = "member", uniqueConstraints = @UniqueConstraint(columnNames = "uid"))
 @Getter
 @Setter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class Member {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "uno")
 	private Long id;
-	
+
 	@Column(name = "uname", nullable = false)
 	private String name;
-	
-	@Column(name="uid", nullable = false, unique=true)
+
+	@Column(name = "uid", nullable = false, unique = true)
 	private String email;
-	
-	@Column(name="upw", nullable = false)
+
+	@Column(name = "upw", nullable = false)
 	private String password;
-	
-	@Column(name="birth_date", nullable = false)
-	@DateTimeFormat(pattern="yyyy-MM-dd")
+
+	@Column(name = "birth_date", nullable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date birth;
-	
-	@Column(name="phone", nullable = false)
+
+	@Column(name = "phone", nullable = false)
 	private String phoneNo;
-	
-	@Column(name="postcode", nullable = false)
+
+	@Column(name = "postcode", nullable = false)
 	private int pc5;
-	
-	@Column(name="address", nullable = false)
+
+	@Column(name = "address", nullable = false)
 	private String address;
-	
-	@Column(name="address_detail", nullable = false)
+
+	@Column(name = "address_detail", nullable = false)
 	private String detail;
-	
+
 	@Enumerated(EnumType.STRING)
 	private Role role;
-	
+
 	@Enumerated(EnumType.STRING)
 	private Gender gender;
-	
-	@Column(name="business_name", nullable=true)
+
+	@Column(name = "business_name", nullable = true)
 	private String bname;
-	
-	@Column(name="business_postcode", nullable=true)
+
+	@Column(name = "business_postcode", nullable = true)
 	private int bpc5;
-	
-	@Column(name="business_address", nullable=true)
+
+	@Column(name = "business_address", nullable = true)
 	private String baddress;
-	
-	@Column(name="business_address_detail", nullable=true)
+
+	@Column(name = "business_address_detail", nullable = true)
 	private String bdetail;
-	
-	@Column(name="business_phone", nullable=true)
+
+	@Column(name = "business_phone", nullable = true)
 	private String bphone;
-	
-	@Column(name="image_url", nullable=true)
+
+	@Column(name = "image_url", nullable = true)
 	private String imgUrl;
-	
-	@Column(name="image_name", nullable=true)
+
+	@Column(name = "image_name", nullable = true)
 	private String fileName;
-	
+
 }

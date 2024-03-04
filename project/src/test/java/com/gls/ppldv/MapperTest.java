@@ -14,14 +14,12 @@ import com.gls.ppldv.user.entity.Role;
 import com.gls.ppldv.user.mapper.MemberMapper;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(
-	locations= {"classpath:/spring/root-context.xml"}
-)
+@ContextConfiguration(locations = { "classpath:/spring/root-context.xml" })
 public class MapperTest {
 
 	@Autowired
 	MemberMapper mapper;
-	
+
 	@Test
 	public void test1() {
 		try {
@@ -43,7 +41,7 @@ public class MapperTest {
 			e.printStackTrace();
 		}
 	} // end test
-	
+
 	@Test
 	public void test2() {
 		try {

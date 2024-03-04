@@ -1,10 +1,5 @@
 package com.gls.ppldv.user.service;
 
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.web.multipart.MultipartFile;
 
 import com.gls.ppldv.user.dto.EditDTO;
@@ -12,57 +7,54 @@ import com.gls.ppldv.user.dto.LoginDTO;
 import com.gls.ppldv.user.entity.Member;
 
 public interface MemberService extends FindPassService {
-	
+
 	/**
 	 * 회원 등록(이미지 포함)
+	 *
 	 * @param member - 회원 등록을 위한 객체
-	 * @param file - 클라이언트로부터 받은 파일
+	 * @param file   - 클라이언트로부터 받은 파일
 	 * @return - 메세지
 	 */
 	public String register(Member member, MultipartFile file) throws Exception;
-	
+
 	/**
 	 * 회원 등록(이미지 없이)
+	 *
 	 * @param member - 회원 등록을 위한 객체
 	 * @return - 메세지
 	 */
 	public String register(Member member) throws Exception;
-	
-	
+
 	/**
 	 * 로그인
+	 *
 	 * @param member - 회원 찾기를 위한 객체
 	 * @return - 존재하는 회원 정보
 	 */
 	public Member login(LoginDTO member) throws Exception;
-	
+
 	/**
-	 * 회원정보 수정 
+	 * 회원정보 수정
+	 *
 	 * @param member - 회원 정보 받아올 것
-	 * @param file - 회원이 수정한 이미지
+	 * @param file   - 회원이 수정한 이미지
 	 * @return - 수정 완료 메시지 반환
 	 */
 	public String editProfile(EditDTO member, MultipartFile file) throws Exception;
-	
+
 	/**
 	 * 회원정보 수정 - 이미지 변화 없음
+	 *
 	 * @param member - 회원 정보 받아올 것
 	 * @return - 수정 완료 메시지 반환
 	 */
 	public String editProfile(EditDTO member) throws Exception;
-	
+
 	/**
 	 * 회원 삭제
 	 */
 	public String removeUser(String email) throws Exception;
-	
-	
-	
-	
-	
-	
-	
-	
+
 	/**
 	 * email을 통해 멤버 찾기
 	 */

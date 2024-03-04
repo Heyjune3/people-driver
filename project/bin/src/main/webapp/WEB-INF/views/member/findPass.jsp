@@ -111,6 +111,7 @@
 						email.val('');
 						name.val('');
 						email.focus();
+						ready.css("display", "none");
 					} else {
 						// 메일 발송 성공
 						alert(result);

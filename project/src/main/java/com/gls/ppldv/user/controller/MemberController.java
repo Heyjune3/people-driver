@@ -8,7 +8,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,14 +28,13 @@ import lombok.RequiredArgsConstructor;
 public class MemberController {
 
 	private final MemberService ms;
-	
+
 	// 회원가입 처리
 	@PostMapping("/register")
 	public ResponseEntity<String> register(
-			//@RequestParam(required=false, name="file") MultipartHttpServletRequest request,
-			MultipartFile file,
-			Member member
-	){
+			// @RequestParam(required=false, name="file") MultipartHttpServletRequest
+			// request,
+			MultipartFile file, Member member) {
 		String message = null;
 		ResponseEntity<String> response = null;
 		HttpHeaders headers = new HttpHeaders();
@@ -46,9 +44,9 @@ public class MemberController {
 			try {
 				message = ms.register(member, file);
 				response = new ResponseEntity<>(message, headers, HttpStatus.OK);
-			}catch (IllegalArgumentException e) { 
+			} catch (IllegalArgumentException e) {
 				response = new ResponseEntity<>(e.getMessage(), headers, HttpStatus.OK);
-			}catch (Exception e) {
+			} catch (Exception e) {
 				response = new ResponseEntity<>(e.getMessage(), headers, HttpStatus.BAD_REQUEST);
 				e.printStackTrace();
 			}
@@ -56,7 +54,7 @@ public class MemberController {
 			try {
 				message = ms.register(member);
 				response = new ResponseEntity<>(message, headers, HttpStatus.OK);
-			} catch (IllegalArgumentException e) { 
+			} catch (IllegalArgumentException e) {
 				response = new ResponseEntity<>(e.getMessage(), headers, HttpStatus.OK);
 			} catch (Exception e) {
 				response = new ResponseEntity<>(e.getMessage(), headers, HttpStatus.BAD_REQUEST);
@@ -65,14 +63,10 @@ public class MemberController {
 		}
 		return response;
 	}
-	
+
 	// 로그인 처리
 	@PostMapping("/login")
-	public ResponseEntity<Object> login (
-		LoginDTO member,
-		HttpServletRequest request,
-		HttpServletResponse response
-	) {
+	public ResponseEntity<Object> login(LoginDTO member, HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession(); // 세션을 받아와서
 		ResponseEntity<Object> result = null; // 로그인성공,실패 보낼 전송 데이터
 		Member m = null;
@@ -81,15 +75,15 @@ public class MemberController {
 			// 로그인 성공 시에는 Member 객체를 JSON 형식으로 전송
 			m = ms.login(member);
 			session.setAttribute("loginMember", m); // 로그인 된 회언 정보를 세션에 담아 보내주고
-			
+
 			if (member.isChecked()) {
 				String encryptedEmail = CookieUtils.encrypt(m.getEmail());
 				Cookie cookie = new Cookie("id", encryptedEmail);
-				cookie.setMaxAge(60*60*24); // 1일
+				cookie.setMaxAge(60 * 60 * 24); // 1일
 				cookie.setPath("/"); // 이 홈페이지의 모든 곳
 				response.addCookie(cookie);
 			}
-			
+
 			result = new ResponseEntity<>(m, headers, HttpStatus.OK);
 			return result;
 		} catch (LoginFailedException e) {
@@ -103,13 +97,10 @@ public class MemberController {
 			return result;
 		}
 	}
-	
+
 	// 비밀번호 찾기 처리
 	@PostMapping("/findPass")
-	public ResponseEntity<String> findPass (
-		Member member,
-		HttpServletRequest request
-	) {
+	public ResponseEntity<String> findPass(Member member, HttpServletRequest request) {
 		String message = null;
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "text/plain;charset=utf-8");
@@ -124,12 +115,10 @@ public class MemberController {
 		}
 		return new ResponseEntity<>(message, headers, HttpStatus.OK);
 	}
-	
+
 	// 코드 일치 확인
 	@PostMapping("/passAccept")
-	public ResponseEntity<String> passAccept(
-		PassCode passCode
-	) {
+	public ResponseEntity<String> passAccept(PassCode passCode) {
 		String message = ms.changePassCode(passCode);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "text/plain;charset=utf-8");
@@ -140,12 +129,10 @@ public class MemberController {
 			return new ResponseEntity<>(message, headers, HttpStatus.OK);
 		}
 	}
-	
+
 	// 비밀번호 변경
 	@PostMapping("/changePass")
-	public ResponseEntity<String> changePass (
-		Member member 
-	) {
+	public ResponseEntity<String> changePass(Member member) {
 		String message = null;
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "text/plain;charset=utf-8");

@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class EditDTO {
-	
+
 	private String email;
 	private String password;
 	private String phoneNo;

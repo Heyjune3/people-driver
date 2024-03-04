@@ -1,16 +1,13 @@
 package com.gls.ppldv.user.service;
 
 import java.util.Date;
-import java.util.Map;
 
 import javax.mail.Message;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,14 +34,13 @@ public class MemberServiceImpl implements MemberService {
 	private final MemberRepository mr;
 	private final CodeRepository cr;
 	private final MemberMapper mm;
-	
+
 	private final FileUtil fu;
-	
+
 	// 만들어놓은 util 패키지의 GmailAuthentication
 	@Autowired
 	GmailAuthentication ga;
-	
-	
+
 	@Override
 	@Transactional // 2개 이상의 db 처리 관리
 	public String register(Member member, MultipartFile file) throws Exception {
@@ -52,7 +48,7 @@ public class MemberServiceImpl implements MemberService {
 		Member m = mm.idCheck(member.getEmail());
 		// 아이디 중복 체크
 		if (m != null) {
-			throw new Exception("아이디 중복입니다. 다시 선택해주세요."); 
+			throw new Exception("아이디 중복입니다. 다시 선택해주세요.");
 		} else {
 			// 이미지 업로드
 			String imgUrl = fu.uploadFile(file);
@@ -73,12 +69,12 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return message;
 	}
-	
+
 	@Override
 	public String register(Member member) throws Exception {
 		String message = "회원가입실패";
 		Member m = mm.idCheck(member.getEmail());
-		
+
 		if (m != null) {
 			throw new IllegalArgumentException("아이디 중복입니다. 다시 선택해주세요.");
 		} else {
@@ -90,10 +86,10 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return message;
 	}
-	
+
 	@Override
 	public Member login(LoginDTO member) throws Exception {
-		Member m = mr.findByEmailAndPassword(member.getEmail(),member.getPassword());
+		Member m = mr.findByEmailAndPassword(member.getEmail(), member.getPassword());
 		if (m != null) {
 			// 로그인 성공
 			return m;
@@ -106,37 +102,35 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	@Transactional
 	public String findPassSubmit(Member member, HttpServletRequest request) throws Exception {
-		
+
 		Member m = mr.findByEmailAndName(member.getEmail(), member.getName());
-		
+
 		if (m == null) {
 			// 일치하는 회원이 존재하지 않는다면,
 			throw new NullPointerException("일치하는 회원 정보가 없습니다.");
 		}
-		
+
 		// 일치하는 회원 존재
 		// 5자리의 숫자 코드 생성
 		StringBuilder sb = new StringBuilder();
-		for (int i=0; i<5; i++) {
-			int random = (int)(Math.random()*10);
+		for (int i = 0; i < 5; i++) {
+			int random = (int) (Math.random() * 10);
 			sb.append(random);
 		}
 		String code = sb.toString();
-		
+
 		// 메일로 발송될 코드 DB에 저장
 		PassCode pc = new PassCode();
 		pc.setEmail(m.getEmail());
 		pc.setCode(code);
 		cr.save(pc);
-		
+
 		// 메일 발송
 		Session session = Session.getDefaultInstance(ga.getProp(), ga);
 		MimeMessage msg = new MimeMessage(session);
-		InternetAddress fromAddress = new InternetAddress(
-			"trailblazer6351@gmail.com", "MASTER"
-		);
+		InternetAddress fromAddress = new InternetAddress("trailblazer6351@gmail.com", "MASTER");
 		InternetAddress toAddress = new InternetAddress(m.getEmail());
-		
+
 		msg.setSentDate(new Date()); // 보내는 날짜
 		msg.setHeader("Content-Type", "text/html;charset=utf-8"); // 마임 타입
 		msg.setRecipient(Message.RecipientType.TO, toAddress); // 송신자
@@ -151,11 +145,11 @@ public class MemberServiceImpl implements MemberService {
 		mail.append("<body>");
 		mail.append("<h1 style='text-align:center;'> @@@ PEOPLE.DRIVER 사이트 비밀번호 찾기 @@@ </h1>");
 		mail.append("<div style='text-align:center;'>");
-		mail.append("<p style='font-size:30px;'>인증 코드 번호 : <b>"+pc.getCode()+"</b> </p>");
+		mail.append("<p style='font-size:30px;'>인증 코드 번호 : <b>" + pc.getCode() + "</b> </p>");
 		mail.append("</div>");
 		mail.append("</body>");
 		mail.append("</html>");
-		
+
 		String content = mail.toString();
 		msg.setContent(content, "text/html;charset=utf-8");
 		// blocking (메일이 발송될 때 까지)
@@ -178,15 +172,14 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public String changePass(Member member) throws Exception {
 		mm.changePass(member);
-		
+
 		return "비밀번호 변경 성공";
 	}
-
 
 	@Override
 	@Transactional
 	public String editProfile(EditDTO member, MultipartFile file) throws Exception {
-		
+
 		String message = "회원정보 수정 실패";
 		// 만약 회원 이미지가 변경되었다면, 삭제 후 다시 업로드
 		Member mem = mr.findByEmail(member.getEmail());
@@ -194,7 +187,7 @@ public class MemberServiceImpl implements MemberService {
 			// 기존 이미지가 있었다면,
 			fu.deleteFile(mem.getFileName());
 		}
-		
+
 		String imgUrl = fu.uploadFile(file);
 		String savedFileName = fu.savedFileName(imgUrl);
 		if (imgUrl != null) {
@@ -204,13 +197,13 @@ public class MemberServiceImpl implements MemberService {
 			mm.editProfile(member);
 			message = "회원정보 수정 완료";
 		}
-		
+
 		return message;
 	}
 
 	@Override
 	public String editProfile(EditDTO member) throws Exception {
-		
+
 		Member mem = mr.findByEmail(member.getEmail());
 
 		if (mem.getImgUrl() != null) {
@@ -220,7 +213,7 @@ public class MemberServiceImpl implements MemberService {
 			// 기존에 있던 정보를 추가해서
 		}
 		mm.editProfile(member);
-		
+
 		return "회원정보 수정 완료";
 	}
 
@@ -235,20 +228,10 @@ public class MemberServiceImpl implements MemberService {
 		return "삭제 완료";
 	}
 
-	
-	
-	
-	
-	
-	
-	
 	@Override
 	public Member findMember(String email) throws Exception {
 		Member m = mr.findByEmail(email);
 		return m;
 	}
-	
-	
-	
-	
+
 }

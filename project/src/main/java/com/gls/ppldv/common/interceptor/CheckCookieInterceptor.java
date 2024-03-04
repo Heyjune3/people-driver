@@ -17,28 +17,28 @@ public class CheckCookieInterceptor implements HandlerInterceptor {
 
 	@Autowired
 	MemberRepository mr;
-	
+
 	/**
 	 * 자동 로그인 구현
 	 */
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		
+
 		HttpSession session = request.getSession();
 		if (session.getAttribute("loginMember") != null) {
 			return true;
 		}
-		
+
 		Cookie cookie = WebUtils.getCookie(request, "id");
 		if (cookie != null) {
 			String email = cookie.getValue();
-			String decryptedEmail = CookieUtils.decrypt(email); 
+			String decryptedEmail = CookieUtils.decrypt(email);
 			Member member = mr.findByEmail(decryptedEmail);
 			session.setAttribute("loginMember", member);
 		}
-		
+
 		return true;
 	}
-	
+
 }

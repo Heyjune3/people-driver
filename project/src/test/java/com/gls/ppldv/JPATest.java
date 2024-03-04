@@ -14,15 +14,12 @@ import com.gls.ppldv.user.entity.Role;
 import com.gls.ppldv.user.repository.MemberRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(
-	locations= {"classpath:/spring/root-context.xml"}
-)
+@ContextConfiguration(locations = { "classpath:/spring/root-context.xml" })
 public class JPATest {
-	
+
 	@Autowired
 	MemberRepository memberRepo;
-	
-	
+
 	// @Test
 	public void test2() {
 		Member member = new Member();
@@ -35,7 +32,7 @@ public class JPATest {
 		memberRepo.save(member);
 		System.out.println("===========");
 	}
-	
+
 	@Test
 	public void test() {
 		List<Member> list = memberRepo.findAll();

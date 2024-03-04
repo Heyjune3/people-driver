@@ -126,7 +126,8 @@
 					        </div>
 					        <div class="modal_footer">
 					            <a href="/user/editProfile">회원정보 수정</a>
-					            <a href="#">프로필 등록</a>
+					            <a href="/developer/profile">프로필 등록</a>
+					            <a href="/business/register">프로젝트 등록</a>
 					            <span id="logout" onclick="logout()">로그아웃</span>
 					        </div>
 					    </div>

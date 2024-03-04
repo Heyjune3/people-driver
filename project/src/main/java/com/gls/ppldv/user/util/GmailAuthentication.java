@@ -12,24 +12,23 @@ import org.springframework.stereotype.Component;
 
 import lombok.Getter;
 
-
 @Getter
 @PropertySource("classpath:prop/gmail.properties") // 프로퍼티 가져오기
 @Component
 public class GmailAuthentication extends Authenticator {
-	
+
 	private PasswordAuthentication passwordAuthentication;
-	
+
 	@Value("${id}")
 	private String id;
 	@Value("${pw}")
 	private String pw;
-	
+
 	@PostConstruct
 	public void init() {
 		passwordAuthentication = new PasswordAuthentication(id, pw);
 	}
-	
+
 	public Properties getProp() {
 		Properties prop = new Properties();
 		prop.put("mail.smtp.host", "smtp.gmail.com");
