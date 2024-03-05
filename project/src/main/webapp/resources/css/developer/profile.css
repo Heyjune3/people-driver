@@ -1,17 +1,21 @@
 @charset "UTF-8";
 
+* {
+	margin: 0;
+	padding: 0;
+}
 
 .container {
-	width: 1020px;
+	width: 80%;
 	margin: 0 auto;
 	display: flex;
 	justify-content: space-between;
 }
 
 	.container .content {
-		width: 720px;
 		display: flex;
-		flex-wrap: wrap; /* 내용이 한 줄을 넘어갈 경우 줄 바꿈 */
+		flex-direction: column;
+		align-content: space-between;
 	}
 	
 		.content div {
@@ -21,6 +25,12 @@
 			box-shadow: 2px 2px 0 #CCCCCC;
 			margin-bottom: 20px;
 			box-sizing: border-box; /* 박스 모델 설정 */
+		}
+		
+		.secondRow table {
+			width: 100%;
+			height: calc(100% - 20px);
+			table-layout: fixed; /* 콘텐츠에 따라 테이블의 너비를 동적으로 조정하지 않고 고정됨을 설정 */
 		}
 
 	.container .sidebar {
@@ -33,22 +43,22 @@
 
 	div.sidebar .tab-list {
 		list-style: none;
-		padding: 0;
+		
 	}
 	
 	div.sidebar .tab-list li{
 		margin-bottom: 10px;
 	}
 	
-	div.sidebar .tab-list li a{
+	div.sidebar .tab-list li span{
 		display: block;
-		text-decoration: none;
 		color: #333;
 		padding: 5px;
 		border-radius: 5px;
 		transition: background-color 0.3s;
 	}
 	
-	div.sidebar .tab-list li a:hover{
+	div.sidebar .tab-list li span:hover{
 		background-color: #ddd;
+		cursor: pointer;
 	}

@@ -1,4 +1,4 @@
-package com.gls.ppldv.user.util;
+package com.gls.ppldv.common.util;
 
 import java.util.Base64;
 

@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.gls.ppldv.common.util.CookieUtils;
 import com.gls.ppldv.configuration.userException.LoginFailedException;
 import com.gls.ppldv.user.dto.LoginDTO;
 import com.gls.ppldv.user.entity.Member;
 import com.gls.ppldv.user.entity.PassCode;
 import com.gls.ppldv.user.service.MemberService;
-import com.gls.ppldv.user.util.CookieUtils;
 
 import lombok.RequiredArgsConstructor;
 
@@ -142,6 +142,6 @@ public class MemberController {
 			e.printStackTrace();
 			return new ResponseEntity<>(e.getMessage(), headers, HttpStatus.BAD_REQUEST);
 		}
-		return new ResponseEntity<>(message, headers, HttpStatus.OK);
+		return new ResponseEntity<>(message, headers, HttpStatus.BAD_REQUEST);
 	}
 }

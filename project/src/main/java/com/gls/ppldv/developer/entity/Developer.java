@@ -30,9 +30,11 @@ import lombok.ToString;
  * skill (기술 스택) - developer_skill <br/>
  * tendency (FRONT, BACK, APP) <br/>
  * school (학력사항) - developer_school <br/>
- * member (회원 식별자) <br/>
+ * member (회원 식별자) - uno <br/>
  * updateDate (프로필 수정 시간) - updatedate <br/>
  * viewCount (조회수) - viewcnt
+ * imgUrl (프로필 이미지) - image_url <br/>
+ * fileName (이미지 명) - image_name
  */
 @Entity
 @Table(name="developer")
@@ -69,7 +71,13 @@ public class Developer {
     @Column(name = "updatedate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateDate;
-
+    
     @Column(name = "viewcnt")
     private Integer viewCount;
+    
+    @Column(name = "image_url", nullable = true)
+    private String imgUrl;
+    
+    @Column(name = "image_name", nullable = true)
+    private String fileName;
 }

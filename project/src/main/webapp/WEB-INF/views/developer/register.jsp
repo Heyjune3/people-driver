@@ -6,24 +6,27 @@
 <link rel="stylesheet" type="text/css" href="${path}/resources/css/developer/register.css"/>
 
 <c:set var="content">
-<section>
+	<input id="uno" type="hidden" value="${loginMember.id}" />
 	<div class="container">
 		<div class="input">
 			<span>개발자 프로필</span>
 			<span>
 			제목
-			<input type="text" placeholder="제목입력" autofocus="autofocus" />
+			<input id="title" type="text" placeholder="제목입력" autofocus="autofocus" />
 			</span>
 			<span id="register" onclick="register()">프로필 등록</span>
 		</div>
 		
 		<div class="profile">
 			<div class="firstRow">
-				<c:if test="${loginMember.imgUrl}"></c:if>
-				<img src="${loginMember.imgUrl}" id="sampleImg" />
+				<div class="img">
+					<img src="${path}/resources/img/profile.jpg" id="sampleImg" />
+					<button type="button" onclick="rollback()">원상태로 되돌리기</button>
+					<span>Drag & DROP</span>
+				</div>
 				<div class="introduce">
 					<span>개발자 소개</span>
-					<textarea id="introduce" placeholder="1000자 이내로 작성해주세요."></textarea>
+					<textarea class="introduce2" id="introduce" placeholder="1000자 이내로 작성해주세요."></textarea>
 				</div>
 			</div>
 			<div class="secondRow">
@@ -40,7 +43,7 @@
 				</div>
 				<div class="introduce">
 					<span>개발자 기술스택</span>
-					<textarea id="introduce" placeholder="1000자 이내로 작성해주세요."></textarea>
+					<textarea class="introduce2" id="skill" placeholder="1000자 이내로 작성해주세요."></textarea>
 				</div>
 			</div>
 			
@@ -54,7 +57,7 @@
 					<tr>
 						<th>학교명</th>
 						<td>
-							<textarea placeholder="학력사항에 대해 간단하게 설명해주세요. ex. 어느 고등학교 : 언제 입학, 졸업"></textarea>
+							<textarea id="school" placeholder="학력사항에 대해 간단하게 설명해주세요. ex. 어느 고등학교 : 언제 입학, 졸업"></textarea>
 						</td>
 					</tr>
 				</table>
@@ -74,35 +77,35 @@
 					</tr>
 					<tr>
 						<td>
-							<input type="text" placeholder="IT 관련 직장"/>
+							<input class="nameList" type="text" placeholder="IT 관련 직장"/>
 						</td>
 						<td>
-							<input type="text" placeholder="ex. 18.03.18 ~ 24.03.18 (6년 근무)"/>
+							<input class="periodList" type="text" placeholder="ex. 18.03.18 ~ 24.03.18 (6년 근무)"/>
 						</td>
 						<td>
-							<input type="text" placeholder="ex. 개발자 (웹 엔지니어 전문)"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<input type="text" />
-						</td>
-						<td>
-							<input type="text" />
-						</td>
-						<td>
-							<input type="text" />
+							<input class="resList" type="text" placeholder="ex. 개발자 (웹 엔지니어 전문)"/>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<input type="text" />
+							<input class="nameList" type="text" />
 						</td>
 						<td>
-							<input type="text" />
+							<input class="periodList" type="text" />
 						</td>
 						<td>
-							<input type="text" />
+							<input class="resList" type="text" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input class="nameList" type="text" />
+						</td>
+						<td>
+							<input class="periodList" type="text" />
+						</td>
+						<td>
+							<input class="resList" type="text" />
 						</td>
 					</tr>
 				</table>
@@ -121,26 +124,26 @@
 					</tr>
 					<tr>
 						<td>
-							<input type="text" placeholder="ex. 리눅스마스터 1급 (KAIT 자격검정)"/>
+							<input class="licList" type="text" placeholder="ex. 리눅스마스터 1급 (KAIT 자격검정)"/>
 						</td>
 						<td>
-							<input type="text" placeholder="ex. 18.06.03 취득"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<input type="text" />
-						</td>
-						<td>
-							<input type="text" />
+							<input class="acqList" type="text" placeholder="ex. 18.06.03 취득"/>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<input type="text" />
+							<input class="licList" type="text" />
 						</td>
 						<td>
-							<input type="text" />
+							<input class="acqList" type="text" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input class="licList" type="text" />
+						</td>
+						<td>
+							<input class="acqList" type="text" />
 						</td>
 					</tr>
 				</table>
@@ -148,7 +151,6 @@
 			
 		</div>
 	</div>
-</section>
 </c:set>
 
 <%@ include file="/WEB-INF/views/common/frame.jsp" %>
@@ -163,9 +165,10 @@
 			let profileImg = $("#sampleImg");
 			let introduce = $(".introduce");
 			let tendency = $(".tendency");
+			let imgdiv = $(".img");
 			
 			// 가로 크기를 세로와 동일하게 바꿈 (이미지)
-			profileImg.css({
+			imgdiv.css({
 				width: firstRowHeight + 'px'
 			});
 			
@@ -189,4 +192,107 @@
 			setImgSize();
 		});
 	});
+	
+	// sampleImg drag & drop 시 브라우저가 파일을 해석 하려는 기본이벤트를 제거
+	$("#sampleImg").on("dragenter dragover", function(e) {
+		e.preventDefault();
+	});
+	
+	var formData = new FormData();
+	
+	$("#sampleImg").on("drop", function(e) {
+		e.preventDefault();
+		
+		let allowedExt = ["jpg", "jpeg", "png", "gif"];
+		let maxSize = 10485760;
+		
+		let files = e.originalEvent.dataTransfer.files;
+		let file = files[0];
+		let fileName = file.name;
+		let fileExt = fileName.split(".").pop().toLowerCase();
+		
+		if (files.length !== 1 || !allowedExt.includes(fileExt)) {
+			alert("파일은 이미지 파일로 한개만 올려주세요.(jpg, jpeg, png, gif)");
+			return false;
+		}
+		
+		if (file.size > maxSize) {
+			alert("파일 크기는 10MB 이하로 올려주세요.");
+			return false;
+		}
+		
+		let path = window.URL.createObjectURL(file);
+		$("#sampleImg").attr("src", path);
+		$("#sampleImg").css("opacity", 1);
+		$(".img span").hide();
+		formData.append("file", file);
+	});
+	
+	function rollback() {
+		$("#sampleImg").attr("src", "/resources/img/profile.jpg");
+		$("#sampleImg").css("opacity", 0.6);
+		$(".img span").show();
+	}
+	
+	// 만약 등록 버튼을 클릭한다면, img는 ajax로 나머지는 폼태그로 보내자
+	function register() {
+		let title = $("#title");
+		let introduce = $("#introduce");
+		let tendency = $(".tend:checked").val();
+		let skill = $("#skill");
+		let school = $("#school");
+		let nameList = $(".nameList");
+		let periodList = $(".periodList");
+		let resList = $(".resList");
+		let licList = $(".licList");
+		let acqList = $(".acqList");
+		let uno = $("#uno");
+		
+		if (title.val() === '') {
+			alert('제목은 필수로 입력해야 합니다.');
+			return false;
+		}
+		
+		formData.append('title', title.val());
+		formData.append('content', introduce.val());
+		formData.append('skill', skill.val());
+		formData.append('tendency', tendency);
+		formData.append('school', school.val());
+		formData.append('uno', uno.val());
+		
+		nameList.each(function(index) {
+			let jobName = $(this).val();
+	        let period = $(".periodList").eq(index).val();
+	        let responsibility = $(".resList").eq(index).val();
+
+	        formData.append('dCareer[' + index + '].jobName', jobName);
+	        formData.append('dCareer[' + index + '].jobPeriod', period);
+	        formData.append('dCareer[' + index + '].jobResponsibilities', responsibility);
+		});
+		
+		licList.each(function(index) {
+			let licenseName = $(this).val();
+	        let acquisitionDate = $(".acqList").eq(index).val();
+
+	        formData.append('dLicense[' + index + '].licenseName', licenseName);
+	        formData.append('dLicense[' + index + '].acquisitionDate', acquisitionDate);
+		});
+		
+		$.ajax({
+			type: "POST",
+			url: "/developer/register",
+			data: formData,
+			processData: false,
+			contentType: false,
+			dataType: "text",
+			success: function(result) {
+				alert(result);
+				window.location.href="/developer/profile";
+			},
+			error: function(res) {
+				alert("처리가 실패되었습니다. 잠시 후 다시 시도해주세요.");
+			}
+		})
+	}
+	
 </script>

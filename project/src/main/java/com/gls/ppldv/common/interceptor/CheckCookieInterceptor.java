@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.util.WebUtils;
 
+import com.gls.ppldv.common.util.CookieUtils;
 import com.gls.ppldv.user.entity.Member;
 import com.gls.ppldv.user.repository.MemberRepository;
-import com.gls.ppldv.user.util.CookieUtils;
 
 public class CheckCookieInterceptor implements HandlerInterceptor {
 

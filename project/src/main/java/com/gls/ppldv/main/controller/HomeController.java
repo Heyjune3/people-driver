@@ -34,7 +34,7 @@ public class HomeController {
 
 	@GetMapping("search")
 	public String search() {
-		return "/developer/search";
+		return "/business/search";
 	}
 
 	@GetMapping("findPass")

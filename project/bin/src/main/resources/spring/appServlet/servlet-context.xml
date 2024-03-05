@@ -7,7 +7,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
-		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
@@ -31,6 +31,6 @@
 	<context:component-scan base-package="com.gls.ppldv.*.service" />
 	<context:component-scan base-package="com.gls.ppldv.configuration" />
 	<context:component-scan base-package="com.gls.ppldv.*.util" />
-	<context:component-scan base-package="com.gls.ppldv.common.aop.AOPAdvice" />
-	<beans:bean class="com.gls.ppldv.common.aop.AOPAdvice"/>
+	<context:component-scan base-package="com.gls.ppldv.common.aop" />
+	
 </beans:beans>

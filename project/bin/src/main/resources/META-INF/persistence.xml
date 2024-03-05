@@ -7,7 +7,7 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
 
 <!-- properties 파일에 등록되면 키를 통해 값을 불러올 수 있게 해주는 것 -->
 	<persistence-unit name="jobcall">
-		<class>com.gls.ppldv.user.entity.Member</class>
+		<class>com.gls.ppldv.*.entity.*</class>
 		
 		<properties>
 			<!-- <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/> -->

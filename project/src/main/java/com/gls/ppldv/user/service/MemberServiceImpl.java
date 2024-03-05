@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.gls.ppldv.common.util.FileUtil;
+import com.gls.ppldv.common.util.GmailAuthentication;
 import com.gls.ppldv.configuration.userException.LoginFailedException;
 import com.gls.ppldv.user.dto.EditDTO;
 import com.gls.ppldv.user.dto.LoginDTO;
@@ -22,8 +24,6 @@ import com.gls.ppldv.user.entity.PassCode;
 import com.gls.ppldv.user.mapper.MemberMapper;
 import com.gls.ppldv.user.repository.CodeRepository;
 import com.gls.ppldv.user.repository.MemberRepository;
-import com.gls.ppldv.user.util.FileUtil;
-import com.gls.ppldv.user.util.GmailAuthentication;
 
 import lombok.RequiredArgsConstructor;
 

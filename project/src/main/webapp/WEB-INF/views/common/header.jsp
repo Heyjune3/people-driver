@@ -63,6 +63,7 @@
 
             justify-content: center;
             background-color: rgba(255,255,255);
+            z-index: 100;
         }
         header .modal_body {
             display: flex;
@@ -72,7 +73,6 @@
 
         header .modal_info {
             padding: 10px 0;
-            
         }
 
         header .modal_info * {
@@ -126,8 +126,12 @@
 					        </div>
 					        <div class="modal_footer">
 					            <a href="/user/editProfile">회원정보 수정</a>
-					            <a href="/developer/profile">프로필 등록</a>
-					            <a href="/business/register">프로젝트 등록</a>
+					            <c:if test="${loginMember.role == 'DEVELOPER'}">
+					            	<a href="/developer/profile?id=${loginMember.id}">프로필 등록</a>
+					            </c:if>
+					            <c:if test="${loginMember.role == 'BUSINESS'}">
+					            	<a href="/business/register">프로젝트 등록</a>
+					            </c:if>
 					            <span id="logout" onclick="logout()">로그아웃</span>
 					        </div>
 					    </div>
