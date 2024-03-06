@@ -263,8 +263,8 @@
 		
 		nameList.each(function(index) {
 			let jobName = $(this).val();
-	        let period = $(".periodList").eq(index).val();
-	        let responsibility = $(".resList").eq(index).val();
+	        let period = periodList.eq(index).val();
+	        let responsibility = resList.eq(index).val();
 
 	        formData.append('dCareer[' + index + '].jobName', jobName);
 	        formData.append('dCareer[' + index + '].jobPeriod', period);
@@ -273,7 +273,7 @@
 		
 		licList.each(function(index) {
 			let licenseName = $(this).val();
-	        let acquisitionDate = $(".acqList").eq(index).val();
+	        let acquisitionDate = acqList.eq(index).val();
 
 	        formData.append('dLicense[' + index + '].licenseName', licenseName);
 	        formData.append('dLicense[' + index + '].acquisitionDate', acquisitionDate);

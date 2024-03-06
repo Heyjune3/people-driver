@@ -1,5 +1,7 @@
 package com.gls.ppldv.developer.dto;
 
+import java.util.List;
+
 import com.gls.ppldv.developer.entity.DCareer;
 import com.gls.ppldv.developer.entity.DLicense;
 import com.gls.ppldv.developer.entity.Tendency;
@@ -23,8 +25,11 @@ public class DeveloperDTO {
 	private Tendency tendency;
 	private String school;
 	private Long uno;
-
-	private DCareer[] dCareer;
-	private DLicense[] dLicense;
+	private String imgUrl; 
+	private String fileName; 
+	
+	
+	private List<DCareer> dCareer;
+	private List<DLicense> dLicense;
 
 }

@@ -1,4 +1,3 @@
-<!DOCTYPE HTML>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page session="true" %>
@@ -7,44 +6,50 @@
 <link rel="stylesheet" type="text/css" href="${path}/resources/css/developer/register.css"/>
 
 <c:set var="content">
-	<input id="uno" type="hidden" value="${loginMember.id}" />
+	<input id="dno" type="hidden" value="${param.dno}" />
 	<div class="container">
 		<div class="input">
-			<span>개발자 프로필</span>
+			<span><b>${loginMember.name}</b> &nbsp; 프로필</span>
 			<span>
 			제목
-			<input id="title" type="text" placeholder="제목입력" autofocus="autofocus" />
+			<input id="title" type="text" value="${developerInfo.title}" placeholder="제목입력" autofocus="autofocus" />
 			</span>
-			<span id="register" onclick="register()">프로필 등록</span>
+			<span id="edit" onclick="edit()">프로필 수정</span>
 		</div>
 		
 		<div class="profile">
 			<div class="firstRow">
 				<div class="img">
-					<img src="${path}/resources/img/profile.jpg" id="sampleImg" />
+					<c:if test="${!empty developerInfo.imgUrl}">
+						<img src="${developerInfo.imgUrl}" id="sampleImg" />
+					</c:if>
+					<c:if test="${empty developerInfo.imgUrl}">
+						<img src="${path}/resources/img/profile.jpg" id="sampleImg" />
+					</c:if>
+					
 					<button type="button" onclick="rollback()">원상태로 되돌리기</button>
 					<span>Drag & DROP</span>
 				</div>
 				<div class="introduce">
 					<span>개발자 소개</span>
-					<textarea class="introduce2" id="introduce" placeholder="1000자 이내로 작성해주세요."></textarea>
+					<textarea class="introduce2" id="introduce" placeholder="1000자 이내로 작성해주세요.">${developerInfo.content}</textarea>
 				</div>
 			</div>
 			<div class="secondRow">
 				<div class="tendency">
 					<h3>성향</h3>
 					<div>
-		                <input type="radio" id="tend" name="tend" class="tend" value="FRONT" checked/>
+		                <input type="radio" id="tend" name="tend" class="tend" value="FRONT" ${developerInfo.tendency == 'FRONT' ? 'checked' : ''} />
 		                <label for="tend">프론트엔드</label>
-		                <input type="radio" id="tend2" name="tend" class="tend" value="BACK"/>
+		                <input type="radio" id="tend2" name="tend" class="tend" value="BACK" ${developerInfo.tendency == 'BACK' ? 'checked' : ''} />
 		                <label for="tend2">백엔드</label>
-		                <input type="radio" id="tend3" name="tend" class="tend" value="APP"/>
+		                <input type="radio" id="tend3" name="tend" class="tend" value="APP" ${developerInfo.tendency == 'APP' ? 'checked' : ''} />
 		                <label for="tend3">앱</label>
 	            	</div>
 				</div>
 				<div class="introduce">
 					<span>개발자 기술스택</span>
-					<textarea class="introduce2" id="skill" placeholder="1000자 이내로 작성해주세요."></textarea>
+					<textarea class="introduce2" id="skill" placeholder="1000자 이내로 작성해주세요.">${developerInfo.skill}</textarea>
 				</div>
 			</div>
 			
@@ -58,7 +63,7 @@
 					<tr>
 						<th>학교명</th>
 						<td>
-							<textarea id="school" placeholder="학력사항에 대해 간단하게 설명해주세요. ex. 어느 고등학교 : 언제 입학, 졸업"></textarea>
+							<textarea id="school" placeholder="학력사항에 대해 간단하게 설명해주세요. ex. 어느 고등학교 : 언제 입학, 졸업">${developerInfo.school}</textarea>
 						</td>
 					</tr>
 				</table>
@@ -78,7 +83,7 @@
 					</tr>
 					<tr>
 						<td>
-							<input class="nameList" type="text" placeholder="IT 관련 직장"/>
+							<input class="nameList" type="text" placeholder="IT 관련 직장" value="${developerInfo.DCareer[0].jobName }"/>
 						</td>
 						<td>
 							<input class="periodList" type="text" placeholder="ex. 18.03.18 ~ 24.03.18 (6년 근무)"/>
@@ -192,6 +197,28 @@
 		$(window).resize(function() {
 			setImgSize();
 		});
+		
+		let nameList = $(".nameList");
+		let periodList = $(".periodList");
+		let resList = $(".resList");
+		let licList = $(".licList");
+		let acqList = $(".acqList");
+		
+		let dcLength = ${fn:length(developerInfo.DCareer)};
+		let dlLength = ${fn:length(developerInfo.DLicense)};
+		
+		// DCareer 값 설정
+	    <c:forEach var="career" items="${developerInfo.DCareer}" varStatus="loop">
+	        nameList.eq(${loop.index}).val('${career.jobName}');
+	        periodList.eq(${loop.index}).val('${career.jobPeriod}');
+	        resList.eq(${loop.index}).val('${career.jobResponsibilities}');
+	    </c:forEach>
+
+	    // DLicense 값 설정
+	    <c:forEach var="license" items="${developerInfo.DLicense}" varStatus="loop">
+	        licList.eq(${loop.index}).val('${license.licenseName}');
+	        acqList.eq(${loop.index}).val('${license.acquisitionDate}');
+	    </c:forEach>
 	});
 	
 	// sampleImg drag & drop 시 브라우저가 파일을 해석 하려는 기본이벤트를 제거
@@ -236,7 +263,7 @@
 	}
 	
 	// 만약 등록 버튼을 클릭한다면, img는 ajax로 나머지는 폼태그로 보내자
-	function register() {
+	function edit() {
 		let title = $("#title");
 		let introduce = $("#introduce");
 		let tendency = $(".tend:checked").val();
@@ -248,6 +275,7 @@
 		let licList = $(".licList");
 		let acqList = $(".acqList");
 		let uno = $("#uno");
+		let dno = $("#dno");
 		
 		if (title.val() === '') {
 			alert('제목은 필수로 입력해야 합니다.');
@@ -260,6 +288,7 @@
 		formData.append('tendency', tendency);
 		formData.append('school', school.val());
 		formData.append('uno', uno.val());
+		formData.append('dno', dno.val());
 		
 		nameList.each(function(index) {
 			let jobName = $(this).val();
@@ -281,7 +310,7 @@
 		
 		$.ajax({
 			type: "POST",
-			url: "/developer/register",
+			url: "/developer/edit",
 			data: formData,
 			processData: false,
 			contentType: false,

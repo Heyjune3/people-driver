@@ -23,7 +23,7 @@ public class DeveloperController {
 	private final DeveloperService ds;
 
 	@PostMapping("/register")
-	public ResponseEntity<String> registerDeveloper(@ModelAttribute DeveloperDTO developerDTO,
+	public ResponseEntity<String> registerDeveloper(DeveloperDTO developerDTO,
 			@RequestPart(name = "file", required = false) MultipartFile file) throws Exception {
 		// developerDTO와 file 객체를 사용하여 데이터 처리
 
@@ -36,6 +36,30 @@ public class DeveloperController {
 		ResponseEntity<String> response = null;
 
 		if (message.equals("등록 성공")) {
+			response = new ResponseEntity<>(message, headers, HttpStatus.OK);
+		} else {
+			response = new ResponseEntity<>(message, headers, HttpStatus.OK);
+		}
+
+		return response;
+	}
+	
+	@PostMapping("/edit")
+	public ResponseEntity<String> editDeveloper(
+			DeveloperDTO developerDTO, // 수정받을 대상
+			Long dno, // 수정해야 할 대상
+			@RequestPart(name = "file", required = false) MultipartFile file) throws Exception {
+		// developerDTO와 file 객체를 사용하여 데이터 처리
+
+		HttpHeaders headers = new HttpHeaders();
+		// MultipartFile로 변환
+		headers.add("Content-Type", "text/plain;charset=utf-8");
+
+		String message = ds.edit(developerDTO, file);
+
+		ResponseEntity<String> response = null;
+
+		if (message.equals("수정 성공")) {
 			response = new ResponseEntity<>(message, headers, HttpStatus.OK);
 		} else {
 			response = new ResponseEntity<>(message, headers, HttpStatus.OK);

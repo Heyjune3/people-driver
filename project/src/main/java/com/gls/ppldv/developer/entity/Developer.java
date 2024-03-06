@@ -32,8 +32,9 @@ import lombok.ToString;
  * school (학력사항) - developer_school <br/>
  * member (회원 식별자) - uno <br/>
  * updateDate (프로필 수정 시간) - updatedate <br/>
- * viewCount (조회수) - viewcnt imgUrl (프로필 이미지) - image_url <br/>
- * fileName (이미지 명) - image_name
+ * viewCount (조회수) - viewcnt  <br/>
+ * imgUrl (프로필 이미지) - image_url // img src 처리 <br/>
+ * fileName (이미지 명) - image_name // uploadFile 처리
  */
 @Entity
 @Table(name = "developer")

@@ -46,7 +46,7 @@
 									<td><img src="${path}/resources/img/profile.jpg" style="width:100px; height:100px; object-fit:cover;" /></td>
 								</c:otherwise>
 								</c:choose>
-								<td><a href="/developer/readPage">${developer.title}</a></td>
+								<td><a href="/developer/readPage?dno=${developer.dno}">${developer.title}</a></td>
 								<td>${developer.tendency}</td>
 								<td>${loginMember.name}</td>
 								<td>${developer.updateDate}</td>

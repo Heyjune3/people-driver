@@ -2,7 +2,6 @@
 .metadata/
 Servers/
 target/
-bin/
 
 target/m2e-wtp/
 # aws 키 ignore
@@ -10,3 +9,5 @@ target/m2e-wtp/
 
 project/.classpath
 project/.factorypath
+project/bin/
+project/.settings
