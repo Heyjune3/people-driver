@@ -24,20 +24,20 @@ import lombok.ToString;
 @NoArgsConstructor
 public class DCareer {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "dno", referencedColumnName = "dno")
-    private Developer developer;
+	@ManyToOne
+	@JoinColumn(name = "dno", referencedColumnName = "dno")
+	private Developer developer;
 
-    @Column(name = "job_name")
-    private String jobName;
+	@Column(name = "job_name")
+	private String jobName;
 
-    @Column(name = "job_period")
-    private String jobPeriod;
+	@Column(name = "job_period")
+	private String jobPeriod;
 
-    @Column(name = "job_responsibilities")
-    private String jobResponsibilities;
+	@Column(name = "job_responsibilities")
+	private String jobResponsibilities;
 }

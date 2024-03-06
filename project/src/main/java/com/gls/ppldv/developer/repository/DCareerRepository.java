@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.gls.ppldv.developer.entity.DCareer;
 
 @Repository
-public interface DCareerRepository extends JpaRepository<DCareer, Long>{
+public interface DCareerRepository extends JpaRepository<DCareer, Long> {
 
 }

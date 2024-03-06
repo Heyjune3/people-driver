@@ -19,30 +19,29 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("developer")
 @RequiredArgsConstructor
 public class DeveloperController {
-	
+
 	private final DeveloperService ds;
-	
+
 	@PostMapping("/register")
-	public ResponseEntity<String> registerDeveloper (
-			@ModelAttribute DeveloperDTO developerDTO,
-			@RequestPart(name="file", required = false) MultipartFile file) throws Exception {
-        // developerDTO와 file 객체를 사용하여 데이터 처리
-		
+	public ResponseEntity<String> registerDeveloper(@ModelAttribute DeveloperDTO developerDTO,
+			@RequestPart(name = "file", required = false) MultipartFile file) throws Exception {
+		// developerDTO와 file 객체를 사용하여 데이터 처리
+
 		HttpHeaders headers = new HttpHeaders();
 		// MultipartFile로 변환
 		headers.add("Content-Type", "text/plain;charset=utf-8");
-		
-		String message = ds.register(developerDTO, file); 
-		
+
+		String message = ds.register(developerDTO, file);
+
 		ResponseEntity<String> response = null;
-		
+
 		if (message.equals("등록 성공")) {
-			response = new ResponseEntity<>(message, headers, HttpStatus.OK); 
+			response = new ResponseEntity<>(message, headers, HttpStatus.OK);
 		} else {
 			response = new ResponseEntity<>(message, headers, HttpStatus.OK);
 		}
-		
+
 		return response;
-    }
-	
+	}
+
 }

@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.gls.ppldv.developer.entity.DLicense;
 
 @Repository
-public interface DLicenseRepository extends JpaRepository<DLicense, Long>{
-	
+public interface DLicenseRepository extends JpaRepository<DLicense, Long> {
+
 }

@@ -32,12 +32,11 @@ import lombok.ToString;
  * school (학력사항) - developer_school <br/>
  * member (회원 식별자) - uno <br/>
  * updateDate (프로필 수정 시간) - updatedate <br/>
- * viewCount (조회수) - viewcnt
- * imgUrl (프로필 이미지) - image_url <br/>
+ * viewCount (조회수) - viewcnt imgUrl (프로필 이미지) - image_url <br/>
  * fileName (이미지 명) - image_name
  */
 @Entity
-@Table(name="developer")
+@Table(name = "developer")
 @Getter
 @Setter
 @ToString
@@ -45,39 +44,39 @@ import lombok.ToString;
 @NoArgsConstructor
 public class Developer {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "dno")
-    private Long dno;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "dno")
+	private Long dno;
 
-    @Column(name = "developer_title", nullable = false)
-    private String title;
+	@Column(name = "developer_title", nullable = false)
+	private String title;
 
-    @Column(name = "developer_content", columnDefinition="TEXT")
-    private String content;
+	@Column(name = "developer_content", columnDefinition = "TEXT")
+	private String content;
 
-    @Column(name = "developer_skill", columnDefinition="TEXT")
-    private String skill;
+	@Column(name = "developer_skill", columnDefinition = "TEXT")
+	private String skill;
 
-    @Enumerated(EnumType.STRING)
-    private Tendency tendency;
+	@Enumerated(EnumType.STRING)
+	private Tendency tendency;
 
-    @Column(name = "developer_school", columnDefinition="TEXT")
-    private String school;
+	@Column(name = "developer_school", columnDefinition = "TEXT")
+	private String school;
 
-    @ManyToOne
-    @JoinColumn(name="uno", referencedColumnName = "uno")
-    private Member member;
+	@ManyToOne
+	@JoinColumn(name = "uno", referencedColumnName = "uno")
+	private Member member;
 
-    @Column(name = "updatedate")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date updateDate;
-    
-    @Column(name = "viewcnt")
-    private Integer viewCount;
-    
-    @Column(name = "image_url", nullable = true)
-    private String imgUrl;
-    
-    @Column(name = "image_name", nullable = true)
-    private String fileName;
+	@Column(name = "updatedate")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date updateDate;
+
+	@Column(name = "viewcnt")
+	private Integer viewCount;
+
+	@Column(name = "image_url", nullable = true)
+	private String imgUrl;
+
+	@Column(name = "image_name", nullable = true)
+	private String fileName;
 }

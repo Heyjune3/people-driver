@@ -22,17 +22,17 @@ import lombok.Setter;
 @NoArgsConstructor
 public class DLicense {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "dno", referencedColumnName = "dno")
-    private Developer developer;
+	@ManyToOne
+	@JoinColumn(name = "dno", referencedColumnName = "dno")
+	private Developer developer;
 
-    @Column(name = "license_name")
-    private String licenseName;
+	@Column(name = "license_name")
+	private String licenseName;
 
-    @Column(name = "license_acqdate")
-    private String acquisitionDate;
+	@Column(name = "license_acqdate")
+	private String acquisitionDate;
 }
