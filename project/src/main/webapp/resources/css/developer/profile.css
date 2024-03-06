@@ -7,21 +7,19 @@
 
 .container {
 	width: 80%;
-	margin: 0 auto;
 	display: flex;
+	margin: 0 auto;
 	justify-content: space-between;
 }
 
 	.container .content {
 		display: flex;
+		width: calc(100% - 250px);
 		flex-direction: column;
-		align-content: space-between;
 	}
 	
 		.content div {
 			border: 1px solid #CCCCCC;
-			width: 100%;
-			height: 300px;
 			box-shadow: 2px 2px 0 #CCCCCC;
 			margin-bottom: 20px;
 			box-sizing: border-box; /* 박스 모델 설정 */
@@ -30,7 +28,6 @@
 		.secondRow table {
 			width: 100%;
 			height: calc(100% - 20px);
-			table-layout: fixed; /* 콘텐츠에 따라 테이블의 너비를 동적으로 조정하지 않고 고정됨을 설정 */
 		}
 
 	.container .sidebar {

@@ -10,6 +10,8 @@
 <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
 <!-- 카카오맵 API -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8bfd085ed59957246b59c9466c5d09d7"></script>
+<!-- TinyMCE API -->
+<script src="https://cdn.tiny.cloud/1/s2737ar5ojhnqhnsqg91v5run6wasakbr0so33pf18023yxi/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 <meta charset="UTF-8">
 <title>Web Site</title>
 <link rel="stylesheet" type="text/css" href="${path}/resources/css/common.css"/>

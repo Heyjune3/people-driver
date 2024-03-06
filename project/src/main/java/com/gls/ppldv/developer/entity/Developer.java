@@ -52,16 +52,16 @@ public class Developer {
     @Column(name = "developer_title", nullable = false)
     private String title;
 
-    @Column(name = "developer_content")
+    @Column(name = "developer_content", columnDefinition="TEXT")
     private String content;
 
-    @Column(name = "developer_skill")
+    @Column(name = "developer_skill", columnDefinition="TEXT")
     private String skill;
 
     @Enumerated(EnumType.STRING)
     private Tendency tendency;
 
-    @Column(name = "developer_school")
+    @Column(name = "developer_school", columnDefinition="TEXT")
     private String school;
 
     @ManyToOne

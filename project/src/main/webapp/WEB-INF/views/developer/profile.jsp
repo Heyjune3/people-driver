@@ -14,7 +14,7 @@
 			<ul class="tab-list">
 				<li><span onclick="showFirstRow()">체결된 프로젝트 보기</span></li>
 				<li><span onclick="showSecondRow()">프로필 보기</span></li>
-				<li><span onclick="showThirdRow()">프로필 삭제</span></li>
+				<li><span onclick="showThirdRow()">참고할만한 다른 사람 프로필 보기</span></li>
 			</ul>
 		</div>
 		
@@ -53,10 +53,31 @@
 								<td>${developer.viewCount}</td>
 							</tr>
 							</c:forEach>
+							<c:if test="${!empty pm and pm.maxPage > 0}">
+								<tr>
+									<th colspan="6">
+										<c:if test="${pm.first}"> <!-- 제일 처음으로 갈 수 있는가? -->
+											<a href="/developer/profile?id=${loginMember.id}&page=1">[&laquo;]</a>
+										</c:if>
+										<c:if test="${pm.prev}"> <!-- 이전으로 갈 수 있는가? -->
+											<a href="/developer/profile?id=${loginMember.id}&page=${pm.startPage-1}">[&lt;]</a>
+										</c:if>
+										<c:forEach var="i" begin="${pm.startPage}" end ="${pm.endPage}">
+											<a href="/developer/profile?id=${loginMember.id}&page=${i}">[${i}]</a>
+										</c:forEach>
+										<c:if test="${pm.next}">
+											<a href="/developer/profile?id=${loginMember.id}&page=${pm.endPage+1}">[&gt;]</a>
+										</c:if>
+										<c:if test="${pm.last}">
+											<a href="/developer/profile?id=${loginMember.id}&page=${pm.maxPage}">[&raquo;]</a>
+										</c:if>
+									</th>
+								</tr>
+							</c:if>
 						</c:when>
 						<c:otherwise>
 						<tr>
-							<th colspan="5">등록된 게시물이 없습니다.</th>
+							<th colspan="6">등록된 프로필이 없습니다.</th>
 						</tr>
 						</c:otherwise>
 					</c:choose>

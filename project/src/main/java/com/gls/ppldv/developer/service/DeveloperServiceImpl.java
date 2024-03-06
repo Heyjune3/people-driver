@@ -6,10 +6,17 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.gls.ppldv.common.util.Criteria;
 import com.gls.ppldv.common.util.FileUtil;
+import com.gls.ppldv.common.util.Paging.Cri;
+import com.gls.ppldv.common.util.Paging.PMaker;
 import com.gls.ppldv.developer.dto.DeveloperDTO;
 import com.gls.ppldv.developer.entity.DCareer;
 import com.gls.ppldv.developer.entity.DLicense;
@@ -48,7 +55,8 @@ public class DeveloperServiceImpl implements DeveloperService {
 	    Optional<Member> memberOptional = mr.findById(developerDTO.getUno());
 	    developer.setMember(memberOptional.get());
 	    developer.setUpdateDate(new Date());
-		
+		developer.setViewCount(0);
+	    
 	    String imgUrl = null;
 	    String fileName = null;
 	    
@@ -95,11 +103,27 @@ public class DeveloperServiceImpl implements DeveloperService {
 	}
 
 	@Override
-	public List<Developer> searchDev(Long id) {
-		List<Developer> dlist = null;
-		dlist = dr.findByMember(mr.findById(id).get());
+	@Transactional
+	public Page<Developer> searchDev(Long id, Cri cri) {
+		// 페이징 처리 된 게시물 개수 받아오기 (jpa)
+		Page<Developer> dlist = null;
+		// 아직 JPA의 Query 어노테이션에 대해 배우지 않아서
+		/* Pageable pageable = PageRequest.of(pageNumber, 5); */
+		Sort sort = Sort.by(Sort.Direction.DESC, "dno");
+		
+		// 회원 id와 cri를 받아서 페이징 처리에 사용
+		Pageable pageable = PageRequest.of(cri.getPage()-1, cri.getPerPageNum(), sort);
+		dlist = dr.findByMemberId(mr.findById(id).get().getId(), pageable);
 		return dlist;
 	}
 
+	@Override
+	public PMaker getPageMaker(Long id, Cri cri) throws Exception {
+		// 전체 게시물 개수
+		int totalCount = dr.countByMemberId(mr.findById(id).get().getId());
+		
+		PMaker pm = new PMaker(cri, totalCount);
+		return pm;
+	}
 	
 }
