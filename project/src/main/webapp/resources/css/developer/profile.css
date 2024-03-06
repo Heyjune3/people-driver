@@ -57,5 +57,5 @@
 	
 	div.sidebar .tab-list li span:hover{
 		background-color: #ddd;
-		cursor: pointer;
+		cursor: pointer; 
 	}

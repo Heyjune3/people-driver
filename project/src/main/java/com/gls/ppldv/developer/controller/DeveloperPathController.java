@@ -23,16 +23,16 @@ import lombok.RequiredArgsConstructor;
 public class DeveloperPathController {
 
 	private final DeveloperService ds;
-	
+
 	@GetMapping("/register")
 	public String register() {
-		
+
 		return "/developer/register";
 	}
-	
+
 	@GetMapping("/profile")
 	public String profile(Long id, Cri cri, Model model) {
-		
+
 		Page<Developer> dlist = null;
 		PMaker pm = null;
 
@@ -41,16 +41,16 @@ public class DeveloperPathController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		dlist = ds.searchDev(id, cri);
 		// Page 객체의 getContent는 List 형태로 바꿔 전송
-		
+
 		model.addAttribute("developerList", dlist.getContent());
 		model.addAttribute("pm", pm);
-		
+
 		return "/developer/profile";
 	}
-	
+
 	@GetMapping("/readPage")
 	public String readPage() {
 		return null;

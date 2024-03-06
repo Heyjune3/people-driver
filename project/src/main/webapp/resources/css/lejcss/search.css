@@ -1,0 +1,820 @@
+@charset "UTF-8";
+#frame1 {
+				background: rgb(255, 255, 255);
+				background-repeat: no-repeat;
+				background-size: contain;
+				background-position: center;
+				position: relative;
+				height: 100%;
+			}
+			#ProSearch {
+				color: white;
+				text-overflow: ellipsis;
+				font-size: 18px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				line-height:34px;
+				width: 120px;
+				height: 35px;
+				background: rgb(3, 215, 79);
+				background-repeat: no-repeat;
+				background-size: contain;
+				background-position: center;
+				border-radius: 10px;
+				position: absolute;
+				left: 163px;
+				top: 512px;
+			}
+			
+			
+			#ResetBar {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				line-height:34px;
+				width: 120px;
+				height: 35px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				left: 19px;
+				top: 512px;
+			}
+			
+			
+			#Line7 {
+				width: 277px;
+				height: 0px;
+				object-fit: cover;
+				position: absolute;
+				left: 12px;
+				top: 487px;
+			}
+			
+			#MaxTermBar {
+				width: 105px;
+				height: 28px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				left: 178px;
+				top: 454px;
+			}
+			
+			#MaxTerm {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				position: absolute;
+				left: 201px;
+				top: 430px;
+			}
+			
+			#NaN {
+				color: black;
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				position: absolute;
+				left: 140px;
+				top: 457px;
+			}
+			
+			#MinTermBar {
+				width: 105px;
+				height: 28px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				left: 16px;
+				top: 454px;
+			}
+			
+			#MinTerm {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				position: absolute;
+				left: 31px;
+				top: 430px;
+			}
+			
+			#EndDateBar {
+				width: 105px;
+				height: 28px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				left: 178px;
+				top: 391px;
+			}
+			
+			#EndDate {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				position: absolute;
+				left: 211px;
+				top: 367px;
+			}
+			
+			#NaN_0001 {
+				color: black;
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				position: absolute;
+				left: 140px;
+				top: 394px;
+			}
+			
+			#StartDateBar {
+				width: 105px;
+				height: 28px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				left: 16px;
+				top: 391px;
+			}
+			
+			#StartDate {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				position: absolute;
+				left: 41px;
+				top: 367px;
+			}
+			
+			#Line6 {
+				width: 277px;
+				height: 0px;
+				object-fit: cover;
+				position: absolute;
+				left: 12px;
+				top: 354px;
+			}
+			
+			#MaxPay {
+				width: 270px;
+				height: 35px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				left: 15px;
+				top: 310px;
+			}
+			
+			#NaN_0002 {
+				color: black;
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				position: absolute;
+				left: 139px;
+				top: 292px;
+			}
+			
+			#MinPay {
+				width: 270px;
+				height: 35px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				left: 15px;
+				top: 258px;
+			}
+			
+			#PaymentIn {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				position: absolute;
+				left: 28px;
+				top: 234px;
+			}
+			
+			#Line4 {
+				width: 277px;
+				height: 0px;
+				object-fit: cover;
+				position: absolute;
+				left: 12px;
+				top: 228px;
+			}
+			
+			#BackBar {
+				width: 70px;
+				height: 34px;
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				line-height:34px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				left: 208px;
+				top: 180px;
+				right: 1162px;
+				bottom: 558px;
+			}
+			
+			
+			#FrontBar {
+				width: 100px;
+				height: 34px;
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				line-height:34px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				left: 98px;
+				top: 180px;
+				right: 1242px;
+				bottom: 558px;
+			}
+			
+			
+			#line3{
+				position: absolute;
+				width: 277px;
+				height: 0px;
+				left: 12px;
+				top: 147px;
+				border: 1px dashed rgba(0, 0, 0, 0.26);
+			}
+			#line4{
+				position: absolute;
+				width: 277px;
+				height: 0px;
+				left: 12px;
+				top: 228px;
+				border: 1px dashed rgba(0, 0, 0, 0.26);
+			}
+			#Line5 {
+				width: 264px;
+				height: 0px;
+				object-fit: cover;
+				position: absolute;
+				left: 19px;
+				top: 86px;
+				border: 1px solid rgba(0, 0, 0, 0.26);
+			}
+			#line6{
+				position: absolute;
+				width: 277px;
+				height: 0px;
+				left: 12px;
+				top: 354px;
+				border: 1px dashed rgba(0, 0, 0, 0.26);
+			}
+			#line7{
+				position: absolute;
+				width: 277px;
+				height: 0px;
+				left: 12px;
+				top: 487px;
+				border: 1px dashed rgba(0, 0, 0, 0.26);
+			}
+
+			#WebBar {
+				width: 70px;
+				height: 34px;
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				line-height:34px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				left: 18px;
+				top: 180px;
+				right: 1352px;
+				bottom: 558px;
+			}
+			
+			#ChooseIn {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				position: absolute;
+				left: 16px;
+				top: 155px;
+			}
+			
+			#Line3 {
+				width: 277px;
+				height: 0px;
+				object-fit: cover;
+				position: absolute;
+				left: 12px;
+				top: 147px;
+			}
+			
+			#FixedTermBar {
+				width: 70px;
+				height: 34px;
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				line-height:34px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				left: 173px;
+				top: 100px;
+				right: 1197px;
+				bottom: 639px;
+			}
+			
+			#OutsourcingBar {
+				width: 70px;
+				height: 34px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				line-height:34px;
+				left: 33px;
+				top: 100px;
+				right: 1337px;
+				bottom: 639px;
+			}
+			
+			
+			
+			#Group1 {
+				width: 282px;
+				height: 498px;
+				position: absolute;
+				left: 10px;
+				top: 58px;
+			}
+			
+			#Filter {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				position: absolute;
+				left: 118px;
+				top: 6px;
+			}
+			
+			#FilterUi {
+				width: 282px;
+				height: 498px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				left: 0px;
+				top: 0px;
+			}
+			
+			#SearchBar {
+				width: 216px;
+				height: 35px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-top-right-radius: 10px;
+				border-bottom-right-radius: 10px;
+				position: absolute;
+				left: 78px;
+				top: 11px;
+			}
+			
+			#SearchBtn {
+				width: 27px;
+				height: 25px;
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center;
+				position: absolute;
+				left: 259px;
+				top: 16px;
+			}
+			
+			#UnderTri {
+				width: 26px;
+				height: 22px;
+				position: absolute;
+				left: 50px;
+				top: 20px;
+			}
+			
+			#MenuBar {
+				width: 60px;
+				height: 35px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-top-left-radius: 10px;
+				border-bottom-left-radius: 10px;
+				position: absolute;
+				left: 10px;
+				top: 11px;
+			}
+			
+			#Menu {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 15px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				width: 37px;
+				position: absolute;
+				left: 9px;
+				top: 21px;
+			}
+			
+			#ClickHighPay {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				min-height: 23px;
+				position: absolute;
+				left: 1297px;
+				top: 18px;
+				right: 32px;
+				bottom: 732px;
+				width: 123px;
+			}
+			
+			#ClickRecent {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				min-height: 23px;
+				position: absolute;
+				left: 1140px;
+				top: 18px;
+				right: 199px;
+				bottom: 732px;
+				width: 101px;
+			}
+			
+			#ClickStartDate {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				min-height: 23px;
+				position: absolute;
+				left: 987px;
+				top: 18px;
+				right: 342px;
+				bottom: 732px;
+				width: 123px;
+			}
+			
+			#ClickArray {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				min-height: 23px;
+				position: absolute;
+				left: 839px;
+				top: 18px;
+				right: 495px;
+				bottom: 732px;
+				width: 112px;
+			}
+			
+			#ProArray {
+				width: 618px;
+				height: 37px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				position: absolute;
+				left: 810px;
+				top: 9px;
+			}
+			
+			#OutsourcingBar_0001 {
+				width: 70px;
+				height: 34px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				left: 1309px;
+				top: 63px;
+				right: 61px;
+				bottom: 676px;
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				line-height:34px;
+			}
+			
+			#CompanyName {
+				color: rgba(0, 0, 0, 0.7);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				width: 160px;
+				position: absolute;
+				left: 1142px;
+				top: 214px;
+			}
+			
+			#Ellipse9 {
+				width: 10px;
+				height: 10px;
+				background: rgb(217, 217, 217);
+				background-repeat: no-repeat;
+				background-size: contain;
+				background-position: center;
+				border-radius: 10px / 10px;
+				position: absolute;
+				left: 1120px;
+				top: 221px;
+			}
+			
+			#Company {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 12px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 1124px;
+				top: 197px;
+				width: 50px;
+			}
+			
+			#TermDate {
+				color: rgba(0, 0, 0, 0.7);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 1142px;
+				top: 144px;
+				width: 200px;
+			}
+			
+			#Ellipse8 {
+				width: 10px;
+				height: 10px;
+				background: rgb(217, 217, 217);
+				background-repeat: no-repeat;
+				background-size: contain;
+				background-position: center;
+				border-radius: 10px / 10px;
+				position: absolute;
+				left: 1120px;
+				top: 148px;
+			}
+			
+			#Term {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 12px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 1124px;
+				top: 125px;
+				width:100px;
+			}
+			
+			#Back_0001 {
+				color: rgba(0, 0, 0, 0.7);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 1142px;
+				top: 86px;
+				width: 100px;
+			}
+			
+			#Ellipse7 {
+				width: 10px;
+				height: 10px;
+				background: rgb(217, 217, 217);
+				background-repeat: no-repeat;
+				background-size: contain;
+				background-position: center;
+				border-radius: 10px / 10px;
+				position: absolute;
+				left: 1120px;
+				top: 90px;
+			}
+			
+			#Choose {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 12px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 1124px;
+				top: 63px;
+				width: 100px;
+			}
+			
+			#Payment {
+				color: rgba(0, 0, 0, 0.7);
+				text-overflow: ellipsis;
+				font-size: 18px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 751px;
+				top: 93px;
+				width:300px;
+			}
+			
+			#ClarityWonSolid {
+				width: 35px;
+				height: 35px;
+				object-fit: cover;
+				position: absolute;
+				left: 707px;
+				top: 86px;
+			}
+			
+			#ProPay {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 14px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 751px;
+				top: 69px;
+				width:80px;
+			}
+			
+			#Explain {
+				color: rgba(0, 0, 0, 0.6);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 329px;
+				top: 142px;
+				width:300px;
+			}
+			
+			#ProClarlificationBar {
+				width: 772px;
+				height: 97px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				left: 321px;
+				top: 131px;
+			}
+			
+			#ProClarlification {
+				color: rgba(0, 0, 0, 0.7);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 352px;
+				top: 105px;
+				width:200px;
+			}
+			
+			#Ellipse5 {
+				width: 10px;
+				height: 10px;
+				background: rgb(217, 217, 217);
+				background-repeat: no-repeat;
+				background-size: contain;
+				background-position: center;
+				border-radius: 10px / 10px;
+				position: absolute;
+				left: 330px;
+				top: 111px;
+			}
+			
+			#ProTitle {
+				color: black;
+				text-overflow: ellipsis;
+				font-size: 20px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 352px;
+				top: 70px;
+				width:280px;
+			}
+			
+			#Ellipse4 {
+				width: 15px;
+				height: 15px;
+				background: rgb(217, 217, 217);
+				background-repeat: no-repeat;
+				background-size: contain;
+				background-position: center;
+				border-radius: 15px / 15px;
+				position: absolute;
+				left: 326px;
+				top: 77px;
+			}
+			
+			#ProjectBar {
+				width: 1121px;
+				height: 193px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				left: 308px;
+				top: 50px;
+			}
+			
+			#CountProject {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 18px;
+				font-family: Inter, sans-serif;
+				font-weight: 700;
+				text-align: center;
+				width: 156px;
+				min-height: 22px;
+				position: absolute;
+				left: 320px;
+				top: 15px;
+				height: 22px;
+			}

@@ -1,0 +1,709 @@
+@charset "UTF-8";
+
+/* 전체 placeholder css */
+input::placeholder{
+				color: rgba(0, 0, 0, 0.26);
+				font-size: 12px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+}
+
+/* input date 아이콘 커스텀 */
+/* date 아이콘 지우기 및 클릭 범위 넓히기 */
+input[type="date"]::-webkit-clear-button,
+input[type="date"]::-webkit-inner-spin-button { display: none; }
+input[type="date"]::-webkit-calendar-picker-indicator{
+			position: absolute;
+			width:100%;
+			height:100%;
+			background: transparent;
+			color: transparent;
+			cursor: pointer;
+}
+/* 새로운 아이콘 설정 */
+input[type="date"]{
+	position : relative;
+	background: url(../../img/DateBtn.png)no-repeat right 5px center;
+}
+/* placeholder 넣기 */
+input[data-placeholder]::before{
+	color: rgba(0, 0, 0, 0.26);
+	 font-size: 12px;
+	font-family: Inter, sans-serif;
+	font-weight: normal;
+	text-align: left; 
+}
+input[type="date"]::before{
+			position:relative;
+			content:attr(data-placeholder);
+			width:100%;
+			height:100%;
+}
+
+/* date 선택 이후 placeholder 지우기 */
+input[type="date"]:valid::before{
+	display: none;
+}
+
+	#frame3 {
+		border: solid 1px rgba(0, 0, 0, 0.26);
+		border-radius: 10px;
+		position: relative;
+		width: 810px;
+		height: 135%;
+		margin:20px auto;
+	}
+				#ProApply {
+				color: black;
+				font-size: 24px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 316px;
+				top: 14px;
+			}
+			
+			#ProTitle {
+				width: 67px;
+				height: 33px;
+				color: rgba(0, 0, 0, 0.5);
+				font-size: 15px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				line-height:34px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-top-left-radius: 10px;
+				border-bottom-left-radius: 10px;
+				position: absolute;
+				left: 10px;
+				top: 60px;
+			}
+			
+			#ProTitleBar {
+				width: 419px;
+				height: 35px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-top-right-radius: 10px;
+				border-bottom-right-radius: 10px;
+				position: absolute;
+				left: 78px;
+				top: 60px;
+				outline: none;
+			}
+			
+			#ApplyPayBar {
+				width: 216px;
+				height: 35px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-top-right-radius: 10px;
+				border-bottom-right-radius: 10px;
+				position: absolute;
+				left: 78px;
+				top: 109px;
+				outline: none;
+			}
+			
+			#ApplyPay {
+				color: rgba(0, 0, 0, 0.5);
+				font-size: 15px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				line-height:33px;
+				width: 67px;
+				height: 33px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-top-left-radius: 10px;
+				border-bottom-left-radius: 10px;
+				position: absolute;
+				left: 10px;
+				top: 109px;
+			}
+			
+			
+			#Won {
+				width: 35px;
+				height: 35px;
+				position: absolute;
+				left: 303px;
+				top: 108px;
+			}
+			
+			#CompanyName {
+				color: rgba(0, 0, 0, 0.5);
+				font-size: 15px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				line-height:33.5px;
+				width: 68px;
+				height: 33px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-top-left-radius: 10px;
+				border-bottom-left-radius: 10px;
+				position: absolute;
+				left: 10px;
+				top: 158px;
+			}
+			
+			#CompanyNameBar {
+				width: 414px;
+				height: 35px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-top-right-radius: 10px;
+				border-bottom-right-radius: 10px;
+				position: absolute;
+				left: 78px;
+				top: 158px;
+				outline: none;
+			}
+			
+			#Term {
+				width: 67px;
+				height: 33px;
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 15px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				line-height:34px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-top-left-radius: 10px;
+				border-bottom-left-radius: 10px;
+				position: absolute;
+				left: 10px;
+				top: 207px;
+			}
+			
+			#TermBar {
+				width: 165px;
+				height: 35px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-top-right-radius: 10px;
+				border-bottom-right-radius: 10px;
+				position: absolute;
+				left: 78px;
+				top: 207px;
+				outline: none;
+			}
+			
+			
+			#StartDate {
+				width: 67px;
+				height: 33px;
+				color: rgba(0, 0, 0, 0.5);
+				font-size: 15px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				line-height:33px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-top-left-radius: 10px;
+				border-bottom-left-radius: 10px;
+				position: absolute;
+				left: 10px;
+				top: 257px;
+			}
+			
+			#StartDateBar {
+				width: 249px;
+				height: 35px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-top-right-radius: 10px;
+				border-bottom-right-radius: 10px;
+				left: 78px;
+				top: 257px;
+				outline: none;
+			}
+			
+			
+			/* #StartDateBtn {
+				width: 39px;
+				height: 30px;
+				background: url(https://s3-alpha-sig.figma.com/img/0612/8a48/460456c4ddc3b4e8c6ef229b5ffbb7a5?Expires=1710115200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=DvAUJjO-oIE-EIWvMQxv2mL5b-C97yekyudH8VqtVjhbL2e4-g2ySGaJcyADzHElVyye0KpfdZepHhaFgToHhVbnQgJqMYABwzVi0~3bwaPArozZGpg1bbETJ4QrhBv7rgLNSqQQm0f8tv-mwo2stmFkzE3gJcAFmX7dlY-bE7PN7HYcL2sKtTspqOyCGNOcK2l8Vp8IbKZXoGmvmAZgfcZ-s5JpO7U6VE3UhkWUR428Z7TujzDMehb7tYYvRm~uDFDhEbS2Y5mbQBVL0PAk5ii3bCL95IeURD7LFBayJs8qQCG98d21i4D2S3RaaDd19qiAvjXbWK~g5JblQ32mhw__);
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center;
+				position: absolute;
+				left: 285px;
+				top: 260px;
+			}
+			 */
+			#EndDate {
+				width: 69px;
+				height: 33px;
+				color: rgba(0, 0, 0, 0.5);
+				font-size: 15px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				line-height:33px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-top-left-radius: 10px;
+				border-bottom-left-radius: 10px;
+				position: absolute;
+				left: 348px;
+				top: 257px;
+			}
+			
+			
+			#EndDateBar {
+				width: 248px;
+				height: 35px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-top-right-radius: 10px;
+				border-bottom-right-radius: 10px;
+				position: absolute;
+				left: 417px;
+				top: 257px;
+				outline: none;
+			}
+			
+			
+			#EndDateBtn {
+				width: 39px;
+				height: 30px;
+				background: url(https://s3-alpha-sig.figma.com/img/0612/8a48/460456c4ddc3b4e8c6ef229b5ffbb7a5?Expires=1710115200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=DvAUJjO-oIE-EIWvMQxv2mL5b-C97yekyudH8VqtVjhbL2e4-g2ySGaJcyADzHElVyye0KpfdZepHhaFgToHhVbnQgJqMYABwzVi0~3bwaPArozZGpg1bbETJ4QrhBv7rgLNSqQQm0f8tv-mwo2stmFkzE3gJcAFmX7dlY-bE7PN7HYcL2sKtTspqOyCGNOcK2l8Vp8IbKZXoGmvmAZgfcZ-s5JpO7U6VE3UhkWUR428Z7TujzDMehb7tYYvRm~uDFDhEbS2Y5mbQBVL0PAk5ii3bCL95IeURD7LFBayJs8qQCG98d21i4D2S3RaaDd19qiAvjXbWK~g5JblQ32mhw__);
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center;
+				position: absolute;
+				left: 623px;
+				top: 260px;
+			}
+			
+			#EMail {
+				width: 67px;
+				height: 33px;
+				color: rgba(0, 0, 0, 0.5);
+				font-size: 15px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				line-height:33px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-top-left-radius: 10px;
+				border-bottom-left-radius: 10px;
+				position: absolute;
+				left: 10px;
+				top: 309px;
+			}
+			
+			#EMailBar {
+				width: 382px;
+				height: 35px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-top-right-radius: 10px;
+				border-bottom-right-radius: 10px;
+				position: absolute;
+				left: 78px;
+				top: 309px;
+				outline: none;
+			}
+			
+			#Phone {
+				width: 67px;
+				height: 33px;
+				color: rgba(0, 0, 0, 0.5);
+				font-size: 15px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				line-height:33px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-top-left-radius: 10px;
+				border-bottom-left-radius: 10px;
+				position: absolute;
+				left: 10px;
+				top: 360px;
+			}
+			
+			#PhoneBar {
+				width: 374px;
+				height: 35px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-top-right-radius: 10px;
+				border-bottom-right-radius: 10px;
+				position: absolute;
+				left: 78px;
+				top: 360px;
+				outline: none;
+			}
+			
+			#Address {
+				width: 67px;
+				height: 33px;
+				color: rgba(0, 0, 0, 0.5);
+				font-size: 15px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				line-height:33px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-top-left-radius: 10px;
+				border-bottom-left-radius: 10px;
+				position: absolute;
+				left: 10px;
+				top: 409px;
+			}
+			
+			#AddressBar {
+				width: 591px;
+				height: 35px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-top-right-radius: 10px;
+				border-bottom-right-radius: 10px;
+				position: absolute;
+				left: 78px;
+				top: 409px;
+				outline: none;
+			}
+			
+			#FilterBox {
+				width: 291px;
+				height: 171px;
+				background:linear-gradient(-90deg, rgba(217, 217, 217, 0.2), rgba(217, 217, 217, 0.2));
+				background-repeat: no-repeat;
+				background-size: contain;
+				background-position: center;
+				border-radius: 10px;
+				position: absolute;
+				left: 506px;
+				top: 22px;
+			}
+			
+			#Work {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 15px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				width: 82px;
+				position: absolute;
+				left: 625px;
+				top: 38px;
+			}
+			
+			#FixedTerm {
+				width: 70px;
+				height: 34px;
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				line-height:34px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				left: 686px;
+				top: 61px;
+				right: 57px;
+				bottom: 1175px;
+			}
+			
+			input[type="radio"]{
+			display:none;
+			}
+			
+			#Outsourcing {
+				width: 70px;
+				height: 34px;
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				line-height:34px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				left: 548px;
+				top: 61px;
+				right: 195px;
+				bottom: 1175px;
+			}
+			
+			#Choose {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 15px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 626px;
+				top: 108px;
+			}
+			
+			#Web {
+				width: 70px;
+				height: 34px;
+				color: rgba(0, 0, 0, 0.5);
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				line-height:34px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				left: 524px;
+				top: 140px;
+				right: 219px;
+				bottom: 1095px;
+			}
+			
+			#Front {
+				width: 100px;
+				height: 34px;
+				color: rgba(0, 0, 0, 0.5);
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				line-height:34px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				left: 603px;
+				top: 140px;
+				right: 110px;
+				bottom: 1095px;
+			}
+		
+			
+			#Back {
+				width: 70px;
+				height: 34px;
+				color: rgba(0, 0, 0, 0.5);
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				line-height:34px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				left: 712px;
+				top: 140px;
+				right: 31px;
+				bottom: 1095px;
+			}
+			
+			
+			#ProContext {
+				width: 791px;
+				height: 545px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				position: absolute;
+				left: 10px;
+				top: 459px;
+				overflow-y:auto;
+				overflow-x:hidden;
+				resize: none;
+			}
+			textarea::placeholder{
+				color: rgba(0, 0, 0, 0.26);
+				font-size: 14px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+			}
+			
+			#AttachedFile {
+				color: rgba(3, 215, 79, 0.6);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 30px;
+				top: 1021px;
+			}
+			
+			#AttachedEx {
+				color: rgba(0, 0, 0, 0.26);
+				text-overflow: ellipsis;
+				font-size: 11px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 112px;
+				top: 1026px;
+			}
+			
+			input[type='file'] {
+			  display: block;
+			  width: 0;
+			  height: 0;
+			  overflow: hidden;
+			}
+			.UploadForm {
+			  position:absolute;
+			  left: 13px;
+			  top: 1053px;
+			}
+			.UploadForm1 {
+			  	color: rgba(0, 0, 0, 0.5);
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				cursor:pointer;
+				font-size: 15px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				padding:5px 20px;
+			}
+			.UploadedFileName {
+				
+			  	padding: 0 5px 0 10px;
+			    margin-left: 5px;
+			    margin-top: -5px;
+				display: inline-block;
+				position: absolute;
+				color: rgba(0, 0, 0, 0.6);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				line-height:30px;
+				padding-left:10px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				width: 640px;
+				height:auto;
+			}
+			
+			#UploadAjax {
+				width: 772px;
+				height: 97px;
+				background: linear-gradient(-90deg, rgba(217, 217, 217, 0.4), rgba(217, 217, 217, 0.4));
+				background-repeat: no-repeat;
+				background-size: contain;
+				background-position: center;
+				border-radius: 10px;
+				position: absolute;
+				left: 13px;
+				top: 1087px;
+			}
+			
+			
+			#UploadAjax1 {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 26px;
+				top: 1096px;
+			}
+			
+			#ApplyTerm {
+				width: 88px;
+				height: 33px;
+				color: rgba(0, 0, 0, 0.5);
+				font-size: 15px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				line-height:33px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-top-left-radius: 10px;
+				border-bottom-left-radius: 10px;
+				position: absolute;
+				left: 13px;
+				top: 1219px;
+			}
+			
+			#ApplyTermBar {
+				width: 319px;
+				height: 35px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-top-right-radius: 10px;
+				border-bottom-right-radius: 10px;
+				position: absolute;
+				left: 102px;
+				top: 1219px;
+			}
+			
+			#ApplyEx {
+				color: rgba(0, 0, 0, 0.26);
+				text-overflow: ellipsis;
+				font-size: 11px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				width: 306px;
+				position: absolute;
+				left: 17px;
+				top: 1204px;
+			}
+			
+			#ApplyBtn {
+				width: 39px;
+				height: 30px;
+				background: url(https://s3-alpha-sig.figma.com/img/0612/8a48/460456c4ddc3b4e8c6ef229b5ffbb7a5?Expires=1710115200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=DvAUJjO-oIE-EIWvMQxv2mL5b-C97yekyudH8VqtVjhbL2e4-g2ySGaJcyADzHElVyye0KpfdZepHhaFgToHhVbnQgJqMYABwzVi0~3bwaPArozZGpg1bbETJ4QrhBv7rgLNSqQQm0f8tv-mwo2stmFkzE3gJcAFmX7dlY-bE7PN7HYcL2sKtTspqOyCGNOcK2l8Vp8IbKZXoGmvmAZgfcZ-s5JpO7U6VE3UhkWUR428Z7TujzDMehb7tYYvRm~uDFDhEbS2Y5mbQBVL0PAk5ii3bCL95IeURD7LFBayJs8qQCG98d21i4D2S3RaaDd19qiAvjXbWK~g5JblQ32mhw__);
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center;
+				position: absolute;
+				left: 377px;
+				top: 1221px;
+			}
+			
+			#WriteBtn {
+				width: 129px;
+				height: 35px;
+				color: white;
+				font-size: 18px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				line-height:35px;
+				background: rgb(3, 215, 79);
+				background-repeat: no-repeat;
+				background-size: contain;
+				background-position: center;
+				border:none;
+				border-radius: 10px;
+				position: absolute;
+				left: 672px;
+				top: 1219px;
+				cursor: pointer;
+			}
+			
+			
+			#ResetBtn {
+				width: 129px;
+				height: 35px;
+				color: rgba(0, 0, 0, 0.5);
+				font-size: 18px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: center;
+				line-height:35px;
+				background: rgb(255, 255, 255);
+				background-repeat: no-repeat;
+				background-size: contain;
+				background-position: center;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				top: 1219px;
+				left: 524px;
+				cursor: pointer;
+			}
+			
