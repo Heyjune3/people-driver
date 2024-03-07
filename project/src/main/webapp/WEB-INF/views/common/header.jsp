@@ -105,8 +105,8 @@
 				<c:choose>
 					<c:when test="${empty sessionScope.loginMember}">
 					<!-- 로그인 되지 않은 사용자 -->
-						<li><a href="/login">로그인</a></li>
-						<li><a href="/register">회원가입</a></li>
+						<li><a href="/user/login">로그인</a></li>
+						<li><a href="/user/register">회원가입</a></li>
 					</c:when>
 					<c:otherwise>
 					<!-- 로그인 된 사용자 -->

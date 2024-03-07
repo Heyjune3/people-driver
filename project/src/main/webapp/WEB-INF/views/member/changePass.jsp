@@ -31,6 +31,7 @@
 	<section>
 		<div class="form">
 			<input type="hidden" id="email" value="${email}">
+			<input type="hidden" id="csrf_token" name="csrf_token" value="${csrf_token}" />
 			<h1>비밀번호 변경</h1>
 			<p>새롭게 사용하실 비밀번호를 입력해 주세요.</p>
 			<div class="changePassForm">
@@ -49,6 +50,7 @@
 function submit() {
 	let email = $("#email");
 	let pass = $("#password");
+	let csrf_token = $("#csrf_token");
 	
 	// 정규식
 	var regexPass = /(?=.*\d)(?=.*[a-z]).{8,}/; // 흔한 8자리 이상의 영어소문자, 숫자 포함
@@ -63,17 +65,20 @@ function submit() {
 	} else {
 		$.ajax({
 			type : "post",
-			url : "/user/changePass",
+			url : "/user/change",
 			data : {
 				email : email.val(),
-				password : pass.val()
+				password : pass.val(),
+				csrf_token : csrf_token.val()
 			},
 			dataType : "text",
 			success : function(result) {
+				console.log(result);
 				alert(result);
-				window.location.href="/login";
+				window.location.href="/user/login";
 			},
 			error : function(res) {
+				console.log(res);
 				alert(res.responseText);
 			}
 		});

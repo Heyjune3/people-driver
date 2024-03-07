@@ -13,4 +13,8 @@ public interface CodeRepository extends JpaRepository<PassCode, Long> {
 	 * @return - 일치하면 반환
 	 */
 	PassCode findByEmailAndCode(String email, String code);
+	
+	PassCode findByEmail(String email);
+
+	void deleteByEmail(String email);
 }

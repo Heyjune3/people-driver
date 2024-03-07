@@ -22,36 +22,9 @@ public class HomeController {
 		return "main/home";
 	}
 
-	@GetMapping("register")
-	public String logon() {
-		return "/member/register";
-	}
-
-	@GetMapping("login")
-	public String login() {
-		return "/member/login";
-	}
-
+	// 이거 나중에 경로 business로 바꿔야 함
 	@GetMapping("search")
 	public String search() {
 		return "/business/search";
 	}
-
-	@GetMapping("findPass")
-	public String findPass() {
-		return "/member/findPass";
-	}
-
-	@PostMapping("passAuth")
-	public String passAuth(String email, HttpServletRequest request) {
-		request.setAttribute("email", email);
-		return "/member/passAuth";
-	}
-
-	@PostMapping("changePass")
-	public String changePass(String email, HttpServletRequest request) {
-		request.setAttribute("email", email);
-		return "/member/changePass";
-	}
-
 }

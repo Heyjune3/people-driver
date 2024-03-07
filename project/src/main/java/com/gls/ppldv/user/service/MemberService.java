@@ -59,4 +59,10 @@ public interface MemberService extends FindPassService {
 	 * email을 통해 멤버 찾기
 	 */
 	public Member findMember(String email) throws Exception;
+
+	/**
+	 * 비밀번호 찾기 passAuth(인증이 완료되거나 실패되거나 일단 체크 한번 하고 난 뒤 삭제) 
+	 * @param email 
+	 */
+	public void removeCode(String email);
 }

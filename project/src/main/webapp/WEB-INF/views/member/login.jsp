@@ -41,7 +41,7 @@
 			<input type="checkbox" name="loginSession" id="loginSession"/>
 			<label for="loginSession">로그인 상태 유지</label>
 			
-			<button onclick="location.href='/findPass'">비밀번호 찾기</button>
+			<button onclick="location.href='/user/findPass'">비밀번호 찾기</button>
 		</div>
 		<div>
 			<button onclick="login()">로그인</button>

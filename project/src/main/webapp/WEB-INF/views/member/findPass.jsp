@@ -60,8 +60,9 @@
 			<h1>비밀번호 찾기</h1>
 			<p>회원가입 시 등록 한 아이디(email)와 이름을 입력해주세요.</p>
 			<div class="findPassForm">
-				<form action="/passAuth" method="post">
+				<form action="/user/passAuth" method="post">
 					<input type="email" name="email" id="email" placeholder="이메일 주소" required />
+					<input type="hidden" name="csrf_token" value="${csrf_token}" />
 					<input type="submit" id="formSubmit" style="display:none;"/>
 				</form>
 				<input type="text" name="name" id="name" placeholder="이름" required />
@@ -99,7 +100,7 @@
 		} else {
 			$.ajax({
 				type : "post",
-				url : "/user/findPass",
+				url : "/user/find",
 				data : {
 					email : email.val(),
 					name : name.val()

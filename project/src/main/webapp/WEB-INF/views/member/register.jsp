@@ -8,14 +8,14 @@
 <c:set var="content">
 	<input type="hidden" class="postcodify_postcode5"/>
 	<input type="hidden" class="postcodify_address"/>
-	<img src="resources/img/logo/logo2.png" id="logo" />
+	<img src="${path}/resources/img/logo/logo2.png" id="logo" />
 		<div id="table">
 			<div>
 				<h2>회원가입</h2>
 			</div>
 			
 			<div>
-				<img src="resources/img/profile.jpg" id="sampleImg"  style="width:100px; height:100px; border-radius: 50%; object-fit: cover;"/>
+				<img src="${path}/resources/img/profile.jpg" id="sampleImg"  style="width:100px; height:100px; border-radius: 50%; object-fit: cover;"/>
 				<input type="file" name="file" id="profileImage" accept=".gif, .jpg, .jpeg, .png" />
 			</div>
 			

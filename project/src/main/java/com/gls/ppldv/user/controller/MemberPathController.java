@@ -1,10 +1,12 @@
 package com.gls.ppldv.user.controller;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,6 +27,24 @@ public class MemberPathController {
 
 	private final MemberService ms;
 
+	// 유저 회원가입
+	@GetMapping("/register")
+	public String logon() {
+		return "/member/register";
+	}
+
+	// 유저 로그인
+	@GetMapping("/login")
+	public String login() {
+		return "/member/login";
+	}
+	
+	// 유저 비밀번호 찾기
+	@GetMapping("/findPass")
+	public String findPass() {
+		return "/member/findPass";
+	}
+	
 	// 로그아웃 처리
 	@GetMapping("/logout")
 	public String logout(HttpServletResponse response, @CookieValue(name = "id", required = false) Cookie cookie,
@@ -46,11 +66,8 @@ public class MemberPathController {
 	}
 
 	// 회원정보 수정
-	@PostMapping("/editProfile")
+	@PostMapping("/edit")
 	public String editProfile(EditDTO member, MultipartFile file, RedirectAttributes rttrs, HttpSession session) {
-
-		System.out.println(member);
-		System.out.println(file);
 
 		String message = null;
 		// 만약 회원 이미지가 변경되었다면, 삭제 후 다시 업로드
@@ -65,8 +82,12 @@ public class MemberPathController {
 				e.printStackTrace();
 			}
 		} else {
+			// 파일 존재하지 않을 때
 			try {
 				message = ms.editProfile(member);
+				
+				Member m = ms.findMember(member.getEmail());
+				session.setAttribute("loginMember", m);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -88,6 +109,20 @@ public class MemberPathController {
 		}
 
 		return "redirect:/user/logout";
+	}
+	
+	// 비밀번호 인증 코드
+	@PostMapping("/passAuth")
+	public String passAuth(String email, HttpServletRequest request) {
+		request.setAttribute("email", email);
+		return "/member/passAuth";
+	}
+
+	// 비밀번호 변경
+	@PostMapping("/changePass")
+	public String changePass(String email, HttpServletRequest request) {
+		request.setAttribute("email", email);
+		return "/member/changePass";
 	}
 
 }

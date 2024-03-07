@@ -9,7 +9,8 @@
 	<input type="hidden" class="postcodify_postcode5"/>
 	<input type="hidden" class="postcodify_address"/>
 	<img src="${path}/resources/img/logo/logo2.png" id="logo" />
-	<form id="editProfile" action="/user/editProfile" method="POST" enctype="multipart/form-data">
+	<form id="editProfile" action="/user/edit" method="POST" enctype="multipart/form-data">
+		<input type="hidden" name="csrf_token" value="${csrf_token}" />
 		<div id="table">
 			<div>
 				<h2>회원정보 수정</h2>
@@ -23,7 +24,7 @@
 					</c:when>
 					<c:otherwise>
 						<img src="${path}/resources/img/profile.jpg" id="sampleImg"  style="width:100px; height:100px; border-radius: 50%; object-fit: cover;"/>
-				<input type="file" name="file" id="profileImage" accept=".gif, .jpg, .jpeg, .png" />
+						<input type="file" name="file" id="profileImage" accept=".gif, .jpg, .jpeg, .png" />
 					</c:otherwise>
 				</c:choose>
 				
@@ -139,6 +140,7 @@
      
      <form id="deleteProfile" action="/user/removeUser" method="post">
 		<input type="hidden" id="email" name="email" value="${loginMember.email}"/>
+		<input type="hidden" name="csrf_token" value="${csrf_token}" />
      </form>
      
      

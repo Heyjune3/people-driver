@@ -99,7 +99,7 @@ public class MemberController {
 	}
 
 	// 비밀번호 찾기 처리
-	@PostMapping("/findPass")
+	@PostMapping("/find")
 	public ResponseEntity<String> findPass(Member member, HttpServletRequest request) {
 		String message = null;
 		HttpHeaders headers = new HttpHeaders();
@@ -110,8 +110,6 @@ public class MemberController {
 			return new ResponseEntity<>(e.getMessage(), headers, HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
-			// TODO 현재는 에러메시지를 출력해주고 있지만, 나중에 수정 (에러가 나는 원인은 네트워크 문제거나 메일 발송 실패)
-			return new ResponseEntity<>(e.getMessage(), headers, HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity<>(message, headers, HttpStatus.OK);
 	}
@@ -120,7 +118,12 @@ public class MemberController {
 	@PostMapping("/passAccept")
 	public ResponseEntity<String> passAccept(PassCode passCode) {
 		String message = ms.changePassCode(passCode);
+		
+		// 일단 한번 확인했으면, 기존 코드 지워주는 작업
+		ms.removeCode(passCode.getEmail());
+		
 		HttpHeaders headers = new HttpHeaders();
+		
 		headers.add("Content-Type", "text/plain;charset=utf-8");
 		if (message.equals("코드 일치")) {
 			return new ResponseEntity<>(message, headers, HttpStatus.OK);
@@ -131,7 +134,7 @@ public class MemberController {
 	}
 
 	// 비밀번호 변경
-	@PostMapping("/changePass")
+	@PostMapping("/change")
 	public ResponseEntity<String> changePass(Member member) {
 		String message = null;
 		HttpHeaders headers = new HttpHeaders();
@@ -142,6 +145,6 @@ public class MemberController {
 			e.printStackTrace();
 			return new ResponseEntity<>(e.getMessage(), headers, HttpStatus.BAD_REQUEST);
 		}
-		return new ResponseEntity<>(message, headers, HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<>(message, headers, HttpStatus.OK);
 	}
 }

@@ -2,6 +2,7 @@ package com.gls.ppldv.developer.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -64,7 +65,7 @@ public class Developer {
 	@Column(name = "developer_school", columnDefinition = "TEXT")
 	private String school;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "uno", referencedColumnName = "uno")
 	private Member member;
 

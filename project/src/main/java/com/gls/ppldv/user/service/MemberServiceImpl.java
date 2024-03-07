@@ -119,11 +119,22 @@ public class MemberServiceImpl implements MemberService {
 		}
 		String code = sb.toString();
 
-		// 메일로 발송될 코드 DB에 저장
-		PassCode pc = new PassCode();
-		pc.setEmail(m.getEmail());
-		pc.setCode(code);
-		cr.save(pc);
+		PassCode pc = null;
+		
+		PassCode existingPassCode = cr.findByEmail(m.getEmail());
+		
+		if (existingPassCode != null) {
+			// 기존에 이메일 정보가 존재하는 경우
+			pc = existingPassCode;
+			existingPassCode.setCode(code);
+			cr.save(existingPassCode);
+		} else {
+			// 메일로 발송될 코드 DB에 저장
+			pc = new PassCode();
+			pc.setEmail(m.getEmail());
+			pc.setCode(code);
+			cr.save(pc);
+		}
 
 		// 메일 발송
 		Session session = Session.getDefaultInstance(ga.getProp(), ga);
@@ -167,6 +178,12 @@ public class MemberServiceImpl implements MemberService {
 			// 일치하지 않으면
 			return "코드 불일치";
 		}
+	}
+	
+	@Override
+	@Transactional
+	public void removeCode(String email) {
+		cr.deleteByEmail(email);
 	}
 
 	@Override
@@ -233,5 +250,7 @@ public class MemberServiceImpl implements MemberService {
 		Member m = mr.findByEmail(email);
 		return m;
 	}
+
+	
 
 }

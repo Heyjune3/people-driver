@@ -28,8 +28,8 @@
 </style>
 <c:set var="content">
 	<div class="form">
-		<form action="/changePass" method="post">
-			<input type="hidden" name="email" id="email" value="${email}">
+		<form action="/user/changePass" method="post">
+			<input type="hidden" name="email" id="email" value="${email}" />
 			<input type="submit" id="formSubmit" style="display:none;"/>
 		</form>
 		<h1>코드 인증</h1>
@@ -76,7 +76,7 @@
 						$("#formSubmit").click();
 					} else {
 						alert("코드가 일치하지 않습니다. 다시 비밀번호 찾기 요청을 보내주세요.");
-						window.location.href="/findPass";
+						window.location.href="/user/findPass";
 					}
 				},
 				error : function(res) {
