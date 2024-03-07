@@ -1,11 +1,13 @@
 @charset "UTF-8";
 #frame1 {
-				background: rgb(255, 255, 255);
-				background-repeat: no-repeat;
+				border:1px solid rgba(0, 0, 0, 0.3);
+				border-radius: 10px;
 				background-size: contain;
 				background-position: center;
 				position: relative;
+				margin: 10px auto;
 				height: 100%;
+				max-width:1440px;
 			}
 			#ProSearch {
 				color: white;
@@ -15,7 +17,7 @@
 				font-weight: normal;
 				text-align: center;
 				line-height:34px;
-				width: 120px;
+				width: 8.8%;
 				height: 35px;
 				background: rgb(3, 215, 79);
 				background-repeat: no-repeat;
@@ -36,7 +38,7 @@
 				font-weight: normal;
 				text-align: center;
 				line-height:34px;
-				width: 120px;
+				width: 8.8%;
 				height: 35px;
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-radius: 10px;
@@ -47,16 +49,16 @@
 			
 			
 			#Line7 {
-				width: 277px;
-				height: 0px;
-				object-fit: cover;
 				position: absolute;
-				left: 12px;
+				width: 19%;
+				height: 0px;
+				left: 14px;
 				top: 487px;
+				border: 1px dashed rgba(0, 0, 0, 0.26);
 			}
 			
 			#MaxTermBar {
-				width: 105px;
+				width: 7.5%;
 				height: 28px;
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-radius: 10px;
@@ -90,7 +92,7 @@
 			}
 			
 			#MinTermBar {
-				width: 105px;
+				width: 7.5%;
 				height: 28px;
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-radius: 10px;
@@ -112,7 +114,7 @@
 			}
 			
 			#EndDateBar {
-				width: 105px;
+				width: 7.5%;
 				height: 28px;
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-radius: 10px;
@@ -131,6 +133,7 @@
 				position: absolute;
 				left: 211px;
 				top: 367px;
+				
 			}
 			
 			#NaN_0001 {
@@ -146,7 +149,7 @@
 			}
 			
 			#StartDateBar {
-				width: 105px;
+				width: 7.5%;
 				height: 28px;
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-radius: 10px;
@@ -168,16 +171,16 @@
 			}
 			
 			#Line6 {
-				width: 277px;
-				height: 0px;
-				object-fit: cover;
 				position: absolute;
-				left: 12px;
+				width: 19%;
+				height: 0px;
+				left: 14px;
 				top: 354px;
+				border: 1px dashed rgba(0, 0, 0, 0.26);
 			}
 			
 			#MaxPay {
-				width: 270px;
+				width: 18.8%;
 				height: 35px;
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-radius: 10px;
@@ -199,7 +202,7 @@
 			}
 			
 			#MinPay {
-				width: 270px;
+				width: 18.8%;
 				height: 35px;
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-radius: 10px;
@@ -221,16 +224,16 @@
 			}
 			
 			#Line4 {
-				width: 277px;
-				height: 0px;
-				object-fit: cover;
 				position: absolute;
-				left: 12px;
+				width: 19%;
+				height: 0px;
+				left: 14px;
 				top: 228px;
+				border: 1px dashed rgba(0, 0, 0, 0.26);
 			}
 			
 			#BackBar {
-				width: 70px;
+				width: 5.5%;
 				height: 34px;
 				color: rgba(0, 0, 0, 0.5);
 				text-overflow: ellipsis;
@@ -250,7 +253,7 @@
 			
 			
 			#FrontBar {
-				width: 100px;
+				width: 7%;
 				height: 34px;
 				color: rgba(0, 0, 0, 0.5);
 				text-overflow: ellipsis;
@@ -269,24 +272,8 @@
 			}
 			
 			
-			#line3{
-				position: absolute;
-				width: 277px;
-				height: 0px;
-				left: 12px;
-				top: 147px;
-				border: 1px dashed rgba(0, 0, 0, 0.26);
-			}
-			#line4{
-				position: absolute;
-				width: 277px;
-				height: 0px;
-				left: 12px;
-				top: 228px;
-				border: 1px dashed rgba(0, 0, 0, 0.26);
-			}
 			#Line5 {
-				width: 264px;
+				width: 18.4%;
 				height: 0px;
 				object-fit: cover;
 				position: absolute;
@@ -294,25 +281,9 @@
 				top: 86px;
 				border: 1px solid rgba(0, 0, 0, 0.26);
 			}
-			#line6{
-				position: absolute;
-				width: 277px;
-				height: 0px;
-				left: 12px;
-				top: 354px;
-				border: 1px dashed rgba(0, 0, 0, 0.26);
-			}
-			#line7{
-				position: absolute;
-				width: 277px;
-				height: 0px;
-				left: 12px;
-				top: 487px;
-				border: 1px dashed rgba(0, 0, 0, 0.26);
-			}
 
 			#WebBar {
-				width: 70px;
+				width: 5%;
 				height: 34px;
 				color: rgba(0, 0, 0, 0.5);
 				text-overflow: ellipsis;
@@ -343,16 +314,16 @@
 			}
 			
 			#Line3 {
-				width: 277px;
-				height: 0px;
-				object-fit: cover;
 				position: absolute;
-				left: 12px;
+				width: 19%;
+				height: 0px;
+				left: 14px;
 				top: 147px;
+				border: 1px dashed rgba(0, 0, 0, 0.26);
 			}
 			
 			#FixedTermBar {
-				width: 70px;
+				width: 5.5%;
 				height: 34px;
 				color: rgba(0, 0, 0, 0.5);
 				text-overflow: ellipsis;
@@ -371,7 +342,7 @@
 			}
 			
 			#OutsourcingBar {
-				width: 70px;
+				width: 5.5%;
 				height: 34px;
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-radius: 10px;
@@ -549,7 +520,7 @@
 			}
 			
 			#OutsourcingBar_0001 {
-				width: 70px;
+				width: 5.5%;
 				height: 34px;
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-radius: 10px;
@@ -655,7 +626,7 @@
 				position: absolute;
 				left: 1142px;
 				top: 86px;
-				width: 100px;
+				width: 6%;
 			}
 			
 			#Ellipse7 {
@@ -681,7 +652,7 @@
 				position: absolute;
 				left: 1124px;
 				top: 63px;
-				width: 100px;
+				width: 6%;
 			}
 			
 			#Payment {
