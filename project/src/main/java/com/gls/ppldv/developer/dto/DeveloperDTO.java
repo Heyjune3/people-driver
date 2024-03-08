@@ -32,4 +32,6 @@ public class DeveloperDTO {
 	private List<DCareer> dCareer;
 	private List<DLicense> dLicense;
 
+	// 파일 원상태로 되돌렸는지 수정 여부
+	private boolean flag = false;
 }

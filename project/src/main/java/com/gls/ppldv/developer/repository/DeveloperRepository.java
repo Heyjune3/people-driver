@@ -1,5 +1,7 @@
 package com.gls.ppldv.developer.repository;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,4 +19,8 @@ public interface DeveloperRepository extends JpaRepository<Developer, Long> {
 	Integer countByMemberId(Long id);
 
 	Page<Developer> findByMemberId(Long id, Pageable pageable);
+
+	void deleteAllByMemberId(Long uno);
+
+	List<Developer> findAllByMemberId(Long uno);
 }

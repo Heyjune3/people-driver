@@ -7,7 +7,7 @@
 
 .container {
 	background-color: #DDD;
-	min-width: 600px;
+	min-width: 800px;
 	border: 1px solid #CCCCCC;
 	width : 80%;
 	height: 1200px;
@@ -39,6 +39,18 @@
 			box-shadow: 0 2px 0 #CCCCCC;
 		}
 		.container .input span#register:hover {
+			color: yellow;
+			background-color: skyblue;
+			cursor: pointer;
+			text-decoration: underline;
+		} 
+		.container .input span#edit:hover {
+			color: yellow;
+			background-color: skyblue;
+			cursor: pointer;
+			text-decoration: underline;
+		} 
+		.container .input span#remove:hover {
 			color: yellow;
 			background-color: skyblue;
 			cursor: pointer;

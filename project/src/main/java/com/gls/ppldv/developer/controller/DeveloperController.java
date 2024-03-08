@@ -55,7 +55,7 @@ public class DeveloperController {
 		// MultipartFile로 변환
 		headers.add("Content-Type", "text/plain;charset=utf-8");
 
-		String message = ds.edit(developerDTO, file);
+		String message = ds.edit(dno,developerDTO, file);
 
 		ResponseEntity<String> response = null;
 
@@ -65,6 +65,23 @@ public class DeveloperController {
 			response = new ResponseEntity<>(message, headers, HttpStatus.OK);
 		}
 
+		return response;
+	}
+	
+	@PostMapping("/remove")
+	public ResponseEntity<String> removeDeveloper (
+				Long dno
+				) {
+		HttpHeaders headers = new HttpHeaders();
+		// MultipartFile로 변환
+		headers.add("Content-Type", "text/plain;charset=utf-8");
+		
+		String message = ds.remove(dno);
+		
+		ResponseEntity<String> response = null;
+		
+		response = new ResponseEntity<>(message, headers, HttpStatus.OK);
+		
 		return response;
 	}
 

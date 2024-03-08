@@ -233,6 +233,7 @@
 		$("#sampleImg").attr("src", "/resources/img/profile.jpg");
 		$("#sampleImg").css("opacity", 0.6);
 		$(".img span").show();
+		formData.delete("file");
 	}
 	
 	// 만약 등록 버튼을 클릭한다면, img는 ajax로 나머지는 폼태그로 보내자

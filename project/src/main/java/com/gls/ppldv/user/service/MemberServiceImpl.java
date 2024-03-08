@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.gls.ppldv.common.util.FileUtil;
 import com.gls.ppldv.common.util.GmailAuthentication;
 import com.gls.ppldv.configuration.userException.LoginFailedException;
+import com.gls.ppldv.developer.service.DeveloperService;
 import com.gls.ppldv.user.dto.EditDTO;
 import com.gls.ppldv.user.dto.LoginDTO;
 import com.gls.ppldv.user.entity.Member;
@@ -30,12 +31,15 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class MemberServiceImpl implements MemberService {
-
+	
 	private final MemberRepository mr;
 	private final CodeRepository cr;
 	private final MemberMapper mm;
 
 	private final FileUtil fu;
+	
+	@Autowired
+	private DeveloperService ds;
 
 	// 만들어놓은 util 패키지의 GmailAuthentication
 	@Autowired
@@ -231,17 +235,25 @@ public class MemberServiceImpl implements MemberService {
 		}
 		mm.editProfile(member);
 
-		return "회원정보 수정 완료";
+		return "삭제 완료";
 	}
 
 	@Override
 	@Transactional
 	public String removeUser(String email) throws Exception {
+		
 		Member member = mr.findByEmail(email);
-		if (member.getImgUrl() != null) {
-			fu.deleteFile(member.getFileName());
+		
+		// 가장 큰 문제점 종속성이 강해진다. (이걸 해결할 수 있는 방안이 있을까?)
+		String message = ds.removeAll(member.getId());
+		
+		if (message.equals("삭제 완료")) {
+			if (member.getImgUrl() != null) {
+				fu.deleteFile(member.getFileName());
+			}
+			mr.deleteByEmail(email);
 		}
-		mr.deleteByEmail(email);
+		
 		return "삭제 완료";
 	}
 

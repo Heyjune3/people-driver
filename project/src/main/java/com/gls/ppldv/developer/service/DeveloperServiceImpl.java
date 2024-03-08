@@ -1,5 +1,6 @@
 package com.gls.ppldv.developer.service;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -69,7 +70,6 @@ public class DeveloperServiceImpl implements DeveloperService {
 			fileName = fu.savedFileName(imgUrl);
 			developer.setImgUrl(imgUrl);
 			developer.setFileName(fileName);
-
 		}
 		
 		// Developer Entity 저장
@@ -155,49 +155,90 @@ public class DeveloperServiceImpl implements DeveloperService {
 	}
 
 	@Override
-	public String edit(DeveloperDTO developerDTO, MultipartFile file) throws Exception {
+	@Transactional
+	public String edit(Long dno, DeveloperDTO developerDTO, MultipartFile file) throws Exception {
 		String message = "수정 실패";
 		
-		// 수정 부분 로직 구현중
-
+		Developer dev = dr.findById(dno).get();
+		
 		// DeveloperDTO에서 Developer 엔티티로 변환
-		Developer developer = new Developer();
-		developer.setTitle(developerDTO.getTitle());
-		developer.setContent(developerDTO.getContent());
-		developer.setSkill(developerDTO.getSkill());
-		developer.setTendency(developerDTO.getTendency());
-		developer.setSchool(developerDTO.getSchool());
-		Optional<Member> memberOptional = mr.findById(developerDTO.getUno());
-		developer.setMember(memberOptional.get());
-		developer.setUpdateDate(new Date());
-		developer.setViewCount(0);
+		dev.setTitle(developerDTO.getTitle());
+		dev.setContent(developerDTO.getContent());
+		dev.setSkill(developerDTO.getSkill());
+		dev.setTendency(developerDTO.getTendency());
+		dev.setSchool(developerDTO.getSchool());
+		dev.setUpdateDate(new Date());
 
 		String imgUrl = null;
 		String fileName = null;
 
-		if (file != null && !file.isEmpty()) {
-			// 이미지 파일 처리
-			imgUrl = fu.uploadFile(file);
-			if (imgUrl == null) {
-				message = "네트워크 문제로 이미지가 저장되지 않았습니다. 잠시 후 다시 시도해주세요.";
-				return message;
-			}
-			fileName = fu.savedFileName(imgUrl);
-			developer.setImgUrl(imgUrl);
-			developer.setFileName(fileName);
-
-		}
+		// 이미지 파일 분류를 3 단계
+		// 원상태로 되돌리기
+		// 이미지 수정
+		// 이미지 수정하지 않고 그대로 둔거
 		
-		// Developer Entity 저장
-		Developer savedDeveloper = dr.save(developer);
-
+		// 만약 이미지 파일이 수정된게 있다면,
+		if (file != null && !file.isEmpty()) {
+			// 기존에 이미지가 없었다면,
+			if (dev.getImgUrl() == null) {
+				// 이미지 파일 처리
+				imgUrl = fu.uploadFile(file);
+				if (imgUrl == null) {
+					message = "네트워크 문제로 이미지가 저장되지 않았습니다. 잠시 후 다시 시도해주세요.";
+					return message;
+				}
+				fileName = fu.savedFileName(imgUrl);
+				dev.setImgUrl(imgUrl);
+				dev.setFileName(fileName);
+			} else {
+				// 기존에 이미지가 있었다면,
+				fu.deleteFile(dev.getFileName());
+				imgUrl = fu.uploadFile(file);
+				if (imgUrl == null) {
+					message = "네트워크 문제로 이미지가 저장되지 않았습니다. 잠시 후 다시 시도해주세요.";
+					return message;
+				}
+				fileName = fu.savedFileName(imgUrl);
+				dev.setImgUrl(imgUrl);
+				dev.setFileName(fileName);
+			}
+		} else {
+			// 기존에 파일이 있었지만 바꾸지 않았을 경우
+			// -> 아무 수정도 하지 않아야 함
+			
+			// 기존에 파일이 있었지만 원상태로 되돌렸을 경우
+			// -> 기존 파일 삭제를 해야함
+			
+			// 기존에 파일이 없었지만 바꾸지 않았을 경우
+			// -> 아무 수정도 하지 않아야 함
+			
+			// 기존에 파일이 없었지만 원상태로 되돌렸을 경우
+			// -> 아무 수정도 하지 않아야 함
+			if (dev.getImgUrl() != null && developerDTO.isFlag()) {
+				fu.deleteFile(dev.getFileName());
+				dev.setImgUrl(null);
+				dev.setFileName(null);
+			}
+		}	
+		
+		
+		// UPDATE (DEVELOPER)
+		Developer updateDev = dr.save(dev);
+		
+		// 기존에 있던 정보 다 지우고(DELETE)
+		dcr.deleteAllByDeveloperDno(dno);
+		// 기존에 있던 정보 다 지우고(DELETE)
+		dlr.deleteAllByDeveloperDno(dno);
+		
 		// DCareer 엔티티 저장
 		if (developerDTO.getDCareer() != null && !developerDTO.getDCareer().isEmpty()) {
 			for (DCareer career : developerDTO.getDCareer()) {
 				if (career.getJobName() != null && !career.getJobName().isEmpty()
 						|| career.getJobPeriod() != null && !career.getJobPeriod().isEmpty()
 						|| career.getJobResponsibilities() != null && !career.getJobResponsibilities().isEmpty()) {
-					career.setDeveloper(savedDeveloper);
+					
+					// 다시 삽입(INSERT)
+					career.setDeveloper(dev);
 					dcr.save(career);
 				}
 				
@@ -209,20 +250,54 @@ public class DeveloperServiceImpl implements DeveloperService {
 			for (DLicense license : developerDTO.getDLicense()) {
 				if (license.getLicenseName() != null && !license.getLicenseName().isEmpty()
 						|| license.getAcquisitionDate() != null && !license.getAcquisitionDate().isEmpty()) {
-					license.setDeveloper(savedDeveloper);
+					
+					// 다시 삽입(INSERT)
+					license.setDeveloper(dev);
 					dlr.save(license);
 				}
 			}
 		}
 
-		if (savedDeveloper != null) {
-			message = "등록 성공";
+		if (updateDev != null) {
+			message = "수정 성공";
 		} else {
-			fu.deleteFile(fileName);
 			return message;
 		}
 
 		return message;
+	}
+
+	@Override
+	@Transactional
+	public String remove(Long dno) {
+		Developer d = dr.findById(dno).get();
+		if (d.getImgUrl() != null) {
+			try {
+				fu.deleteFile(d.getFileName());
+			} catch (IOException e) {}
+		}
+		
+		dr.deleteById(dno);
+		
+		return "삭제 완료";
+	}
+
+	@Override
+	@Transactional
+	public String removeAll(Long uno) {
+		List<Developer> deList = dr.findAllByMemberId(uno);
+		
+		for (Developer d : deList) {
+			if (d.getImgUrl() != null) {
+				try {
+					fu.deleteFile(d.getFileName());
+				} catch (IOException e) {}
+			}
+		}
+		
+		dr.deleteAllByMemberId(uno);
+		
+		return "삭제 완료";
 	}
 
 }

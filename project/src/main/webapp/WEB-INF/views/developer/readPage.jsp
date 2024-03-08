@@ -15,6 +15,7 @@
 			<input id="title" type="text" value="${developerInfo.title}" placeholder="제목입력" autofocus="autofocus" />
 			</span>
 			<span id="edit" onclick="edit()">프로필 수정</span>
+			<span id="remove" onclick="remove()">프로필 삭제</span>
 		</div>
 		
 		<div class="profile">
@@ -254,12 +255,17 @@
 		$("#sampleImg").css("opacity", 1);
 		$(".img span").hide();
 		formData.append("file", file);
+		flag = false;
 	});
+	
+	var flag = false;
 	
 	function rollback() {
 		$("#sampleImg").attr("src", "/resources/img/profile.jpg");
 		$("#sampleImg").css("opacity", 0.6);
 		$(".img span").show();
+		formData.delete("file");
+		flag = true;
 	}
 	
 	// 만약 등록 버튼을 클릭한다면, img는 ajax로 나머지는 폼태그로 보내자
@@ -274,7 +280,6 @@
 		let resList = $(".resList");
 		let licList = $(".licList");
 		let acqList = $(".acqList");
-		let uno = $("#uno");
 		let dno = $("#dno");
 		
 		if (title.val() === '') {
@@ -287,8 +292,8 @@
 		formData.append('skill', skill.val());
 		formData.append('tendency', tendency);
 		formData.append('school', school.val());
-		formData.append('uno', uno.val());
 		formData.append('dno', dno.val());
+		formData.append('flag', flag);
 		
 		nameList.each(function(index) {
 			let jobName = $(this).val();
@@ -317,11 +322,33 @@
 			dataType: "text",
 			success: function(result) {
 				alert(result);
+				window.location.href="/developer/readPage?dno=${param.dno}";
+			},
+			error: function(res) {
+				alert("처리가 실패되었습니다. 잠시 후 다시 시도해주세요.");
+			}
+		});
+	}
+	
+	function remove() {
+		let dno = $("#dno");
+		
+		$.ajax({
+			type: "POST",
+			url: "/developer/remove",
+			data: {
+				dno : dno.val()
+			},
+			dataType: "text",
+			success: function(result) {
+				alert(result);
 				window.location.href="/developer/profile?id=${loginMember.id}";
 			},
 			error: function(res) {
 				alert("처리가 실패되었습니다. 잠시 후 다시 시도해주세요.");
 			}
-		})
+		});
+		
 	}
+	
 </script>

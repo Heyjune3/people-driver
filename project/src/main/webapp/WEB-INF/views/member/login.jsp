@@ -45,7 +45,7 @@
 		</div>
 		<div>
 			<button onclick="login()">로그인</button>
-			<p>계정이 없으신가요? <a href="/register">회원가입하기</a> </p>
+			<p>계정이 없으신가요? <a href="/user/register">회원가입하기</a> </p>
 		</div>
 		
 		<div>

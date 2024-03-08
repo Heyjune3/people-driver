@@ -41,7 +41,19 @@ public interface DeveloperService {
 	 * @param file
 	 * @return
 	 */
-	String edit(DeveloperDTO developerDTO, MultipartFile file) throws Exception;
+	String edit(Long dno, DeveloperDTO developerDTO, MultipartFile file) throws Exception;
+	
+	/**
+	 * 하나의 dno 삭제
+	 * @param dno - 하나의 dno
+	 * @return
+	 */
+	String remove(Long dno);
 
-
+	/**
+	 * uno가 생성해놓은 전체 dno 삭제
+	 * @param uno - 유저 uno
+	 * @return
+	 */
+	String removeAll(Long uno);
 }

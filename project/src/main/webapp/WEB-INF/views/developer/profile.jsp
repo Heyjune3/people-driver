@@ -86,7 +86,7 @@
 			</div>
 			
 			<div class="thirdRow">
-				삭제 할 수 있는 목록
+				참고할만한 다른 사람 프로필 보기
 			</div>
 		</div>
 		
