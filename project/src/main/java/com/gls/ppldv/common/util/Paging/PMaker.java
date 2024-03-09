@@ -34,22 +34,22 @@ public class PMaker {
 	}
 
 	private void calcPaging() {
-		endPage = (int) Math.ceil(cri.getPage() / (double) displayPageNum) * displayPageNum;
+		endPage = (int) Math.ceil(cri.getPage1() / (double) displayPageNum) * displayPageNum;
 
 		startPage = (endPage - displayPageNum) + 1;
 
-		maxPage = (int) Math.ceil(totalCount / (double) cri.getPerPageNum());
+		maxPage = (int) Math.ceil(totalCount / (double) cri.getPerPageNum1());
 
 		if (endPage > maxPage) {
 			endPage = maxPage;
 		}
 
-		if (cri.getPage() > maxPage) {
-			cri.setPage(maxPage);
+		if (cri.getPage1() > maxPage) {
+			cri.setPage1(maxPage);
 		}
 
-		first = (cri.getPage() != 1) ? true : false;
-		last = (cri.getPage() != maxPage) ? true : false;
+		first = (cri.getPage1() != 1) ? true : false;
+		last = (cri.getPage1() != maxPage) ? true : false;
 		prev = (startPage != 1) ? true : false;
 		next = (endPage == maxPage) ? false : true;
 	}
@@ -70,8 +70,8 @@ public class PMaker {
 	}
 
 	public String makeQuery(int page) {
-		UriComponents uriComponents = UriComponentsBuilder.newInstance().queryParam("page", page)
-				.queryParam("perPageNum", cri.getPerPageNum()).build();
+		UriComponents uriComponents = UriComponentsBuilder.newInstance().queryParam("page1", page)
+				.queryParam("perPageNum1", cri.getPerPageNum1()).build();
 		String query = uriComponents.toUriString();
 		System.out.println(query);
 		return query;

@@ -53,23 +53,23 @@
 								<td>${developer.viewCount}</td>
 							</tr>
 							</c:forEach>
-							<c:if test="${!empty pm and pm.maxPage > 0}">
+							<c:if test="${!empty pm1 and pm1.maxPage > 0}">
 								<tr>
 									<th colspan="6">
-										<c:if test="${pm.first}"> <!-- 제일 처음으로 갈 수 있는가? -->
-											<a href="/developer/profile?id=${loginMember.id}&page=1">[&laquo;]</a>
+										<c:if test="${pm1.first}"> <!-- 제일 처음으로 갈 수 있는가? -->
+											<a href="/developer/profile?id=${loginMember.id}&page1=1">[&laquo;]</a>
 										</c:if>
-										<c:if test="${pm.prev}"> <!-- 이전으로 갈 수 있는가? -->
-											<a href="/developer/profile?id=${loginMember.id}&page=${pm.startPage-1}">[&lt;]</a>
+										<c:if test="${pm1.prev}"> <!-- 이전으로 갈 수 있는가? -->
+											<a href="/developer/profile?id=${loginMember.id}&page1=${pm1.startPage-1}">[&lt;]</a>
 										</c:if>
-										<c:forEach var="i" begin="${pm.startPage}" end ="${pm.endPage}">
-											<a href="/developer/profile?id=${loginMember.id}&page=${i}">[${i}]</a>
+										<c:forEach var="i" begin="${pm1.startPage}" end ="${pm1.endPage}">
+											<a href="/developer/profile?id=${loginMember.id}&page1=${i}">[${i}]</a>
 										</c:forEach>
-										<c:if test="${pm.next}">
-											<a href="/developer/profile?id=${loginMember.id}&page=${pm.endPage+1}">[&gt;]</a>
+										<c:if test="${pm1.next}">
+											<a href="/developer/profile?id=${loginMember.id}&page1=${pm1.endPage+1}">[&gt;]</a>
 										</c:if>
-										<c:if test="${pm.last}">
-											<a href="/developer/profile?id=${loginMember.id}&page=${pm.maxPage}">[&raquo;]</a>
+										<c:if test="${pm1.last}">
+											<a href="/developer/profile?id=${loginMember.id}&page1=${pm1.maxPage}">[&raquo;]</a>
 										</c:if>
 									</th>
 								</tr>
@@ -87,6 +87,63 @@
 			
 			<div class="thirdRow">
 				참고할만한 다른 사람 프로필 보기
+				<table border="1">
+					<tr>
+						<th>증명사진</th>
+						<th>제목</th>
+						<th>성향</th>
+						<th>이름</th>
+						<th>업데이트 날짜</th>
+						<th>조회수</th>
+					</tr>
+					<c:choose>
+						<c:when test="${!empty developerAllList}">
+							<c:forEach var="developer" items="${developerAllList}">
+							<tr>
+								<c:choose>
+								<c:when test="${!empty developer.imgUrl}">
+									<td><img src="${developer.imgUrl}" style="width:100px; height:100px; object-fit:cover;" /></td>
+								</c:when>
+								<c:otherwise>
+									<td><img src="${path}/resources/img/profile.jpg" style="width:100px; height:100px; object-fit:cover;" /></td>
+								</c:otherwise>
+								</c:choose>
+								<td><a href="/developer/readOtherPage?dno=${developer.dno}">${developer.title}</a></td>
+								<td>${developer.tendency}</td>
+								<td>${developer.member.name}</td>
+								<td>${developer.updateDate}</td>
+								<td>${developer.viewCount}</td>
+							</tr>
+							</c:forEach>
+							<c:if test="${!empty pm2 and pm2.maxPage > 0}">
+								<tr>
+									<th colspan="6">
+										<c:if test="${pm2.first}"> <!-- 제일 처음으로 갈 수 있는가? -->
+											<a href="/developer/profile?id=${loginMember.id}&page=1">[&laquo;]</a>
+										</c:if>
+										<c:if test="${pm2.prev}"> <!-- 이전으로 갈 수 있는가? -->
+											<a href="/developer/profile?id=${loginMember.id}&page=${pm2.startPage-1}">[&lt;]</a>
+										</c:if>
+										<c:forEach var="i" begin="${pm2.startPage}" end ="${pm2.endPage}">
+											<a href="/developer/profile?id=${loginMember.id}&page=${i}">[${i}]</a>
+										</c:forEach>
+										<c:if test="${pm2.next}">
+											<a href="/developer/profile?id=${loginMember.id}&page=${pm2.endPage+1}">[&gt;]</a>
+										</c:if>
+										<c:if test="${pm2.last}">
+											<a href="/developer/profile?id=${loginMember.id}&page=${pm2.maxPage}">[&raquo;]</a>
+										</c:if>
+									</th>
+								</tr>
+							</c:if>
+						</c:when>
+						<c:otherwise>
+						<tr>
+							<th colspan="6">등록된 프로필이 없습니다.</th>
+						</tr>
+						</c:otherwise>
+					</c:choose>
+				</table>
 			</div>
 		</div>
 		

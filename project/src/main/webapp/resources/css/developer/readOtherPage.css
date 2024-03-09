@@ -1,0 +1,188 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	background-color: #DDD;
+	min-width: 800px;
+	border: 1px solid #CCCCCC;
+	width : 80%;
+	height: 1200px;
+	margin: 10px auto;
+}
+	.container .input {
+		display: flex;
+		justify-content: space-between;
+		height: 3%;
+	}
+		.container .input span {
+			display: flex;
+			border: 1px solid #CCCCCC;
+			box-sizing: border-box; /* border와 padding 요소를 안쪽으로 */
+			align-items: center;
+			height: 100%;
+		}
+		
+		.container .input span input {
+			width: 300px;
+			height: 100%;
+			border: none;
+		}
+		
+	.container .profile {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		height: 97%;
+		border: 1px solid #CCCCCC;
+		box-sizing: border-box; /* border와 padding 요소를 안쪽으로 */
+	}
+		.profile .firstRow {
+			width: 96%;
+			height: 20%;
+			box-sizing: border-box;
+			display: flex;
+			justify-content: space-between;
+			margin: 2%;
+		}
+			
+			.firstRow .img {
+				height: 100%;
+				position: relative;
+			}
+			
+				.img img {
+					position: absolute;
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+				}
+				
+			.firstRow .introduce {
+				display: flex;
+				flex-direction: column;
+				border: 1px solid #CCCCCC;
+				box-sizing: border-box;
+			}
+			
+				.introduce span {
+					display: inline-block; /* span 요소에 블럭 요소 추가 */
+					height: 20px;
+				}
+				
+				.introduce .introduce2 {
+					height: calc(100% - 20px);
+					resize: none;
+					box-sizing: border-box;
+				}
+				
+		.profile .secondRow {
+			width: 96%;
+			height: 20%;
+			box-sizing: border-box;
+			display: flex;
+			justify-content: space-between;
+			margin: 0 2% 2% 2%;
+		}
+			
+			.secondRow .tendency {
+				height: 100%;
+				border-radius: 50%;
+				border: 1px solid #CCCCCC;
+				display: flex;
+				flex-direction: column;
+				box-shadow:2px 2px 0 #CCCCCC;
+				align-content: center;
+				justify-content: center;
+			}
+			
+				.tendency h3 {
+					margin: 0 auto;
+					padding-bottom: 3%;
+				}
+				
+				.tendency input[type=radio] {
+					display:none;
+				}
+				
+				.tendency label {
+					display: flex;
+					border: 1px solid #CCCCCC;
+					width: 150px;
+					height: 30px;
+					margin: 0 auto;
+					border-radius: 5px;
+					margin-bottom: 10px;
+					box-shadow:0 2px 0 #CCCCCC;
+					align-items: center;
+					justify-content: center;
+				}
+				
+				.tendency input[type=radio]:checked + label {
+					background-color: skyblue;
+					color: white;				
+				}
+							
+			.secondRow .introduce {
+				display: flex;
+				flex-direction: column;
+				border: 1px solid #CCCCCC;
+				box-sizing: border-box;
+			}
+			
+		.profile .thirdRow {
+			width: 96%;
+			height: 16%;
+			margin: 0 2% 2% 2%;
+		}
+		
+			.thirdRow table {
+				width: 100%;
+				height: 100%;
+			}
+			
+			.thirdRow table textarea {
+				width: 100%;
+				height: 100%;
+				resize: none;
+				border: none;
+			}
+			
+		.profile .fourthRow {
+			width: 96%;
+			height: 16%;
+			margin: 0 2% 2% 2%;
+		}
+		
+			.fourthRow table {
+				width: 100%;
+				height: 100%;
+			}
+			
+			.fourthRow table input {
+				width: 100%;
+				height: 100%;
+				border: none;
+			}
+		
+		.profile .fifthRow {
+			width: 96%;
+			height: 16%;
+			margin: 0 2% 2% 2%;
+		}
+		
+			.fifthRow table {
+				width: 100%;
+				height: 100%;
+			}
+			
+			.fifthRow table input {
+				width: 100%;
+				height: 100%;
+				border: none;
+			}
+			
+			

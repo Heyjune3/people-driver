@@ -14,7 +14,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.gls.ppldv.common.util.Criteria;
 import com.gls.ppldv.common.util.FileUtil;
+import com.gls.ppldv.common.util.PageMaker;
 import com.gls.ppldv.common.util.Paging.Cri;
 import com.gls.ppldv.common.util.Paging.PMaker;
 import com.gls.ppldv.developer.dto.DeveloperDTO;
@@ -114,13 +116,29 @@ public class DeveloperServiceImpl implements DeveloperService {
 	public Page<Developer> searchDev(Long id, Cri cri) {
 		// 페이징 처리 된 게시물 개수 받아오기 (jpa)
 		Page<Developer> dlist = null;
+		Page<Developer> dlist2 = null;
+		// 아직 JPA의 Query 어노테이션에 대해 배우지 않아서
+		/* Pageable pageable = PageRequest.of(pageNumber, 5); */
+		Sort sort = Sort.by(Sort.Direction.DESC, "dno");
+
+		// 회원 id와 cri를 받아서 페이징 처리에 사용
+		Pageable pageable = PageRequest.of(cri.getPage1() - 1, cri.getPerPageNum1(), sort);
+		dlist = dr.findByMemberId(mr.findById(id).get().getId(), pageable);
+		return dlist;
+	}
+	
+	@Override
+	@Transactional
+	public Page<Developer> searchDev2(Criteria cri) {
+		// 페이징 처리 된 게시물 개수 받아오기 (jpa)
+		Page<Developer> dlist = null;
 		// 아직 JPA의 Query 어노테이션에 대해 배우지 않아서
 		/* Pageable pageable = PageRequest.of(pageNumber, 5); */
 		Sort sort = Sort.by(Sort.Direction.DESC, "dno");
 
 		// 회원 id와 cri를 받아서 페이징 처리에 사용
 		Pageable pageable = PageRequest.of(cri.getPage() - 1, cri.getPerPageNum(), sort);
-		dlist = dr.findByMemberId(mr.findById(id).get().getId(), pageable);
+		dlist = dr.findAll(pageable);
 		return dlist;
 	}
 
@@ -130,6 +148,15 @@ public class DeveloperServiceImpl implements DeveloperService {
 		int totalCount = dr.countByMemberId(mr.findById(id).get().getId());
 
 		PMaker pm = new PMaker(cri, totalCount);
+		return pm;
+	}
+	
+	@Override
+	public PageMaker getPageMaker(Criteria cri) throws Exception {
+		// 전체 게시물 개수
+		int totalCount = (int)dr.count();
+
+		PageMaker pm = new PageMaker(cri, totalCount);
 		return pm;
 	}
 	
@@ -147,6 +174,7 @@ public class DeveloperServiceImpl implements DeveloperService {
 		developerDTO.setTendency(developer.getTendency());
 		developerDTO.setImgUrl(developer.getImgUrl());
 		developerDTO.setFileName(developer.getFileName());
+		developerDTO.setUno(developer.getMember().getId());
 		
 		developerDTO.setDCareer(dcar);
 		developerDTO.setDLicense(dlic);
@@ -299,5 +327,15 @@ public class DeveloperServiceImpl implements DeveloperService {
 		
 		return "삭제 완료";
 	}
+
+	@Override
+	public Member findName(Long uno) {
+		
+		Member m = mr.findById(uno).get();
+		
+		return m;
+	}
+	
+	
 
 }
