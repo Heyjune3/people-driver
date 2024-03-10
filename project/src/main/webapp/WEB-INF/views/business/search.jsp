@@ -17,12 +17,10 @@
 	<img src="resources/img/searchBtn.png" id="searchBtn"/>
 	
 	<!-- 필터 -->
-	<div id="Group1">
-		<span id="Filter">
-			필터
-		</span>
-		<div id="FilterUi">
-		</div>
+	<span id="Filter">
+		필터
+	</span>
+	<div id="FilterUi">
 	</div>
 	
 	<div id="line5"></div>
