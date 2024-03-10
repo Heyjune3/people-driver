@@ -46,23 +46,27 @@ input[type="date"]:valid::before{
 	display: none;
 }
 
-	#frame3 {
+	.frame3 {
+		display: flex;
+		flex-direction: column;
 		border: solid 1px rgba(0, 0, 0, 0.26);
 		border-radius: 10px;
 		position: relative;
 		width: 810px;
-		height: 135%;
 		margin:20px auto;
 	}
-				#ProApply {
+		.frame3 .title {
+			display: flex;
+			flex-direction: row;
+			justify-content: left;
+		}
+		
+			#ProApply {
 				color: black;
 				font-size: 24px;
 				font-family: Inter, sans-serif;
 				font-weight: normal;
 				text-align: left;
-				position: absolute;
-				left: 316px;
-				top: 14px;
 			}
 			
 			#ProTitle {
@@ -77,9 +81,6 @@ input[type="date"]:valid::before{
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-top-left-radius: 10px;
 				border-bottom-left-radius: 10px;
-				position: absolute;
-				left: 10px;
-				top: 60px;
 			}
 			
 			#ProTitleBar {
@@ -88,9 +89,6 @@ input[type="date"]:valid::before{
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-top-right-radius: 10px;
 				border-bottom-right-radius: 10px;
-				position: absolute;
-				left: 78px;
-				top: 60px;
 				outline: none;
 			}
 			
@@ -100,9 +98,6 @@ input[type="date"]:valid::before{
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-top-right-radius: 10px;
 				border-bottom-right-radius: 10px;
-				position: absolute;
-				left: 78px;
-				top: 109px;
 				outline: none;
 			}
 			
@@ -118,18 +113,12 @@ input[type="date"]:valid::before{
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-top-left-radius: 10px;
 				border-bottom-left-radius: 10px;
-				position: absolute;
-				left: 10px;
-				top: 109px;
 			}
 			
 			
 			#Won {
 				width: 35px;
 				height: 35px;
-				position: absolute;
-				left: 303px;
-				top: 108px;
 			}
 			
 			#CompanyName {
@@ -144,9 +133,6 @@ input[type="date"]:valid::before{
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-top-left-radius: 10px;
 				border-bottom-left-radius: 10px;
-				position: absolute;
-				left: 10px;
-				top: 158px;
 			}
 			
 			#CompanyNameBar {
@@ -155,9 +141,7 @@ input[type="date"]:valid::before{
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-top-right-radius: 10px;
 				border-bottom-right-radius: 10px;
-				position: absolute;
 				left: 78px;
-				top: 158px;
 				outline: none;
 			}
 			
@@ -174,9 +158,6 @@ input[type="date"]:valid::before{
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-top-left-radius: 10px;
 				border-bottom-left-radius: 10px;
-				position: absolute;
-				left: 10px;
-				top: 207px;
 			}
 			
 			#TermBar {
@@ -185,9 +166,6 @@ input[type="date"]:valid::before{
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-top-right-radius: 10px;
 				border-bottom-right-radius: 10px;
-				position: absolute;
-				left: 78px;
-				top: 207px;
 				outline: none;
 			}
 			
@@ -204,9 +182,6 @@ input[type="date"]:valid::before{
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-top-left-radius: 10px;
 				border-bottom-left-radius: 10px;
-				position: absolute;
-				left: 10px;
-				top: 257px;
 			}
 			
 			#StartDateBar {
@@ -215,8 +190,6 @@ input[type="date"]:valid::before{
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-top-right-radius: 10px;
 				border-bottom-right-radius: 10px;
-				left: 78px;
-				top: 257px;
 				outline: none;
 			}
 			
@@ -245,9 +218,6 @@ input[type="date"]:valid::before{
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-top-left-radius: 10px;
 				border-bottom-left-radius: 10px;
-				position: absolute;
-				left: 348px;
-				top: 257px;
 			}
 			
 			
@@ -257,9 +227,6 @@ input[type="date"]:valid::before{
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-top-right-radius: 10px;
 				border-bottom-right-radius: 10px;
-				position: absolute;
-				left: 417px;
-				top: 257px;
 				outline: none;
 			}
 			
@@ -271,9 +238,6 @@ input[type="date"]:valid::before{
 				background-repeat: no-repeat;
 				background-size: cover;
 				background-position: center;
-				position: absolute;
-				left: 623px;
-				top: 260px;
 			}
 			
 			#EMail {
@@ -288,9 +252,6 @@ input[type="date"]:valid::before{
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-top-left-radius: 10px;
 				border-bottom-left-radius: 10px;
-				position: absolute;
-				left: 10px;
-				top: 309px;
 			}
 			
 			#EMailBar {
@@ -299,9 +260,6 @@ input[type="date"]:valid::before{
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-top-right-radius: 10px;
 				border-bottom-right-radius: 10px;
-				position: absolute;
-				left: 78px;
-				top: 309px;
 				outline: none;
 			}
 			
@@ -317,9 +275,6 @@ input[type="date"]:valid::before{
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-top-left-radius: 10px;
 				border-bottom-left-radius: 10px;
-				position: absolute;
-				left: 10px;
-				top: 360px;
 			}
 			
 			#PhoneBar {
@@ -328,9 +283,6 @@ input[type="date"]:valid::before{
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-top-right-radius: 10px;
 				border-bottom-right-radius: 10px;
-				position: absolute;
-				left: 78px;
-				top: 360px;
 				outline: none;
 			}
 			
@@ -346,9 +298,6 @@ input[type="date"]:valid::before{
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-top-left-radius: 10px;
 				border-bottom-left-radius: 10px;
-				position: absolute;
-				left: 10px;
-				top: 409px;
 			}
 			
 			#AddressBar {
@@ -357,9 +306,6 @@ input[type="date"]:valid::before{
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-top-right-radius: 10px;
 				border-bottom-right-radius: 10px;
-				position: absolute;
-				left: 78px;
-				top: 409px;
 				outline: none;
 			}
 			
@@ -371,9 +317,6 @@ input[type="date"]:valid::before{
 				background-size: contain;
 				background-position: center;
 				border-radius: 10px;
-				position: absolute;
-				left: 506px;
-				top: 22px;
 			}
 			
 			#Work {
@@ -384,9 +327,6 @@ input[type="date"]:valid::before{
 				font-weight: normal;
 				text-align: left;
 				width: 82px;
-				position: absolute;
-				left: 625px;
-				top: 38px;
 			}
 			
 			#FixedTerm {
@@ -401,11 +341,6 @@ input[type="date"]:valid::before{
 				line-height:34px;
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-radius: 10px;
-				position: absolute;
-				left: 686px;
-				top: 61px;
-				right: 57px;
-				bottom: 1175px;
 			}
 			
 			input[type="radio"]{
@@ -424,11 +359,6 @@ input[type="date"]:valid::before{
 				line-height:34px;
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-radius: 10px;
-				position: absolute;
-				left: 548px;
-				top: 61px;
-				right: 195px;
-				bottom: 1175px;
 			}
 			
 			#Choose {
@@ -438,9 +368,6 @@ input[type="date"]:valid::before{
 				font-family: Inter, sans-serif;
 				font-weight: normal;
 				text-align: left;
-				position: absolute;
-				left: 626px;
-				top: 108px;
 			}
 			
 			#Web {
@@ -454,11 +381,6 @@ input[type="date"]:valid::before{
 				line-height:34px;
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-radius: 10px;
-				position: absolute;
-				left: 524px;
-				top: 140px;
-				right: 219px;
-				bottom: 1095px;
 			}
 			
 			#Front {
@@ -472,11 +394,6 @@ input[type="date"]:valid::before{
 				line-height:34px;
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-radius: 10px;
-				position: absolute;
-				left: 603px;
-				top: 140px;
-				right: 110px;
-				bottom: 1095px;
 			}
 		
 			
@@ -491,11 +408,6 @@ input[type="date"]:valid::before{
 				line-height:34px;
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-radius: 10px;
-				position: absolute;
-				left: 712px;
-				top: 140px;
-				right: 31px;
-				bottom: 1095px;
 			}
 			
 			
@@ -503,9 +415,6 @@ input[type="date"]:valid::before{
 				width: 791px;
 				height: 545px;
 				border: solid 1px rgba(0, 0, 0, 0.26);
-				position: absolute;
-				left: 10px;
-				top: 459px;
 				overflow-y:auto;
 				overflow-x:hidden;
 				resize: none;
@@ -525,9 +434,6 @@ input[type="date"]:valid::before{
 				font-family: Inter, sans-serif;
 				font-weight: normal;
 				text-align: left;
-				position: absolute;
-				left: 30px;
-				top: 1021px;
 			}
 			
 			#AttachedEx {
@@ -537,9 +443,6 @@ input[type="date"]:valid::before{
 				font-family: Inter, sans-serif;
 				font-weight: normal;
 				text-align: left;
-				position: absolute;
-				left: 112px;
-				top: 1026px;
 			}
 			
 			input[type='file'] {
@@ -551,7 +454,6 @@ input[type="date"]:valid::before{
 			.UploadForm {
 			  position:absolute;
 			  left: 13px;
-			  top: 1053px;
 			}
 			.UploadForm1 {
 			  	color: rgba(0, 0, 0, 0.5);
@@ -570,7 +472,6 @@ input[type="date"]:valid::before{
 			    margin-left: 5px;
 			    margin-top: -5px;
 				display: inline-block;
-				position: absolute;
 				color: rgba(0, 0, 0, 0.6);
 				text-overflow: ellipsis;
 				font-size: 16px;
@@ -593,9 +494,6 @@ input[type="date"]:valid::before{
 				background-size: contain;
 				background-position: center;
 				border-radius: 10px;
-				position: absolute;
-				left: 13px;
-				top: 1087px;
 			}
 			
 			
@@ -606,9 +504,6 @@ input[type="date"]:valid::before{
 				font-family: Inter, sans-serif;
 				font-weight: normal;
 				text-align: left;
-				position: absolute;
-				left: 26px;
-				top: 1096px;
 			}
 			
 			#ApplyTerm {
@@ -623,9 +518,6 @@ input[type="date"]:valid::before{
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-top-left-radius: 10px;
 				border-bottom-left-radius: 10px;
-				position: absolute;
-				left: 13px;
-				top: 1219px;
 			}
 			
 			#ApplyTermBar {
@@ -634,9 +526,6 @@ input[type="date"]:valid::before{
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-top-right-radius: 10px;
 				border-bottom-right-radius: 10px;
-				position: absolute;
-				left: 102px;
-				top: 1219px;
 			}
 			
 			#ApplyEx {
@@ -647,9 +536,6 @@ input[type="date"]:valid::before{
 				font-weight: normal;
 				text-align: left;
 				width: 306px;
-				position: absolute;
-				left: 17px;
-				top: 1204px;
 			}
 			
 			#ApplyBtn {
@@ -659,9 +545,6 @@ input[type="date"]:valid::before{
 				background-repeat: no-repeat;
 				background-size: cover;
 				background-position: center;
-				position: absolute;
-				left: 377px;
-				top: 1221px;
 			}
 			
 			#WriteBtn {
@@ -679,9 +562,6 @@ input[type="date"]:valid::before{
 				background-position: center;
 				border:none;
 				border-radius: 10px;
-				position: absolute;
-				left: 672px;
-				top: 1219px;
 				cursor: pointer;
 			}
 			
@@ -701,9 +581,6 @@ input[type="date"]:valid::before{
 				background-position: center;
 				border: solid 1px rgba(0, 0, 0, 0.26);
 				border-radius: 10px;
-				position: absolute;
-				top: 1219px;
-				left: 524px;
 				cursor: pointer;
 			}
 			

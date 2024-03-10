@@ -9,13 +9,16 @@
 
 <!-- 개별 프로젝트 창 -->
 <c:set var="content">
-	<div id="frame3">
+	<div class="frame3">
 		<span id="ProApply">프로젝트 등록</span>
-		<div id="ProTitle">제목</div>
-		<input type="text" id="ProTitleBar"
-		 placeholder="*등록하실 프로젝트 제목을 입력해주세요."
-		 onfocus="this.placeholder=''"
-		 onblur="this.placeholder='*등록하실 프로젝트 제목을 입력해주세요.'"/> 
+		<div class="title">
+			<div id="ProTitle">제목</div>
+			<input type="text" id="ProTitleBar"
+			 placeholder="*등록하실 프로젝트 제목을 입력해주세요."
+			 onfocus="this.placeholder=''"
+			 onblur="this.placeholder='*등록하실 프로젝트 제목을 입력해주세요.'"/>
+		</div>
+		 
 		 
 		<input type="text" id="ApplyPayBar"
 		 placeholder="*금액을 입력해주세요."
