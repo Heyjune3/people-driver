@@ -1,10 +1,16 @@
 package com.gls.ppldv.developer.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.data.domain.Page;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.gls.ppldv.common.util.Criteria;
 import com.gls.ppldv.common.util.PageMaker;
@@ -34,10 +40,6 @@ public class DeveloperPathController {
 	@GetMapping("/profile")
 	public String profile(Long id, Cri cri1, Criteria cri2 , Model model) {
 
-		System.out.println("cri1 :"+ cri1);
-		
-		System.out.println("cri2 :"+ cri2);
-		
 		// 현재 회원 정보만
 		Page<Developer> dlist = null;
 		
@@ -97,5 +99,73 @@ public class DeveloperPathController {
 		model.addAttribute("memberName", m.getName());
 		return "/developer/readOtherPage";
 	}
+	
+	@GetMapping("/search")
+	public String search(
+		Criteria cri,
+		Model model
+	) {
+		// 전체 회원 정보들
+		Page<Developer> dlist = null;
+		PageMaker pm = null;
+		
+		try {
+			pm = ds.getPageMaker(cri);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
+		dlist = ds.searchDev2(cri);
+		// Page 객체의 getContent는 List 형태로 바꿔 전송
+
+		model.addAttribute("developerAllList", dlist.getContent());
+		model.addAttribute("pm", pm);
+		
+		return "/developer/search";
+	}
+	
+	/**
+	 * 개발자 찾기 페이지에서 첫번째 필드 검색
+	 */
+	@GetMapping("/searchFirst")
+	public String searchFirst(
+		Criteria cri,
+		String name,
+		Model model
+	) {
+		
+		Page<Developer> dlist = null;
+		PageMaker pm = null;
+		
+		try {
+			pm = ds.getPageMaker(name, cri);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		dlist = ds.searchDev3(name, cri);
+		
+		model.addAttribute("developerAllList", dlist.getContent());
+		model.addAttribute("pm", pm);
+		
+		return "/developer/search";
+	}
+
+	
+	/**
+	 * 회원 정보 조회
+	 */
+	@GetMapping("/Info")
+	public String info(
+		Long id,
+		Model model
+	) {
+		System.out.println("------------------------"+ id);
+		
+		Member m = ds.findName(id);
+		
+		model.addAttribute("developer", m);
+		return "/developer/info";
+	}
+	
 }

@@ -1,0 +1,120 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.find {
+	display: flex;
+	position: relative;
+	justify-content: center;
+	margin-bottom : 10px;
+}
+
+	.find label {
+		display: flex;
+		border: 1px solid #CCCCCC;
+		border-bottom-left-radius: 5px;
+		border-top-left-radius: 5px;
+		height: 25px;
+		color: gray;
+		font-size: 14px;
+		align-items: center;
+		justify-content: center;
+		padding: 2px;
+	}
+	
+	.find .findName {
+		position: relative;
+		border: 1px solid #CCCCCC;
+		border-bottom-right-radius: 5px;
+		border-top-right-radius: 5px;
+		width: 300px;
+		height: 25px;
+		padding: 2px;
+	}
+	
+		.findName input[type="text"] {
+			border: none;
+			width: 100%;
+			height: 100%;
+		}
+	
+		.findName img {
+			position: absolute;
+			right: 5px;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 25px;
+			heigth: 25px;
+		}
+
+	
+	
+.container {
+	width: 80%;
+	display: flex;
+	margin: 0 auto;
+	justify-content: space-between;
+}
+
+	.container .content {
+		display: flex;
+		width: calc(100% - 250px);
+		flex-direction: column;
+	}
+		.content > div {
+			display: flex;
+			flex-direction: column;
+			border: 1px solid #CCCCCC;
+			box-shadow: 2px 2px 0 #CCCCCC;
+			margin-bottom: 20px;
+			box-sizing: border-box; /* 박스 모델 설정 */
+			justify-content: center;
+			align-items: center;
+		}
+			.content > div > p {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-weight: bolder;
+			}
+		
+			.content > div > div {
+				width: 100%;
+			}
+		
+			.findProfile table {
+				width: 100%;
+				height: calc(100% - 100px);
+			}
+
+	.container .sidebar {
+		width: 250px;
+		background-color: #f4f4f4;
+		padding: 20px;
+		box-sizing: border-box; /* 박스 모델 설정 */
+		margin-bottom: 20px;
+	}
+
+		.sidebar .tab-list {
+			list-style: none;
+		}
+		
+		.sidebar .tab-list li {
+			margin-bottom: 10px;
+		}
+	
+			.tab-list li span{
+				display: block;
+				color: #333;
+				padding: 5px;
+				border-radius: 5px;
+				transition: background-color 0.3s;
+			}
+	
+			.tab-list li span:hover{
+				background-color: #ddd;
+				cursor: pointer; 
+			}

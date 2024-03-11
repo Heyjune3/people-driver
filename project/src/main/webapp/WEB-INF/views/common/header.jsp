@@ -15,93 +15,29 @@
 <meta charset="UTF-8">
 <title>Web Site</title>
 <link rel="stylesheet" type="text/css" href="${path}/resources/css/common.css"/>
-
-<style type="text/css">
-	header, footer, main {
-		border:1px solid black;
-		margin: 5px 0;
-	}
-	
-	header ul {
-		list-style-type: none; /* 목록 기호 제거 */
-		text-align: right;
-		margin: 0;
-		padding: 0;
-	}
-	
-	header ul li {
-		display: inline-block; /* 목록 항목을 인라인 블록 요소로 설정 */
-		margin-right: 10px;
-	}
-	
-	header #logout:hover {
-		cursor: pointer;
-		text-decoration: underline;
-		color: blue;
-	}
-	
-	header .prifileImage {
-		box-sizing: border-box; /* border와 padding을 포함한 전체 요소 크기 지정 */
-	}
-	
-	header .profileImage:hover {
-		box-shadow: 0 0 0 3px green;
-		cursor: pointer;
-	}
-	
-	header .profileImage2:hover {
-		cursor: default;
-		box-shadow: none;
-	}
-	
-	header .modal {
-            position: absolute;
-            display: none;
-            align-items: center;
-            flex-direction: column;
-            width: 300px;
-            height: 300px;
-            border: 1px solid black;
-
-            justify-content: center;
-            background-color: rgba(255,255,255);
-            z-index: 100;
-        }
-        header .modal_body {
-            display: flex;
-            flex-direction: row;
-            margin-bottom: 20px;
-        }
-
-        header .modal_info {
-            padding: 10px 0;
-        }
-
-        header .modal_info * {
-            display: flex;
-            flex-direction: column;
-            margin: 5px;
-            border: none;
-            padding: 0;
-        }
-
-        header .modal_footer {
-            display: flex;
-            gap : 10px;
-        }
-	
-</style>
+<link rel="stylesheet" type="text/css" href="${path}/resources/css/common/header.css"/>
 
 </head>
 <body>
 	<header>
 		<!-- 헤더 내용 추가 -->
-		<div>
+		<div class="logo1">
 			<!-- 왼쪽 상단에 로고 추가 -->
+			<img src="${path}/resources/img/logo/logo.png" style="width:80px; height:80px; border-radius: 50%; object-fit: cover;" onclick="location.href='/'" />
+			<span class="home-tooltip">홈으로</span>
 		</div>
 		<nav>
 			<ul>
-				<li><a href="/">home</a></li>
+				<li>&nbsp;|&nbsp;<a href="/search">프로젝트 찾기</a></li>
+				<li><a href="/searchD">개발자 찾기</a>&nbsp;|</li>
+			</ul>
+		</nav>
+		<div class="logo2">
+			<img src="${path}/resources/img/logo/logo2.png" style="width:300px; height:50px;" onclick="location.href='/'" />
+			<span class="home-tooltip">홈으로</span>
+		</div>
+		<nav>
+			<ul>
 				<c:choose>
 					<c:when test="${empty sessionScope.loginMember}">
 					<!-- 로그인 되지 않은 사용자 -->
@@ -110,7 +46,7 @@
 					</c:when>
 					<c:otherwise>
 					<!-- 로그인 된 사용자 -->
-						<li><a href="/search">프로젝트 찾기</a>
+						<li><span><b>${loginMember.name}</b></span> <img src="${path}/resources/img/home/alerm.png" style="width:40px; height:40px; margin-left:10px;" /></li>
 						<img onclick="modalShow($(this))" class="profileImage" src="${sessionScope.loginMember.imgUrl}" style="width:50px; height:50px; border-radius: 50%; object-fit: cover;" />
 						<div class="modal">
 					        <h2>프로필</h2>

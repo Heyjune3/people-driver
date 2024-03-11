@@ -30,6 +30,14 @@ public interface DeveloperService {
 	 * @return - DEVELOPER
 	 */
 	Page<Developer> searchDev2(Criteria cri);
+	
+	/**
+	 * 이름을 통해 검색된 회원 게시물 불러오기
+	 * 
+	 * @param id
+	 * @return - DEVELOPER
+	 */
+	Page<Developer> searchDev3(String name, Criteria cri);
 
 
 	/**
@@ -43,10 +51,17 @@ public interface DeveloperService {
 	/**
 	 * 등록된 회원 no를 통해 PageMaker 만들기
 	 * 
-	 * @param id  - 등록된 회원 no
 	 * @param cri - Criteria
 	 */
 	PageMaker getPageMaker(Criteria cri) throws Exception;
+	
+	/**
+	 * 등록횐 회원 name을 통해 PageMaker 만들기
+	 * 
+	 * @param name  - 등록된 회원 name
+	 * @param cri - Criteria
+	 */
+	PageMaker getPageMaker(String name, Criteria cri) throws Exception;
 	
 	/**
 	 * 등록된 게시물 dno를 받아와서 수정페이지 오픈

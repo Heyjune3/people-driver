@@ -1,0 +1,147 @@
+@charset "UTF-8";
+
+*{
+	margin : 0;
+	padding: 0;
+}
+
+header, footer {
+	height: 100px;
+	border: 1px solid black;
+	margin: 5px 0;
+	display: flex;
+	min-width: 900px;
+}
+
+main {
+	border:1px solid black;
+	margin: 5px 0;
+	min-width: 900px;
+}
+
+header {
+	justify-content: space-between; /* 요소 사이의 공간을 최대한 넓힘 */
+    align-items: center; /* 요소를 수직 중앙으로 정렬 */
+}
+
+footer {
+	align-items: center;
+}
+
+footer .logo1 {
+	cursor: pointer;
+}
+	footer p {
+		align-self : flex-end;
+		margin-bottom: 10px;
+	}
+
+
+
+	
+header .logo1, header .logo2 {
+	cursor: pointer;
+}
+
+	.logo2 {
+		margin: 0 auto;
+	}
+	
+	nav:last-of-type {
+		margin-left: auto;
+	}
+
+	header .logo1 .home-tooltip, header .logo2 .home-tooltip {
+	    position: absolute;
+	    display: none; /* 초기에는 숨김 */
+	    top: 0;
+	    left: 0;
+	    background-color: rgba(0, 0, 0, 0.7);
+	    color: white;
+	    padding: 5px 10px;
+	    border-radius: 5px;
+	}
+	footer .logo1 .home-tooltip {
+	    position: fixed;
+	    display: none; /* 초기에는 숨김 */
+	    top: 0;
+	    left: 0;
+	    background-color: rgba(0, 0, 0, 0.7);
+	    color: white;
+	    padding: 5px 10px;
+	    border-radius: 5px;
+	}
+	
+	.logo1:hover .home-tooltip, .logo2:hover .home-tooltip {
+		display: block;
+	}
+	
+	header nav {
+		align-self : flex-end;
+		margin-bottom: 10px;
+	}
+	
+	nav ul {
+		list-style-type: none; /* 목록 기호 제거 */
+	}
+	
+	header ul li {
+		display: inline-block; /* 목록 항목을 인라인 블록 요소로 설정 */
+		margin-right: 10px;
+	}
+	
+	header #logout:hover {
+		cursor: pointer;
+		text-decoration: underline;
+		color: blue;
+	}
+	
+	header .prifileImage {
+		box-sizing: border-box; /* border와 padding을 포함한 전체 요소 크기 지정 */
+	}
+	
+	header .profileImage:hover {
+		box-shadow: 0 0 0 3px green;
+		cursor: pointer;
+	}
+	
+	header .profileImage2:hover {
+		cursor: default;
+		box-shadow: none;
+	}
+	
+	header .modal {
+            position: absolute;
+            display: none;
+            align-items: center;
+            flex-direction: column;
+            width: 300px;
+            height: 300px;
+            border: 1px solid black;
+
+            justify-content: center;
+            background-color: rgba(255,255,255);
+            z-index: 100;
+        }
+        header .modal_body {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 20px;
+        }
+
+        header .modal_info {
+            padding: 10px 0;
+        }
+
+        header .modal_info * {
+            display: flex;
+            flex-direction: column;
+            margin: 5px;
+            border: none;
+            padding: 0;
+        }
+
+        header .modal_footer {
+            display: flex;
+            gap : 10px;
+        }

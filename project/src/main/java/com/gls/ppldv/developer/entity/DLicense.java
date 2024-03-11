@@ -29,7 +29,7 @@ public class DLicense {
 	@Column(name = "id")
 	private Long id;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "dno", referencedColumnName = "dno")
 	private Developer developer;
 

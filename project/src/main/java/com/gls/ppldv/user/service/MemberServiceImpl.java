@@ -235,7 +235,7 @@ public class MemberServiceImpl implements MemberService {
 		}
 		mm.editProfile(member);
 
-		return "삭제 완료";
+		return "수정 완료";
 	}
 
 	@Override

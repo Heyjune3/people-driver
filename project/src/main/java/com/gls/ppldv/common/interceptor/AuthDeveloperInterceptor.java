@@ -63,15 +63,18 @@ public class AuthDeveloperInterceptor implements HandlerInterceptor {
 						int id = Integer.parseInt(uno); // uno
 						Member mem = (Member)obj;
 						// 로그인한 회원만 프로필에 등록할 수 있도록 요청id와 로그인된 회원이 같지 않으면
-						if (mem.getId() != id) {
-							out = response.getWriter();
-							
-							out.println("<script>");
-							out.println("alert('접속할 수 없는 프로필 정보입니다.');");
-							out.println("history.go(-1)");
-							out.println("</script>");
-							return false;
-						} else return true; // 로그인한 회원이랑 요청 쿼리스트링 id가 같으면 요청 허용
+						if (!requestURI.equals("/developer/Info")) {
+							if (mem.getId() != id) {
+								out = response.getWriter();
+								
+								out.println("<script>");
+								out.println("alert('접속할 수 없는 프로필 정보입니다.');");
+								out.println("history.go(-1)");
+								out.println("</script>");
+								return false;
+							} else return true; // 로그인한 회원이랑 요청 쿼리스트링 id가 같으면 요청 허용
+						} else return true; // /developer/info 경로로 요청한 것은 id에 상관없이 접근 가능 
+						
 					} else return true; // 쿼리스트링 id가 숫자가 아닐때 (404가 뜰거임)
 				}
 			} else return true; // 요청이 POST일 때

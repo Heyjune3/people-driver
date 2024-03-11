@@ -65,7 +65,7 @@ public class Developer {
 	@Column(name = "developer_school", columnDefinition = "TEXT")
 	private String school;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "uno", referencedColumnName = "uno")
 	private Member member;
 

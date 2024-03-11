@@ -56,6 +56,9 @@
 		<!-- 로그인된 회원 중 DEVELOPER일 때와 BUSINESS일 때 구분 -->
 		<interceptor>
 			<mapping path="/developer/*" />
+			<exclude-mapping path="/developer/search" />
+			<exclude-mapping path="/developer/searchFirst" />
+			<exclude-mapping path="/developer/readOtherPage" />
 			<beans:bean class="com.gls.ppldv.common.interceptor.AuthDeveloperInterceptor" />
 		</interceptor>
 		

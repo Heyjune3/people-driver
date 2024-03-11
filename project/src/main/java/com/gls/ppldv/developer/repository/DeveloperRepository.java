@@ -18,12 +18,17 @@ public interface DeveloperRepository extends JpaRepository<Developer, Long> {
 	// 전체 개인 회원이 작성한 프로필 개수 가져오는 메서드
 	Integer countByMemberId(Long id);
 	
+	// 이름이 검색된 회원이 작성한 프로필 개수 가져오는 메서드
+	Integer countByMemberNameContaining(String name);
+	
 	// 페이징 1(현재 유저만)
 	Page<Developer> findByMemberId(Long id, Pageable pageable);
 
 	// 페이징 2(전체 회원)
 	Page<Developer> findAll(Pageable pageable);
 	
+	// 페이징 3 (검색된 이름 회원)
+	Page<Developer> findByMemberNameContaining(String name, Pageable pageable);
 	
 	void deleteAllByMemberId(Long uno);
 

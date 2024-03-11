@@ -157,6 +157,18 @@
 
 <script>
 
+	$(document).ready(function() {
+		$('.firstRow').css({
+        	display: 'none'
+        });
+        $('.secondRow').css({
+        	display: 'block'
+        });
+        $('.thirdRow').css({
+        	display: 'none'
+        });
+	});
+
 	// 탭 버튼 구현
     function showFirstRow() {
         $('.firstRow').css({

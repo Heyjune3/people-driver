@@ -22,9 +22,13 @@ public class HomeController {
 		return "main/home";
 	}
 
-	// 이거 나중에 경로 business로 바꿔야 함
 	@GetMapping("search")
 	public String search() {
 		return "/business/search";
+	}
+	
+	@GetMapping("searchD")
+	public String searchD() {
+		return "redirect:developer/search";
 	}
 }

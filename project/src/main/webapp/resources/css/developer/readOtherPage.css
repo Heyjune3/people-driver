@@ -26,6 +26,12 @@
 			height: 100%;
 		}
 		
+			.input #info:hover {
+				color: white;
+				background-color: skyblue;
+				cursor: pointer;
+			} 
+		
 		.container .input span input {
 			width: 300px;
 			height: 100%;

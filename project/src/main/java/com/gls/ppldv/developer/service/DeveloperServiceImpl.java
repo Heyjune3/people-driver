@@ -119,7 +119,7 @@ public class DeveloperServiceImpl implements DeveloperService {
 		Page<Developer> dlist2 = null;
 		// 아직 JPA의 Query 어노테이션에 대해 배우지 않아서
 		/* Pageable pageable = PageRequest.of(pageNumber, 5); */
-		Sort sort = Sort.by(Sort.Direction.DESC, "dno");
+		Sort sort = Sort.by(Sort.Direction.DESC, "updateDate");
 
 		// 회원 id와 cri를 받아서 페이징 처리에 사용
 		Pageable pageable = PageRequest.of(cri.getPage1() - 1, cri.getPerPageNum1(), sort);
@@ -134,11 +134,26 @@ public class DeveloperServiceImpl implements DeveloperService {
 		Page<Developer> dlist = null;
 		// 아직 JPA의 Query 어노테이션에 대해 배우지 않아서
 		/* Pageable pageable = PageRequest.of(pageNumber, 5); */
-		Sort sort = Sort.by(Sort.Direction.DESC, "dno");
+		Sort sort = Sort.by(Sort.Direction.DESC, "updateDate");
 
 		// 회원 id와 cri를 받아서 페이징 처리에 사용
 		Pageable pageable = PageRequest.of(cri.getPage() - 1, cri.getPerPageNum(), sort);
 		dlist = dr.findAll(pageable);
+		return dlist;
+	}
+	
+	@Override
+	@Transactional
+	public Page<Developer> searchDev3(String name, Criteria cri) {
+		// 페이징 처리 된 게시물 개수 받아오기 (jpa)
+		Page<Developer> dlist = null;
+		// 아직 JPA의 Query 어노테이션에 대해 배우지 않아서
+		/* Pageable pageable = PageRequest.of(pageNumber, 5); */
+		Sort sort = Sort.by(Sort.Direction.DESC, "updateDate");
+
+		// 회원 id와 cri를 받아서 페이징 처리에 사용
+		Pageable pageable = PageRequest.of(cri.getPage() - 1, cri.getPerPageNum(), sort);
+		dlist = dr.findByMemberNameContaining(name, pageable);
 		return dlist;
 	}
 
@@ -155,6 +170,15 @@ public class DeveloperServiceImpl implements DeveloperService {
 	public PageMaker getPageMaker(Criteria cri) throws Exception {
 		// 전체 게시물 개수
 		int totalCount = (int)dr.count();
+
+		PageMaker pm = new PageMaker(cri, totalCount);
+		return pm;
+	}
+	
+	@Override
+	public PageMaker getPageMaker(String name, Criteria cri) throws Exception {
+		// 전체 게시물 개수
+		int totalCount = (int)dr.countByMemberNameContaining(name);
 
 		PageMaker pm = new PageMaker(cri, totalCount);
 		return pm;
@@ -182,6 +206,15 @@ public class DeveloperServiceImpl implements DeveloperService {
 		return developerDTO;
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@Override
 	@Transactional
 	public String edit(Long dno, DeveloperDTO developerDTO, MultipartFile file) throws Exception {
@@ -335,7 +368,6 @@ public class DeveloperServiceImpl implements DeveloperService {
 		
 		return m;
 	}
-	
 	
 
 }
