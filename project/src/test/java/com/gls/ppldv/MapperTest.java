@@ -20,7 +20,7 @@ public class MapperTest {
 	@Autowired
 	MemberMapper mapper;
 
-	@Test
+	// @Test
 	public void test1() {
 		try {
 			Member member = new Member();

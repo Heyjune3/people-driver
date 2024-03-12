@@ -10,6 +10,7 @@
 	<div class="container">
 		<div class="input">
 			<span id="info"  onclick="location.href='/developer/Info?id=${developerInfo.uno}'" ><b>${memberName}</b> &nbsp; 프로필</span>
+			<span class="home-tooltip">개발자 프로필 보기</span>
 			<span>
 			제목
 			<input id="title" type="text" value="${developerInfo.title}" readonly />

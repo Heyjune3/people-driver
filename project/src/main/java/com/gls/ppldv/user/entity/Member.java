@@ -72,7 +72,7 @@ public class Member {
 	private String phoneNo;
 
 	@Column(name = "postcode", nullable = false)
-	private int pc5;
+	private Integer pc5;
 
 	@Column(name = "address", nullable = false)
 	private String address;
@@ -90,7 +90,7 @@ public class Member {
 	private String bname;
 
 	@Column(name = "business_postcode", nullable = true)
-	private int bpc5;
+	private Integer bpc5;
 
 	@Column(name = "business_address", nullable = true)
 	private String baddress;
