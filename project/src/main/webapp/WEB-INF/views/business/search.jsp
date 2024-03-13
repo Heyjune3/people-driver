@@ -20,7 +20,6 @@
 		<div>
 			<span id="Filter">필터</span>
 		</div>
-		
 		<div id="line5"></div>
 		<div class="proceedWay">
 				<input type="radio" id="OutsourcingBar" name="proceed" class="proceed" value="outsourcing"/>

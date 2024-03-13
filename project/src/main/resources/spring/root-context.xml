@@ -12,7 +12,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
 	<!-- properties 파일에 등록되면 키를 통해 값을 불러올 수 있게 해주는 것 -->
-	<context:property-placeholder location="classpath:prop/db-aws.properties" />
+	<context:property-placeholder location="classpath:prop/*.properties" />
 	
 	<!-- hikari cp 를 사용하기 위한 설정 정보를 저장하는 객체 -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
@@ -63,6 +63,10 @@
 	
 	<!-- multipart 파일 -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver" />	
+	
+	<bean id="uploadPath" class="java.lang.String">
+		<constructor-arg value="${upload.file}"/>
+	</bean>
 	
 	<!-- AWS S3 설정	
 	<bean id="awsCredentials" class="com.amazonaws.auth.BasicAWSCredentials">
