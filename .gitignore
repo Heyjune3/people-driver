@@ -2,6 +2,7 @@
 .metadata/
 Servers/
 target/
+project/src/main/webapp/attach
 
 target/m2e-wtp/
 # aws 키 ignore

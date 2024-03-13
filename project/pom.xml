@@ -246,7 +246,14 @@
 		    <artifactId>javax.mail</artifactId>
 		    <version>1.6.2</version>
 		</dependency>
-				
+		
+		<!-- thumbnail 이미지 생성용 -->
+        <!-- image resizer -->
+		<dependency>
+			<groupId>org.imgscalr</groupId>
+			<artifactId>imgscalr-lib</artifactId>
+			<version>4.2</version>
+		</dependency>
 		
 	</dependencies>
     <build>

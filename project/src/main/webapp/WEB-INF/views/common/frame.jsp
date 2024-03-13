@@ -4,10 +4,10 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!-- WEB-INF/views -->
-<c:set var="path" value="/WEB-INF/views" />
+<c:set var="path1" value="/WEB-INF/views" />
 
-<c:import url="${path}/common/header.jsp"/>
+<c:import url="${path1}/common/header.jsp"/>
 <main>
 	${content}
 </main>
-<c:import url="${path}/common/footer.jsp"/>
+<c:import url="${path1}/common/footer.jsp"/>
