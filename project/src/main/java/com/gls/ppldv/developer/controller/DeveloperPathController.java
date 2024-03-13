@@ -160,7 +160,6 @@ public class DeveloperPathController {
 		Long id,
 		Model model
 	) {
-		System.out.println("------------------------"+ id);
 		
 		Member m = ds.findName(id);
 		

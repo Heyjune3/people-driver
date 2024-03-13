@@ -48,6 +48,9 @@ public class AuthDeveloperInterceptor implements HandlerInterceptor {
 				Member m = (Member)obj; // 로그인된 사용자 정보
 				System.out.println(m);
 				if (m.getRole() == Role.BUSINESS) {
+					if (requestURI.equals("/developer/Info")) {
+						return true;
+					}
 					out = response.getWriter();
 					
 					out.println("<script>");
