@@ -1,23 +1,21 @@
 <!DOCTYPE HTML>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page session="true" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ page session="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<link rel="stylesheet" type="text/css" href="${path}/resources/css/developer/register.css"/>
+<link rel="stylesheet" type="text/css"
+	href="${path}/resources/css/developer/register.css" />
 
 <c:set var="content">
 	<input id="uno" type="hidden" value="${loginMember.id}" />
 	<div class="container">
 		<div class="input">
-			<span>개발자 프로필</span>
-			<span>
-			제목
-			<input id="title" type="text" placeholder="제목입력" autofocus="autofocus" />
-			</span>
-			<span id="register" onclick="register()">프로필 등록</span>
+			<span>개발자 프로필</span> <span> 제목 <input id="title" type="text"
+				placeholder="제목입력" autofocus="autofocus" />
+			</span> <span id="register" onclick="register()">프로필 등록</span>
 		</div>
-		
+
 		<div class="profile">
 			<div class="firstRow">
 				<div class="img">
@@ -27,49 +25,46 @@
 				</div>
 				<div class="introduce">
 					<span>개발자 소개</span>
-					<textarea class="introduce2" id="introduce" placeholder="1000자 이내로 작성해주세요."></textarea>
+					<textarea class="introduce2" id="introduce"
+						placeholder="1000자 이내로 작성해주세요."></textarea>
 				</div>
 			</div>
 			<div class="secondRow">
 				<div class="tendency">
 					<h3>성향</h3>
 					<div>
-		                <input type="radio" id="tend" name="tend" class="tend" value="FRONT" checked/>
-		                <label for="tend">프론트엔드</label>
-		                <input type="radio" id="tend2" name="tend" class="tend" value="BACK"/>
-		                <label for="tend2">백엔드</label>
-		                <input type="radio" id="tend3" name="tend" class="tend" value="APP"/>
-		                <label for="tend3">앱</label>
-	            	</div>
+						<input type="radio" id="tend" name="tend" class="tend"
+							value="FRONT" checked /> <label for="tend">프론트엔드</label> <input
+							type="radio" id="tend2" name="tend" class="tend" value="BACK" />
+						<label for="tend2">백엔드</label> <input type="radio" id="tend3"
+							name="tend" class="tend" value="APP" /> <label for="tend3">앱</label>
+					</div>
 				</div>
 				<div class="introduce">
 					<span>개발자 기술스택</span>
-					<textarea class="introduce2" id="skill" placeholder="1000자 이내로 작성해주세요."></textarea>
+					<textarea class="introduce2" id="skill"
+						placeholder="1000자 이내로 작성해주세요."></textarea>
 				</div>
 			</div>
-			
+
 			<div class="thirdRow">
 				<table border="1">
 					<tr>
-						<th colspan="2">
-							<span>학력사항</span>
-						</th>
+						<th colspan="2"><span>학력사항</span></th>
 					</tr>
 					<tr>
 						<th>학교명</th>
-						<td>
-							<textarea id="school" placeholder="학력사항에 대해 간단하게 설명해주세요. ex. 어느 고등학교 : 언제 입학, 졸업"></textarea>
+						<td><textarea id="school"
+								placeholder="학력사항에 대해 간단하게 설명해주세요. ex. 어느 고등학교 : 언제 입학, 졸업"></textarea>
 						</td>
 					</tr>
 				</table>
 			</div>
-			
+
 			<div class="fourthRow">
 				<table border="1">
 					<tr>
-						<th colspan="3">
-							<span>경력사항</span>
-						</th>
+						<th colspan="3"><span>경력사항</span></th>
 					</tr>
 					<tr>
 						<th>직장명</th>
@@ -77,84 +72,57 @@
 						<th>담당업무</th>
 					</tr>
 					<tr>
-						<td>
-							<input class="nameList" type="text" placeholder="IT 관련 직장"/>
-						</td>
-						<td>
-							<input class="periodList" type="text" placeholder="ex. 18.03.18 ~ 24.03.18 (6년 근무)"/>
-						</td>
-						<td>
-							<input class="resList" type="text" placeholder="ex. 개발자 (웹 엔지니어 전문)"/>
-						</td>
+						<td><input class="nameList" type="text"
+							placeholder="IT 관련 직장" /></td>
+						<td><input class="periodList" type="text"
+							placeholder="ex. 18.03.18 ~ 24.03.18 (6년 근무)" /></td>
+						<td><input class="resList" type="text"
+							placeholder="ex. 개발자 (웹 엔지니어 전문)" /></td>
 					</tr>
 					<tr>
-						<td>
-							<input class="nameList" type="text" />
-						</td>
-						<td>
-							<input class="periodList" type="text" />
-						</td>
-						<td>
-							<input class="resList" type="text" />
-						</td>
+						<td><input class="nameList" type="text" /></td>
+						<td><input class="periodList" type="text" /></td>
+						<td><input class="resList" type="text" /></td>
 					</tr>
 					<tr>
-						<td>
-							<input class="nameList" type="text" />
-						</td>
-						<td>
-							<input class="periodList" type="text" />
-						</td>
-						<td>
-							<input class="resList" type="text" />
-						</td>
+						<td><input class="nameList" type="text" /></td>
+						<td><input class="periodList" type="text" /></td>
+						<td><input class="resList" type="text" /></td>
 					</tr>
 				</table>
 			</div>
-			
+
 			<div class="fifthRow">
 				<table border="1">
 					<tr>
-						<th colspan="2">
-							<span>보유자격증</span>
-						</th>
+						<th colspan="2"><span>보유자격증</span></th>
 					</tr>
 					<tr>
 						<th>자격증명</th>
 						<th>취득기간</th>
 					</tr>
 					<tr>
-						<td>
-							<input class="licList" type="text" placeholder="ex. 리눅스마스터 1급 (KAIT 자격검정)"/>
-						</td>
-						<td>
-							<input class="acqList" type="text" placeholder="ex. 18.06.03 취득"/>
-						</td>
+						<td><input class="licList" type="text"
+							placeholder="ex. 리눅스마스터 1급 (KAIT 자격검정)" /></td>
+						<td><input class="acqList" type="text"
+							placeholder="ex. 18.06.03 취득" /></td>
 					</tr>
 					<tr>
-						<td>
-							<input class="licList" type="text" />
-						</td>
-						<td>
-							<input class="acqList" type="text" />
-						</td>
+						<td><input class="licList" type="text" /></td>
+						<td><input class="acqList" type="text" /></td>
 					</tr>
 					<tr>
-						<td>
-							<input class="licList" type="text" />
-						</td>
-						<td>
-							<input class="acqList" type="text" />
-						</td>
+						<td><input class="licList" type="text" /></td>
+						<td><input class="acqList" type="text" /></td>
 					</tr>
 				</table>
 			</div>
-			
+
 		</div>
 	</div>
 </c:set>
 
-<%@ include file="/WEB-INF/views/common/frame.jsp" %>
+<%@ include file="/WEB-INF/views/common/frame.jsp"%>
 
 <script>
 

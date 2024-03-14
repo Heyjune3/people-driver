@@ -6,7 +6,7 @@
 }
 
 .container {
-	background-color: #DDD;
+	background-color: #F8F8F8;
 	min-width: 800px;
 	border: 1px solid #CCCCCC;
 	width : 80%;
@@ -20,10 +20,18 @@
 	}
 		.container .input span {
 			display: flex;
+			background: linear-gradient(-90deg, rgba(3, 215, 79, 0.8), rgba(3, 215, 79, 0.8));
+			color: white;
 			border: 1px solid #CCCCCC;
 			box-sizing: border-box; /* border와 padding 요소를 안쪽으로 */
 			align-items: center;
 			height: 100%;
+			font-size: 12px;
+			border-radius: 6px;
+		}
+		
+		.container .input #title {
+			text-align: center;
 		}
 		
 		.container .input span input {
@@ -109,6 +117,7 @@
 				flex-direction: column;
 				border: 1px solid #CCCCCC;
 				box-sizing: border-box;
+				border-radius: 6px;
 			}
 			
 				.introduce span {
@@ -137,7 +146,6 @@
 				border: 1px solid #CCCCCC;
 				display: flex;
 				flex-direction: column;
-				box-shadow:2px 2px 0 #CCCCCC;
 				align-content: center;
 				justify-content: center;
 			}
@@ -174,6 +182,7 @@
 				flex-direction: column;
 				border: 1px solid #CCCCCC;
 				box-sizing: border-box;
+				border-radius: 6px;
 			}
 			
 		.profile .thirdRow {

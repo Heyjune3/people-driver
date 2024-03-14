@@ -2,32 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page session="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<style>
-.login {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
 
-	border: 1px solid #ccc;
-	border-radius: 1%;
-	
-	width : 80%;
-	height: 90%;
-}
-
-.login h1 {
-	text-align: center;
-}
-
-.login .loginForm input {
-	width : 80%;
-	height : 30px;
-	margin-bottom: 10px;
-}
-
-</style>
+<link rel="stylesheet" type="text/css" href="${path}/resources/css/member/login.css"/>
 
 <c:set var="content">
 	<section>
@@ -37,19 +13,15 @@
 			<input type="text" id="email" placeholder="이메일 주소"/>
 			<input type="password" id="pass" placeholder="비밀번호"/>
 		</div>
-		<div>
+		<div class="loginCheck">
 			<input type="checkbox" name="loginSession" id="loginSession"/>
 			<label for="loginSession">로그인 상태 유지</label>
 			
-			<button onclick="location.href='/user/findPass'">비밀번호 찾기</button>
+			<a href="/user/findPass" id="test">비밀번호 찾기</a>
 		</div>
-		<div>
+		<div class="loginButton">
 			<button onclick="login()">로그인</button>
 			<p>계정이 없으신가요? <a href="/user/register">회원가입하기</a> </p>
-		</div>
-		
-		<div>
-			<button onclick="check()">콘솔 확인</button>
 		</div>
 	</div>
 	</section>

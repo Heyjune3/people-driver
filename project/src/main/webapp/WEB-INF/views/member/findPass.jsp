@@ -2,60 +2,17 @@
     pageEncoding="UTF-8"%>
 <%@ page session="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<style>
-	.form {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		text-align: center;
 	
-		border: 1px solid #ccc;
-		border-radius: 1%;
-		
-		width : 80%;
-		height: 90%;
-	}
-	.form h1 {
-	text-align: center;
-}
-
-	.form .findPassForm input {
-		width : 80%;
-		height : 30px;
-		margin-bottom: 10px;
-	}
+<link rel="stylesheet" type="text/css" href="${path}/resources/css/member/findPass.css"/>
 	
-	.mail-ready {
-		display: none;
-		position: fixed;
-		z-index: 1000;
-		left: 0;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		overflow: hidden;
-		background-color: rgba(0, 0, 0, 0.5);
-	}
-	
-	.mail-ready-content {
-		background-color: #fefefe;
-		margin: 15% auto;
-		padding: 20px;
-		border: 1px solid #888;
-		width: 80%;
-		max-width: 400px;
-	}
-	
-</style>
 <c:set var="content">
 	
 	<section>
-	<div class="mail-ready">
-		<div class="mail-ready-content">
-			<p>메일을 전송하는 중입니다. 잠시 기다려주세요...</p>
+		<div class="mail-ready">
+			<div class="mail-ready-content">
+				<p>메일을 전송하는 중입니다. 잠시 기다려주세요...</p>
+			</div>
 		</div>
-	</div>
 		<div class="form">
 			<h1>비밀번호 찾기</h1>
 			<p>회원가입 시 등록 한 아이디(email)와 이름을 입력해주세요.</p>
@@ -67,7 +24,7 @@
 				</form>
 				<input type="text" name="name" id="name" placeholder="이름" required />
 			</div>
-			<div>
+			<div class="findPassBtn">
 				<button onclick="submit()">확인</button>
 			</div>
 		</div>

@@ -123,10 +123,15 @@ header .logo1, header .logo2 {
             background-color: rgba(255,255,255);
             z-index: 100;
         }
+        
+        	header .modal h2 {
+        		margin-bottom: 20px;
+        	}
+        
         header .modal_body {
             display: flex;
             flex-direction: row;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         header .modal_info {
