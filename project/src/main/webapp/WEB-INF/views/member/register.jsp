@@ -8,7 +8,6 @@
 <c:set var="content">
 	<input type="hidden" class="postcodify_postcode5"/>
 	<input type="hidden" class="postcodify_address"/>
-	<img src="${path}/resources/img/logo/logo2.png" id="logo" />
 		<div id="table">
 			<div>
 				<h2>회원가입</h2>
@@ -113,7 +112,7 @@
             </div>
             
             <div>
-            	<input style="color: white; box-shadow: 0 3px 0 #CCCCCC; background-color: rgba(3,199,90);" type="button" onclick="javascript:join();" value="회원가입" />
+            	<input style="cursor:pointer; color: white; box-shadow: 0 3px 0 #CCCCCC; background: linear-gradient(-90deg, rgba(3, 215, 79, 0.8), rgba(3, 215, 79, 0.8)); " type="button" onclick="javascript:join();" value="회원가입" />
             </div>
 			
 			<div id="map" style="width:500px;height:400px;"></div>

@@ -1,0 +1,96 @@
+@charset "UTF-8";
+
+.mail-ready {
+	display: none;
+	position: fixed;
+	z-index: 1000;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+	.mail-ready .mail-ready-content {
+		background-color: #fefefe;
+		margin: 15% auto;
+		padding: 20px;
+		border: 1px solid #888;
+		width: 80%;
+		max-width: 400px;
+	}
+
+
+.form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+
+	border: 1px solid #ccc;
+	border-radius: 1%;
+	
+	width : 30%;
+	height: 100%;
+	
+	min-width: 500px;
+}
+	
+	.form h1 {
+		text-align: center;
+		color: black;
+		margin-bottom: 10px;
+	}
+
+	.form p {
+		text-align: center;
+		color: black;
+		margin-bottom: 10px;
+	}
+
+		.form .findPassForm {
+			width: 100%;
+		}
+			
+			.findPassForm #email, .findPassForm #name {
+				width: 60%;
+				height: 50px;
+				box-shadow: 0px 4px 4px  rgba(0, 0, 0, 0.25);
+				
+				background: rgb(255, 255, 255);
+				background-repeat: no-repeat;
+				background-size: contain;
+				background-position: center;
+				
+				border: solid 0px black;
+				border-radius: 6px;
+				margin-bottom: 17px;
+			}
+	
+	
+	
+	
+		.form .findPassBtn {
+			width: 90%;
+		}
+	
+			.form .findPassBtn button {
+				width: 60%;
+				height: 40px;
+				background: linear-gradient(-90deg, rgba(3, 215, 79, 0.8), rgba(3, 215, 79, 0.8));
+				background-repeat: no-repeat;
+				background-position: center;
+				border-radius: 6px;
+				border-width: 0px;
+				color: white;
+				margin-bottom: 10px;
+			}
+
+button:hover{
+	cursor: pointer;
+}
+
+
+	

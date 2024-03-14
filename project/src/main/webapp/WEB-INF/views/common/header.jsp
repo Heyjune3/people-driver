@@ -52,8 +52,9 @@
 					        <h2>프로필</h2>
 					        <div class="modal_body">
 					            <div>
-					                <img class="profileImage profileImage2" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;" src="${sessionScope.loginMember.imgUrl}" />
+					                <img class="profileImage profileImage2" style="margin-left:1px; width: 100px; height: 100px; border-radius: 50%; object-fit: cover;" src="${sessionScope.loginMember.imgUrl}" />
 					            </div>
+					            <hr/>
 					            <div class="modal_info">
 					                <input style="width:190px;" value="이름 : ${sessionScope.loginMember.name}" readonly >
 					                <input style="width:190px;" value="아이디 : ${sessionScope.loginMember.email}" readonly >
@@ -96,8 +97,8 @@ if (msg != '') {
 		if (flag === true) {
 			let position = image.offset();
 			modal.css({
-				"top": position.top + image.outerHeight(),
-				"left": position.left - 300 + image.outerWidth()
+				"top": position.top + 14 + image.outerHeight(),
+				"left": position.left - 301 + image.outerWidth()
 			});
 		}
 	});
@@ -108,8 +109,8 @@ if (msg != '') {
 		if (flag === false) {
 			modal.css({
 				"display": "flex",
-				"top": position.top + e.outerHeight(),
-				"left": position.left - 300 + e.outerWidth()
+				"top": position.top + 14 + e.outerHeight(),
+				"left": position.left - 301 + e.outerWidth()
 			});	
 			flag = true;
 		} else {
