@@ -21,21 +21,26 @@
 <body>
 	<header>
 		<!-- 헤더 내용 추가 -->
-		<div class="logo1">
-			<!-- 왼쪽 상단에 로고 추가 -->
-			<img src="${path}/resources/img/logo/logo.png" style="width:80px; height:80px; border-radius: 50%; object-fit: cover;" onclick="location.href='/'" />
-			<span class="home-tooltip">홈으로</span>
+		<div class="first">
+			<div class="logo1">
+				<!-- 왼쪽 상단에 로고 추가 -->
+				<img src="${path}/resources/img/logo/logo.png" style="width:80px; height:80px; border-radius: 50%; object-fit: cover;" onclick="location.href='/'" />
+				<span class="home-tooltip">홈으로</span>
+			</div>
+			<div class="nav1">
+			<nav>
+				<ul>
+					<li>&nbsp;|&nbsp;<a href="/search">프로젝트 찾기</a></li>
+					<li><a href="/searchD">개발자 찾기</a>&nbsp;|</li>
+				</ul>
+			</nav>
+			</div>
 		</div>
-		<nav>
-			<ul>
-				<li>&nbsp;|&nbsp;<a href="/search">프로젝트 찾기</a></li>
-				<li><a href="/searchD">개발자 찾기</a>&nbsp;|</li>
-			</ul>
-		</nav>
 		<div class="logo2">
 			<img src="${path}/resources/img/logo/logo2.png" style="width:300px; height:50px;" onclick="location.href='/'" />
 			<span class="home-tooltip">홈으로</span>
 		</div>
+		<div class="nav2">
 		<nav>
 			<ul>
 				<c:choose>
@@ -78,6 +83,7 @@
 				</c:choose>
 			</ul>
 		</nav>
+		</div>
 	</header>
 <script>
 const msg = '${message}';

@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.gls.ppldv.common.util.Criteria;
 import com.gls.ppldv.common.util.PageMaker;
@@ -81,6 +82,19 @@ public class DeveloperPathController {
 		
 		model.addAttribute("developerInfo", developerDTO);
 		return "/developer/readPage";
+	}
+	
+	@GetMapping("readViewCount")
+	public String readViewCount(
+		Long dno,
+		RedirectAttributes rttrs
+	) throws Exception {
+		
+		ds.updateViewCnt(dno);
+		
+		rttrs.addAttribute("dno", dno);
+		
+		return "redirect:/developer/readOtherPage";
 	}
 	
 	@GetMapping("/readOtherPage")

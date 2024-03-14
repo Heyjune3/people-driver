@@ -99,4 +99,10 @@ public interface DeveloperService {
 	 * @return
 	 */
 	Member findName(Long uno);
+
+	/**
+	 * 조회수만 증가 로직
+	 * @param dno
+	 */
+	void updateViewCnt(Long dno);
 }

@@ -2,10 +2,15 @@ package com.gls.ppldv.developer.repository;
 
 import java.util.List;
 
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.gls.ppldv.developer.entity.Developer;
 
@@ -34,5 +39,11 @@ public interface DeveloperRepository extends JpaRepository<Developer, Long> {
 
 	List<Developer> findAllByMemberId(Long uno);
 
-	
+	/**
+	 * 조회수 증가 로직
+	 */
+	@Modifying
+	@Transactional
+	@Query("UPDATE Developer SET viewcnt = viewcnt + 1 WHERE dno = :dno")
+	void updateViewCount(@Param("dno") Long dno);
 }

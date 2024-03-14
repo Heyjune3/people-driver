@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import javax.swing.text.AbstractDocument.BranchElement;
 import javax.transaction.Transactional;
 
 import org.springframework.data.domain.Page;
@@ -368,6 +369,9 @@ public class DeveloperServiceImpl implements DeveloperService {
 		
 		return m;
 	}
-	
 
+	@Override
+	public void updateViewCnt(Long dno) {
+		dr.updateViewCount(dno);
+	}
 }

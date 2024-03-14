@@ -8,12 +8,14 @@
 <c:set var="content">
 	
 	<div class="container">
-		<div class="sideBar">
+		<div class="scrollbar">
+		<div class="sidebar">
 			<ul class="tab-list">
 				<li><span onclick="showFirstRow()">등록된 프로필 보기</span></li>
 				<li><span onclick="showSecondRow()">체결된 회원 목록</span></li>
 				<li><span onclick="showThirdRow()">대기중인 회원 목록</span></li>
 			</ul>
+		</div>
 		</div>
 		
 		<div class="content">
@@ -48,7 +50,7 @@
 										<td><img src="${path}/resources/img/profile.jpg" style="width:100px; height:100px; object-fit:cover;" /></td>
 									</c:otherwise>
 									</c:choose>
-									<td><a href="/developer/readOtherPage?dno=${developer.dno}">${developer.title}</a></td>
+									<td><a href="/developer/readViewCount?dno=${developer.dno}">${developer.title}</a></td>
 									<td>${developer.tendency}</td>
 									<td>${developer.member.name}</td>
 									<td>${developer.updateDate}</td>
@@ -137,7 +139,7 @@
 										<td><img src="${path}/resources/img/profile.jpg" style="width:100px; height:100px; object-fit:cover;" /></td>
 									</c:otherwise>
 									</c:choose>
-									<td><a href="/developer/readOtherPage?dno=${developer.dno}">${developer.title}</a></td>
+									<td><a href="/developer/readViewCount?dno=${developer.dno}">${developer.title}</a></td>
 									<td>${developer.tendency}</td>
 									<td>${developer.member.name}</td>
 									<td>${developer.updateDate}</td>
@@ -205,7 +207,7 @@
 										<td><img src="${path}/resources/img/profile.jpg" style="width:100px; height:100px; object-fit:cover;" /></td>
 									</c:otherwise>
 									</c:choose>
-									<td><a href="/developer/readOtherPage?dno=${developer.dno}">${developer.title}</a></td>
+									<td><a href="/developer/readViewCount?dno=${developer.dno}">${developer.title}</a></td>
 									<td>${developer.tendency}</td>
 									<td>${developer.member.name}</td>
 									<td>${developer.updateDate}</td>
@@ -289,6 +291,20 @@
 				window.location.href="/developer/searchFirst?name="+firstInputValue;	
 			}
 		}
+		
+		
+		// 사이드 바 스크롤 구현
+		var sidebar = $('.sidebar');
+
+        $(window).scroll(function() {
+            var scrollTop = $(window).scrollTop();
+            if (scrollTop > 0) {
+                sidebar.css({
+                    marginTop: scrollTop
+                });
+            } else {}
+        });
+		
 	});
 	
 	// 탭 버튼 구현
@@ -327,5 +343,4 @@
         	display: 'block'
         });
     }
-	
 </script>

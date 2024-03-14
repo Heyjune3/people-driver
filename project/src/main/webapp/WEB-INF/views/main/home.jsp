@@ -43,21 +43,21 @@
 			<div class="title"><h1>PEOPLE.DRIVER를 사용해야 하는 이유</h1></div>
 			<div class="t1">
 				<div class="t2">
-					<img />
+					<img src="${path}/resources/img/home/discription/coin.png" style="width: 100px; height:100px;"/>
 					<h3>100% 보장 제도</h3>
 					<span>안전한 프로젝트 완수를 위해</span>
 					<span>프리랜서 중도 해지 시 수수료 없이 재매칭 등</span>
 					<span>단계별 보장 서비스를 제공합니다.</span>
 				</div>
 				<div class="t2">
-					<img />
+					<img src="${path}/resources/img/home/discription/manager.png" style="width: 100px; height:100px;"/>
 					<h3>전담 매니저</h3>
 					<span>전담 매칭매니저가 프로젝트 등록부터</span>
 					<span>프리랜서 매칭협업까지 모두 도와드립니다.</span>
 					<span>오직 프로젝트에만 집중하세요.</span>
 				</div>
 				<div class="t2">
-					<img />
+					<img src="${path}/resources/img/home/discription/auth.png" style="width: 100px; height:100px;"/>
 					<h3>검증된 프리랜서</h3>
 					<span>경력 10년 이상의 매칭매니저가</span>
 					<span>평가 데이터 및 정성/정량 평가서를 기반으로</span>
@@ -70,7 +70,23 @@
 		</div>
 		
 		<div class="fourth">
-			다양한 이쁜 이미지들을 js로 드래그 할 수 있게 설계
+			<div class="fourthTitle">
+				<h2>딱 맞는 전문가 찾기! PEOPEL.DRIVER를 참고하세요!</h2>
+			</div>
+			<div class="comment">
+				<div>
+					<h3>하루 2시간</h3>
+					<p>사이트를 뒤적거려보세요!</p>
+				</div>
+				<div>
+					<h3>프로젝트 선점</h3>
+					<p>내가 원하는 프로젝트를 빠르고 쉽게 수주를 맡길 수 있습니다!</p>
+				</div>
+				<div>
+					<h3>7일</h3>
+					<p>일주일이면 원하는 프로젝트를 찾고 바로 프로젝트를 진행할 수 있습니다!</p>
+				</div>
+			</div>
 		</div>
 		<div class="fifth">
 			<div>제휴 회사 였으면 좋겠다 목록</div>
@@ -96,16 +112,25 @@
 	    var imageWidth = slider.find('img').eq(0).width();
 		var windowWidth = $(window).width();
 	    
-	    function slideRight() {
+		// 제휴 회사 이미지 옮기는 메서드
+		function slideRight() {
 	        position -= imageWidth;
-	        if (position < -(imageWidth+3)*5 ) {
+	        if (position < -(imageWidth+3)*7 ) {
 	            position = windowWidth;
 	        }
 	        slider.css('transform', 'translateX(' + position + 'px)');
 	    }
-	
+		
 	    setInterval(slideRight, 1000); // 1초마다 이미지를 오른쪽으로 슬라이드
+	    
+	    $(window).resize(function() {
+			windowWidth = $(window).width();
+		});
 	});
+	
+	
+	
+	
 	
 	
 	var animationPaused = false; // 애니메이션 중지 여부

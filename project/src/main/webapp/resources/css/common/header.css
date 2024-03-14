@@ -20,7 +20,8 @@ main {
 }
 
 header {
-	justify-content: space-between; /* 요소 사이의 공간을 최대한 넓힘 */
+	display: flex;
+	justify-content: center;
     align-items: center; /* 요소를 수직 중앙으로 정렬 */
 }
 
@@ -36,15 +37,14 @@ footer .logo1 {
 		margin-bottom: 10px;
 	}
 
-
-
-	
 header .logo1, header .logo2 {
 	cursor: pointer;
 }
 
-	.logo2 {
-		margin: 0 auto;
+	header .logo2 {
+		display: flex;
+		justify-content: center;
+		width: 33.33%;
 	}
 	
 	nav:last-of-type {
@@ -78,6 +78,24 @@ header .logo1, header .logo2 {
 	
 	header nav {
 		align-self : flex-end;
+	}
+	
+	header .first .nav1 {
+		display: flex;
+		justify-content: flex-start;
+	}
+	
+	header .first {
+		width: 33.33%;
+		display: flex;
+		justify-content: flex-start;
+	}
+	
+	header .nav2 {
+		width: 33.33%;
+		height: 100%;
+		display: flex;
+		justify-content: flex-end;
 		margin-bottom: 10px;
 	}
 	

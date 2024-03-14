@@ -5,11 +5,9 @@
 <link rel="stylesheet" type="text/css" href="${path}/resources/css/developer/profile.css"/>
 
 <c:set var="content">
-	<!-- 개인 프로필 등록된 게 있으면 등록된 게시물 보여주고 등록 페이지 오픈 -->
-	<h1>등록된 프로필 확인</h1>
-	
 	<div class="container">
 	
+		<div class="scrollbar">
 		<div class="sidebar">
 			<ul class="tab-list">
 				<li><span onclick="showFirstRow()">체결된 프로젝트 보기</span></li>
@@ -17,14 +15,17 @@
 				<li><span onclick="showThirdRow()">참고할만한 다른 사람 프로필 보기</span></li>
 			</ul>
 		</div>
+		</div>
 		
 		<div class="content">
 			<div class="firstRow">
 				체결된 프로젝트 목록
 			</div>
 			<div class="secondRow">
-				등록된 프로필 목록
-				<a href="/developer/register">등록</a>
+				<div>
+					<p>등록된 프로필 목록</p>
+					<button onclick="location.href='/developer/register'">등록</button>
+				</div>
 				<table border="1">
 					<tr>
 						<th>증명사진</th>
@@ -86,7 +87,9 @@
 			</div>
 			
 			<div class="thirdRow">
-				참고할만한 다른 사람 프로필 보기
+				<div>
+					<p>참고할만한 다른 사람 프로필 보기</p>
+				</div>
 				<table border="1">
 					<tr>
 						<th>증명사진</th>
@@ -205,4 +208,17 @@
         	display: 'block'
         });
     }
+    
+    $(document).ready(function() {
+        var sidebar = $('.sidebar');
+
+        $(window).scroll(function() {
+            var scrollTop = $(window).scrollTop();
+            if (scrollTop > 0) {
+                sidebar.css({
+                    marginTop: scrollTop
+                });
+            } else {}
+        });
+    });
 </script>
