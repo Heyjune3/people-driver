@@ -2,7 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ page session="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<style>
+
+<link rel="stylesheet" type="text/css" href="${path}/resources/css/member/passAuth.css"/>
+
+<!-- <style>
 .form {
 		display: flex;
 		flex-direction: column;
@@ -25,7 +28,7 @@
 		height : 30px;
 		margin-bottom: 10px;
 	}
-</style>
+</style> -->
 <c:set var="content">
 	<div class="form">
 		<form action="/user/changePass" method="post">
@@ -37,7 +40,7 @@
 		<div class="checkCodeForm">
 			<input type="text" id="code" placeholder="코드 입력" required>
 		</div>
-		<div>
+		<div class="checkCodeBtn">
 			<button onclick="submit()">확인</button>
 		</div>
 	</div>

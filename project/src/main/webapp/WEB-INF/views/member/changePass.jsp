@@ -2,7 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ page session="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<style>
+
+<link rel="stylesheet" type="text/css" href="${path}/resources/css/member/changePass.css"/>
+
+<!-- <style>
 	.form {
 		display: flex;
 		flex-direction: column;
@@ -24,9 +27,10 @@
 		width : 80%;
 		height : 30px;
 		margin-bottom: 10px;
-	}
+	} 
 	
-</style>
+</style> --> 
+
 <c:set var="content">
 	<section>
 		<div class="form">
@@ -37,7 +41,7 @@
 			<div class="changePassForm">
 				<input type="password" name="password" id="password" placeholder="새 비밀번호" required />
 			</div>
-			<div>
+			<div class="changePassBtn">
 				<button onclick="submit()">변경하러 가기</button>
 			</div>
 		</div>
