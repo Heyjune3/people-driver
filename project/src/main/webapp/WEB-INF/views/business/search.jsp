@@ -90,7 +90,6 @@
 	
 	<!-- 개별 프로젝트 -->	
 	<div class="ProjectBar">
-	
 		<div id="Ellipse4"></div>
 		<div class="proTitleText">
 			<span id="ProTitle">

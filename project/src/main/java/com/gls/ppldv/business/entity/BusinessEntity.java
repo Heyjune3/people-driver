@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -50,6 +52,12 @@ public class BusinessEntity {
 	
 	@Column(name = "business_applydate", nullable = false)
 	private Date applyDate;
+	
+	@Enumerated(EnumType.STRING)
+	private Process process;
+	
+	@Enumerated(EnumType.STRING)
+	private Field field;
 	
 	@ManyToOne
 	@JoinColumn(name = "uno", referencedColumnName = "uno")
