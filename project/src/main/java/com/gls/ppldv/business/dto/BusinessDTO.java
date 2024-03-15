@@ -5,6 +5,9 @@ import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.gls.ppldv.business.entity.Field;
+import com.gls.ppldv.business.entity.Process;
+
 import lombok.Data;
 
 @Data
@@ -26,6 +29,10 @@ public class BusinessDTO {
 	private Date applyDate;
 	
 	private Long uno;
+	
+	private Process process;
+	
+	private Field field;
 	
 	// 첨부된 파일 이름 리스트
 	private List<String> files;

@@ -8,8 +8,8 @@
 
 <!-- 개별 프로젝트 창 -->
 <c:set var="content">
-<input type="hidden" value="${loginMember.id}" name="uno" />
 <form action="/business/register" method="POST" id="registerForm">
+	<input type="hidden" value="${loginMember.id}" name="uno" />
 	<div class="frame3">
 		<div class="proApplyTitle">
 			<span id="ProApply">프로젝트 등록</span>
@@ -36,10 +36,8 @@
 		</div>
 		<div class="company">
 			<div id="CompanyName">사업체명</div>
-			<input type="text" id="CompanyNameBar"
-			 placeholder="*회사명을 입력해주세요."
-			 onfocus="this.placeholder=''"
-			 onblur="this.placeholder='*회사명을 입력해주세요.'"/>
+			<input type="text" id="CompanyNameBar" 
+			value="${loginMember.bname}" readonly/>
 		</div><br/>
 		
 		<div class="time">
@@ -64,25 +62,19 @@
 		<div class="forEmail">
 			<div id="EMail">e-mail</div>
 			<input type="email" id="EMailBar"
-			 placeholder="*등록하실 프로젝트 담당자의 e-mail을 입력해주세요."
-			 onfocus="this.placeholder=''"
-			 onblur="this.placeholder='*등록하실 프로젝트 담당자의 e-mail을 입력해주세요.'"/>
+			 value="${loginMember.email}" readonly/>
 		</div><br/>
 		
 		<div class="forPhone">
 			<div id="Phone">연락처</div>
 			<input type="text" id="PhoneBar"
-			 placeholder="*등록하실 프로젝트 담당자의 전화번호를 입력해주세요."
-			 onfocus="this.placeholder=''"
-			 onblur="this.placeholder='*등록하실 프로젝트 담당자의 전화번호를 입력해주세요.'"/>
+			 value="${loginMember.bphone}" readonly/>
 		</div><br/>
 		
 		<div class="forAddress">
 			<div id="Address">주소</div>
 			<input type="text" id="AddressBar"
-			 placeholder="사업체 주소를 입력해주세요."
-			 onfocus="this.placeholder=''"
-			 onblur="this.placeholder='사업체 주소를 입력해주세요.'"/>
+			 value="${loginMember.baddress} ${loginMember.bdetail}" readonly/>
 		</div><br/>
 
 		<div class="FilterBox">
@@ -90,9 +82,9 @@
 				<span id="Work">진행 방식</span>
 			</div>
 			<div class="proceedWay">
-				<input type="radio" id="Outsourcing" name="proceed" class="proceed" value="outsourcing"/>
+				<input type="radio" id="Outsourcing" name="process" class="proceed" value="OUTSOURCING" checked="checked"/>
 			    <label for="Outsourcing">외주</label>
-			    <input type="radio" id="FixedTerm" name="proceed" class="proceed" value="fiexedTerm"/>
+			    <input type="radio" id="FixedTerm" name="process" class="proceed" value="FIXEDTERM"/>
 		        <label for="FixedTerm">기간제</label>
 			</div>
 			<div>
@@ -100,11 +92,11 @@
 			</div>
 			
 			<div class="chooseWay">
-				<input type="radio" id="Web" name="options" class="options" value="web"/>
+				<input type="radio" id="Web" name="field" class="options" value="WEB" checked="checked"/>
 		        <label for="Web">웹</label>
-		        <input type="radio" id="Front" name="options" class="options" value="FrontEnd"/>
+		        <input type="radio" id="Front" name="field" class="options" value="FRONT"/>
 		        <label for="Front">프론트앤드</label>
-		        <input type="radio" id="Back" name="options" class="options" value="backEnd"/>
+		        <input type="radio" id="Back" name="field" class="options" value="BACK"/>
 		        <label for="Back">백앤드</label>
 			</div>
 		</div>
@@ -165,6 +157,43 @@
 <%@ include file="/WEB-INF/views/common/frame.jsp" %>
 
 <script>
+
+$(document).ready(function() {
+	let startDate=$('#StartDateBar');
+	let endDate=$('#EndDateBar');
+	let term = $('#TermBar');
+	
+	// endDate, startDate change 이벤트 발생했나?
+	let endDateOK = false;
+	let startDateOK = false;
+	endDate.on('change', function(e) {
+		if (endDate.val() === '') {
+			endDateOK = false;
+		}
+		endDateOK = true;
+		
+		if (!startDateOK || !endDateOK) {
+			alert("시작날짜가 입력되어야 합니다.");
+		} else {
+			let startDateValue = new Date(startDate.val());
+	        let endDateValue = new Date(endDate.val());
+	        let diffTime = endDateValue.getTime() - startDateValue.getTime();
+	        let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+	        term.val(diffDays+"일"); // 날짜 차이를 일수로 표시
+		}
+		
+	})
+	
+	startDate.on('change',function(e){
+		if (startDate.val() === '') {
+			startDateOK = false;
+		}
+		startDateOK = true;
+	});
+	
+});
+
+
 
 //파일 추가 시 파일명 조회
 let fileTarget = $('.UploadForm input');

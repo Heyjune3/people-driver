@@ -29,5 +29,4 @@ public interface AttachmentMapper {
 	@Insert("INSERT INTO tbl_attach(fullName, bno) VALUES(#{fullName}, #{bno})")
 	void replaceAttach(@Param("bno")int bno, @Param("fullName")String fullName) throws Exception;
 	
-	
 }

@@ -1,0 +1,782 @@
+@charset "UTF-8";
+
+* {
+	font-family: Helvetica, "Helvetica Neue", Roboto, Noto, Arial, sans-serif;
+}
+
+.Frame {
+	display: flex;
+	position: relative;
+	height: 100%;
+	margin:5px auto;
+}
+			
+	.Frame .Project {
+		min-width:900px;
+		width: 1000px;
+		margin:5px auto;
+		height: 746px;
+		border: solid 1px rgba(0, 0, 0, 0.26);
+		border-radius: 10px;
+	}
+	
+		.Project .proceed{
+			display:flex;
+			flex-direction: row;
+			justify-content: space-between;
+			width:160px;
+			position: relative;
+			left: 5px;
+			top: 5px;
+		}
+	
+			.proceed #Outsourcing {
+				border: solid 1px rgb(3, 215, 79);
+				border-radius: 10px;
+				color: rgb(3, 215, 79);				
+				width: 70px;
+				height: 35px;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				text-align: center;
+				line-height:34px;
+			}
+			
+			.proceed #Select {
+				border: solid 1px rgb(3, 215, 79);
+				border-radius: 10px;
+				color: rgb(3, 215, 79);				
+				width: 80px;
+				height: 35px;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				text-align: center;
+				line-height:34px;
+			}
+			
+		.Project #ProjectName {
+			color: black;
+			font-size: 35px;
+			font-family: Inter, sans-serif;
+			font-weight: normal;
+			text-align: left;
+			position: relative;
+			left: 2%;
+			top: 40px;
+		}
+		
+		.Project #ApplyTime {
+				color: rgba(0, 0, 0, 0.5);
+				font-size: 14px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 50%;
+				top: 1%;
+			}
+			
+		
+		.Project #ProjectTerm {
+				color: rgba(0, 0, 0, 0.5);
+				font-size: 18px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: relative;
+				width: 30%;
+				left: 40px;
+				top: 60px;
+			}
+		
+			.Project .startDates{
+				position: relative;
+				width: 150px;
+				left: 10px;
+				top: 80px;
+				color: rgba(0,0,0,0.5);
+			}
+				
+				.startDates #StartDate {
+					color: black;
+					font-family: Inter, sans-serif;
+					font-weight: normal;
+					text-align: left;
+				}
+			
+			.Project .endDates{
+				position: relative;
+				width: 150px;
+				left: 200px;
+				top: 60px;
+				color: rgba(0,0,0,0.5);
+			}
+			
+				.endDates #EndDate {
+					color: black;
+					font-family: Inter, sans-serif;
+					font-weight: normal;
+					text-align: left;
+					
+				}
+			
+			.Project .times{
+				position: relative;
+				left: 10px;
+				top: 85px;
+				width: 100px;
+				color: rgba(0,0,0,0.5);
+			}
+			
+				.times #Time {
+					color: black;
+					font-family: Inter, sans-serif;
+					font-weight: normal;
+					text-align: left;
+					
+				}
+			
+			.Project .applyDates{
+				position: relative;
+				left: 150px;
+				top: 63px;
+				color: rgba(0,0,0,0.5);
+			}
+			
+				.applyDates #ApplyDate {
+					color: rgb(3, 215, 79);	
+					font-size: 20px;
+					font-family: Inter, sans-serif;
+					font-weight: normal;
+					text-align: left;
+				}
+			
+			.Project .ProPayment {
+				width: 289px;
+				height: 101px;
+				border: solid 1px rgb(0,0,0,0.26);
+				border-radius: 10px;
+				position: relative;
+				left: 350px;
+				top: -35px;
+				box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+			}
+				
+				.ProPayment #PayTitle {
+					color: rgba(0, 0, 0, 0.5);
+					font-size: 18px;
+					font-family: Inter, sans-serif;
+					font-weight: normal;
+					position: relative;
+					left: 60px;
+					top: -5px;
+				}
+			
+				.ProPayment #won {
+					width: 40px;
+					height: 40px;
+					object-fit: cover;
+					position: relative;
+					left: -30px;
+					top: 43px;
+				}
+			
+				.ProPayment #Pay {
+					color: black;
+					font-size: 30px;
+					font-family: Inter, sans-serif;
+					font-weight: normal;
+					text-align: left;
+					position: relative;
+					left: -30px;
+					top: 35px;
+				}
+			
+			.CompanyInfomation {
+				border: solid 1px rgb(0,0,0,0.26);
+				border-radius: 10px;
+				position: relative;
+				width: 343px;
+				height: 255px;
+				position: relative;
+				left: 650px;
+				top: -295px;
+			}
+			
+			#Name {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 14px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 15px;
+				top: 9px;
+			}
+			
+			#CompanyName {
+				color: rgba(0, 0, 0, 0.7);
+				text-overflow: ellipsis;
+				font-size: 18px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 15px;
+				top: 29px;
+			}
+			
+			#Email {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 14px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 15px;
+				top: 69px;
+			}
+			
+			#CompanyEmail {
+				color: rgba(0, 0, 0, 0.7);
+				text-overflow: ellipsis;
+				font-size: 18px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 15px;
+				top: 89px;
+			}
+			
+			#Phone {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 14px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 15px;
+				top: 129px;
+			}
+			
+			#CompanyPhone {
+				color: rgba(0, 0, 0, 0.7);
+				text-overflow: ellipsis;
+				font-size: 18px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 15px;
+				top: 149px;
+			}
+			
+			#Adress {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 14px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 15px;
+				top: 189px;
+			}
+			
+			#CompanyAdress {
+				color: rgba(0, 0, 0, 0.7);
+				text-overflow: ellipsis;
+				font-size: 18px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 15px;
+				top: 209px;
+			}
+			
+			#Line4 {
+				width: 1113px;
+				height: 0px;
+				position: absolute;
+				left: 2px;
+				top: 287px;
+			}
+			
+			#ProContent {
+				color: black;
+				text-overflow: ellipsis;
+				font-size: 25px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				width: 176px;
+				position: absolute;
+				left: 21px;
+				top: 300px;
+			}
+			
+			#ProContents {
+				color: black;
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				width: 1081px;
+				min-height: 358px;
+				position: absolute;
+				left: 5px;
+				top: 364px;
+				height: 358px;
+			}
+			
+			#ProjectApply {
+				width: 1123px;
+				height: 536px;
+				position: absolute;
+				left: 21px;
+				top: 773px;
+			}
+			
+			#ProApply {
+				width: 1123px;
+				height: 536px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				left: 0px;
+				top: 0px;
+			}
+			
+			#ProjectApply_0001 {
+				color: black;
+				text-overflow: ellipsis;
+				font-size: 25px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 12px;
+				top: 17px;
+			}
+			
+			#DeveloperInfo {
+				color: rgba(3, 215, 79, 0.6);
+				text-overflow: ellipsis;
+				font-size: 14px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 6px;
+				top: 63px;
+			}
+			
+			#DeveloperName {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 18px;
+				top: 97px;
+			}
+			
+			#DeveloperNameBar {
+				width: 121px;
+				height: 28px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				left: 12px;
+				top: 120px;
+			}
+			
+			#DeveloperPhone {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 197px;
+				top: 103px;
+			}
+			
+			#DeveloperPhoneBar {
+				width: 276px;
+				height: 28px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				left: 191px;
+				top: 126px;
+			}
+			
+			#DeveloperGender {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 16px;
+				top: 163px;
+			}
+			
+			#DeveloperGenderBar {
+				width: 121px;
+				height: 28px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				left: 10px;
+				top: 186px;
+			}
+			
+			#DeveloperEmail {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 197px;
+				top: 163px;
+			}
+			
+			#DeveloperEmailBar {
+				width: 276px;
+				height: 28px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				left: 191px;
+				top: 186px;
+			}
+			
+			#Line9 {
+				width: 286px;
+				height: 0px;
+				position: absolute;
+				left: 545px;
+				top: 291px;
+				transform: rotate(-90deg);
+				transform-origin: top left;
+			}
+			
+			#Capacity {
+				color: rgba(3, 215, 79, 0.6);
+				text-overflow: ellipsis;
+				font-size: 14px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 558px;
+				top: 63px;
+			}
+			
+			#Languge {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 575px;
+				top: 103px;
+			}
+			
+			#LangugeBar {
+				width: 131px;
+				height: 28px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				left: 569px;
+				top: 126px;
+			}
+			
+			#License {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 808px;
+				top: 103px;
+			}
+			
+			#LicenseBar1 {
+				width: 241px;
+				height: 28px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				left: 802px;
+				top: 126px;
+			}
+			
+			#LicenseBar2 {
+				width: 241px;
+				height: 28px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				left: 802px;
+				top: 166px;
+			}
+			
+			#LicenseBar3 {
+				width: 241px;
+				height: 28px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				left: 802px;
+				top: 206px;
+			}
+			
+			#School {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				width: 158px;
+				position: absolute;
+				left: 583px;
+				top: 236px;
+			}
+			
+			#SchoolBar {
+				width: 308px;
+				height: 28px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				left: 569px;
+				top: 259px;
+			}
+			
+			#Line5 {
+				width: 1113px;
+				height: 0px;
+				position: absolute;
+				left: 5px;
+				top: 296px;
+			}
+			
+			#Attachment {
+				color: rgba(3, 215, 79, 0.6);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 10px;
+				top: 315px;
+			}
+			
+			#FileBtn {
+				width: 113px;
+				height: 28px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				left: 142px;
+				top: 306px;
+			}
+			
+			#FileUpload {
+				width: 807px;
+				height: 28px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				left: 255px;
+				top: 306px;
+			}
+			
+			#FileName {
+				color: rgba(0, 0, 0, 0.6);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				width: 293px;
+				position: absolute;
+				left: 264px;
+				top: 311px;
+			}
+			
+			#AttachAjax {
+				width: 927px;
+				height: 97px;
+				background-color: rgba(217, 217, 217, 0.4);
+				border-radius: 10px;
+				position: absolute;
+				left: 141px;
+				top: 347px;
+			}
+			
+			#AttachDrag {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 16px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 149px;
+				top: 356px;
+			}
+			
+			#Line8 {
+				width: 1093px;
+				height: 0px;
+				border-top: solid 1px rgba(0, 0, 0, 0.5);
+				position: absolute;
+				left: 1103px;
+				top: 460px;
+			}
+			
+			#ApplyBtn {
+				width: 129px;
+				height: 36px;
+				background-color: rgb(3, 215, 79);
+				border-radius: 10px;
+				position: absolute;
+				left: 968px;
+				top: 475px;
+			}
+			
+			#AskUi {
+				width: 1123px;
+				height: 524px;
+				position: absolute;
+				left: 21px;
+				top: 1324px;
+			}
+			
+			#Ask {
+				width: 1123px;
+				height: 524px;
+				border: solid 1px rgba(0, 0, 0, 0.26);
+				border-radius: 10px;
+				position: absolute;
+				left: 0px;
+				top: 0px;
+			}
+			
+			#AskTitle {
+				color: black;
+				text-overflow: ellipsis;
+				font-size: 25px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 23px;
+				top: 22px;
+			}
+			
+			#AskEmail {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 14px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 27px;
+				top: 59px;
+			}
+			
+			#AskContent {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 18px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 26px;
+				top: 81px;
+			}
+			
+			#AskDate {
+				color: rgba(0, 0, 0, 0.5);
+				text-overflow: ellipsis;
+				font-size: 14px;
+				font-family: Inter, sans-serif;
+				font-weight: normal;
+				text-align: left;
+				position: absolute;
+				left: 26px;
+				top: 111px;
+			}
+			
+			#Line5_0001 {
+				width: 1113px;
+				height: 0px;
+				position: absolute;
+				left: 2px;
+				top: 141px;
+			}
+			
+			#Rectangle11 {
+				width: 1096px;
+				height: 288px;
+				border: solid 1px rgba(0, 0, 0, 0.5);
+				position: absolute;
+				left: 10px;
+				top: 161px;
+			}
+			
+			#AskBtn {
+				width: 129px;
+				height: 35px;
+				background-color: rgb(3, 215, 79);
+				border-radius: 10px;
+				position: absolute;
+				left: 968px;
+				top: 464px;
+			}
+			
+			#Delete {
+				border: solid 1px rgb(255, 71, 71);
+				border-radius: 3px;
+				position: absolute;
+				left: 1145px;
+				top: 87px;
+				right: 0px;
+				bottom: 1702px;
+			}
+			
+			#Update {
+				background-color: rgba(3, 215, 79, 0.8);
+				border-radius: 3px;
+				position: absolute;
+				left: 1145px;
+				top: 16px;
+				right: 0px;
+				bottom: 1770px;
+			}
