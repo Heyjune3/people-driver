@@ -17,15 +17,6 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 	Member findByEmail(String email);
 
 	/**
-	 * 아이디 패스워드 일치하는 회원 찾기
-	 *
-	 * @param email    - 이메일
-	 * @param password - 패스워드
-	 * @return - 존재하는 회원 반환
-	 */
-	Member findByEmailAndPassword(String email, String password);
-
-	/**
 	 * 아이디 이름 일치하는 회원 찾기
 	 *
 	 * @param email - 이메일
@@ -38,4 +29,5 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 	 * @param email - 삭제할 아이디
 	 */
 	void deleteByEmail(String email);
+
 }

@@ -22,4 +22,24 @@ public class HomeController {
 	public String searchD() {
 		return "redirect:developer/search";
 	}
+	
+	// 에러 처리
+	@GetMapping("error_400")
+	public String error400() {
+		return "/error/error_400";
+	}
+	@GetMapping("error_403")
+	public String error403() {
+		return "/error/error_403";
+	}
+	@GetMapping("error_404")
+	public String error404() {
+		return "/error/error_404";
+	}
+	@GetMapping("error_405")
+	public String error405() {
+		return "/error/error_405";
+	}
+	
+	
 }

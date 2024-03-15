@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.gls.ppldv.common.util.CookieUtils;
 import com.gls.ppldv.common.util.FileUtil;
 import com.gls.ppldv.common.util.GmailAuthentication;
 import com.gls.ppldv.configuration.userException.LoginFailedException;
@@ -54,6 +55,10 @@ public class MemberServiceImpl implements MemberService {
 		if (m != null) {
 			throw new Exception("아이디 중복입니다. 다시 선택해주세요.");
 		} else {
+			// 비밀번호 encoding
+			String encPass = CookieUtils.encrypt(member.getPassword());
+			member.setPassword(encPass);
+			
 			// 이미지 업로드
 			String imgUrl = fu.uploadFile(file);
 			String savedFileName = fu.savedFileName(imgUrl);
@@ -82,6 +87,10 @@ public class MemberServiceImpl implements MemberService {
 		if (m != null) {
 			throw new IllegalArgumentException("아이디 중복입니다. 다시 선택해주세요.");
 		} else {
+			// 비밀번호 encoding
+			String encPass = CookieUtils.encrypt(member.getPassword());
+			member.setPassword(encPass);
+			
 			Member mem = mr.save(member);
 			if (mem != null) {
 				message = "회원가입 성공";
@@ -92,8 +101,21 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
+	@Transactional
 	public Member login(LoginDTO member) throws Exception {
-		Member m = mr.findByEmailAndPassword(member.getEmail(), member.getPassword());
+		
+		Member mem = mr.findByEmail(member.getEmail());
+		
+		String encryptedPassword = mem.getPassword();
+		
+		String decryptedPassword = CookieUtils.decrypt(encryptedPassword);
+		
+		Member m = null;
+		
+		if (decryptedPassword.equals(member.getPassword())) {
+			m = mr.findByEmail(member.getEmail());
+		}
+		
 		if (m != null) {
 			// 로그인 성공
 			return m;
@@ -192,6 +214,11 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public String changePass(Member member) throws Exception {
+		
+		// 암호화 해서 다시 저장
+		String encryptedPassword = CookieUtils.encrypt(member.getPassword());
+		member.setPassword(encryptedPassword);
+		
 		mm.changePass(member);
 
 		return "비밀번호 변경 성공";
