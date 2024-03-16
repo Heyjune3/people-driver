@@ -108,7 +108,7 @@
 		    <scope>provided</scope>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/javax.servlet.jsp/javax.servlet.jsp-api -->
+		<!-- jsp -->
 		<dependency>
 		    <groupId>javax.servlet.jsp</groupId>
 		    <artifactId>javax.servlet.jsp-api</artifactId>
@@ -116,6 +116,7 @@
 		    <scope>provided</scope>
 		</dependency>
 
+		<!-- jstl -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
@@ -130,7 +131,7 @@
 			<scope>test</scope>
 		</dependency>        
 		
-		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<!-- lombok -->
 		<dependency>
 		    <groupId>org.projectlombok</groupId>
 		    <artifactId>lombok</artifactId>
@@ -140,15 +141,21 @@
 		
 		<!-- java 기반 의존성 주입 라이브러리 추가 -->
 		<!-- @PostConstruct, @Resource 사용하기 위해서 -->
-		<!-- https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api -->
 		<dependency>
 		    <groupId>javax.annotation</groupId>
 		    <artifactId>javax.annotation-api</artifactId>
 		    <version>1.3.2</version>
 		</dependency>
 		
+		<!-- test class 실행 시 spring context 생성 -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-test</artifactId>
+		    <version>${org.springframework-version}</version>
+		    <scope>test</scope>
+		</dependency>
+		
 		<!-- Java - MySQL 연동 -->
-		<!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
 		<dependency>
 		    <groupId>com.mysql</groupId>
 		    <artifactId>mysql-connector-j</artifactId>
@@ -156,28 +163,18 @@
 		</dependency>
 		
 		<!-- spring - jdbc 연동 -->
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
 		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-jdbc</artifactId>
 		    <version>${org.springframework-version}</version>
 		</dependency>
 		
-		<!-- test class 실행 시 spring context 생성 -->
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
-		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-test</artifactId>
-		    <version>${org.springframework-version}</version>
-		    <scope>test</scope>
-		</dependency>
 		<!-- 
 			MyBatis ORM framework
 			ORM Object Relational Mapping
 			객체 관계형 맵핑
 			데이터베이스 에서 검색된 내용을 객체로 전달 
 		-->		
-		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
 		<dependency>
 		    <groupId>org.mybatis</groupId>
 		    <artifactId>mybatis</artifactId>
@@ -185,7 +182,6 @@
 		</dependency>
 		
 		<!-- MyBatis framework - Spring context 연동 -->
-		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
 		<dependency>
 		    <groupId>org.mybatis</groupId>
 		    <artifactId>mybatis-spring</artifactId>
@@ -210,21 +206,21 @@
 		   <version>5.1.0</version>
 		</dependency>
 		
-		<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa -->
+		<!-- jpa -->
 		<dependency>
 		    <groupId>org.springframework.data</groupId>
 		    <artifactId>spring-data-jpa</artifactId>
 		    <version>2.7.18</version>
 		</dependency>
 		
-		<!-- https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api -->
+		<!-- javax.persistence -->
 		<dependency>
 		    <groupId>javax.persistence</groupId>
 		    <artifactId>javax.persistence-api</artifactId>
 		    <version>2.2</version>
 		</dependency>
 		
-		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+		<!-- hibernate -->
 		<dependency>
 		    <groupId>org.hibernate</groupId>
 		    <artifactId>hibernate-core</artifactId>
@@ -232,7 +228,6 @@
 		</dependency>
 		
 		<!-- amazon s3 sdk 연동 -->
-		<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-s3 -->
 		<dependency>
 		    <groupId>com.amazonaws</groupId>
 		    <artifactId>aws-java-sdk-s3</artifactId>
@@ -240,7 +235,6 @@
 		</dependency>
 		
 		<!-- javax.mail -->
-		<!-- https://mvnrepository.com/artifact/com.sun.mail/javax.mail -->
 		<dependency>
 		    <groupId>com.sun.mail</groupId>
 		    <artifactId>javax.mail</artifactId>

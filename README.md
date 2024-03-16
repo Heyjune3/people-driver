@@ -4,7 +4,7 @@
 
 > 프로젝트 등록 페이지 validation 코드를 짜지 않아서 입력되는 값이 없을 때 500 에러 발생
 
-> Route53 ssl/tls 적용 문제 --> 노션 페이지 참고 ()
+> Route53 ssl/tls 적용 문제 --> 노션 페이지 참고 (https://tremendous-crocus-4a0.notion.site/Route53-55f0a8e8bc5c4f38a5f3993100dc88cc?pvs=4)
 ```
 
 # 후에 추가될 업데이트 버전 (V2)
@@ -32,7 +32,7 @@
 CSS 하기 전까지 완료
 
 # 웹 사이트 로직 흐름
-
+<img src="./flowchart/flowChart.png" style="width:100%; height: auto;" />
 
 # 실행 영상
 마지막 작업
