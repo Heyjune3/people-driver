@@ -60,10 +60,10 @@ button:hover {
 		}
 	
 		.second #first {
-			box-shadow: 2px 2px 2px black;
+			box-shadow: 1px 1px 1px #CCCCCC;
 			width: 125px;
 			height: 125px;
-			background-color: skyblue;
+			background-color: #E9E7E8;
 			position: relative;
 			display: flex;
 			justify-content: center;
@@ -73,9 +73,6 @@ button:hover {
 			animation: myAnim 5s infinite ease normal;
 		}
 		
-			#first h1 {
-			}
-			
 		@keyframes myAnim {
             0% {
                 left: calc(25% - 50px);
@@ -100,12 +97,12 @@ button:hover {
         }
         
         .second #second {
-        	box-shadow: 2px 2px 2px black;
+        	box-shadow: 1px 1px 1px #CCCCCC;
         	width: 12%;
         	height: 50px;
         	line-height: 50px;
             text-align: center;
-            background-color: skyblue;
+            background-color: EAE7EC;
             border-radius: 25px;
             animation: animationName 1s infinite ease-in-out alternate;
             opacity: 0.2;
@@ -142,40 +139,11 @@ button:hover {
 	                opacity: 1;
 	            }
 	        }
-        
-        .second .wrap{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            margin: 0 auto;
-            box-sizing: border-box;
-            position: relative;
-        }
-
-	        .wrap .word{
-	            border: 1px solid black;
-	            box-shadow: 2px 2px 2px skyblue;
-	            width: 150px;
-	            height: 30px;
-	            text-align: center;
-	            animation: rotate 5s infinite linear alternate;
-	        }
 	        
-	        @keyframes rotate {
-	            /* 
-	                각도를 표현 deg(degree), rad(radians), turn
-	            */
-	            0% {
-	                transform: rotateY(0deg);
-	            }
-	            50% {
-	                /* transform: rotateY(180deg); */
-	                transform: rotateY(3.141592rad);
-	            }
+	        .second > div:nth-child(2) {
+	        	margin-bottom: 50px;
 	        }
         
-	
 	.frame .third {
 		height: 500px;
 		display: flex;
@@ -185,7 +153,7 @@ button:hover {
 	}
 		
 		.third .title h1{
-			color: #2DB400;
+			color: #247C4D;
 		}
 	
 		.third .t1 {
@@ -204,7 +172,7 @@ button:hover {
 				width: 30%;
 				height: 100%;
 				border: 1px solid black;
-				background-color: #BCED36;
+				background-color: #DDEDDF;
 			}
 		
 	.frame .fourth {
@@ -214,7 +182,7 @@ button:hover {
 	}
 	
 		.fourth .fourthTitle {
-			margin-bottom : 20px;
+			margin-bottom : 60px;
 		}
 	
 		.fourth .comment {
@@ -225,7 +193,7 @@ button:hover {
 		}
 			.comment div {
 				width: 20%;
-				box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
+				box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
 			}
 			
 			.comment div h3 {

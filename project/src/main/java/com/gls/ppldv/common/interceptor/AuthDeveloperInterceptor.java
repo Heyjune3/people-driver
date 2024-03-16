@@ -46,7 +46,6 @@ public class AuthDeveloperInterceptor implements HandlerInterceptor {
 			if (request.getMethod().equalsIgnoreCase("get")) {
 				// 로그인 된 사용자가 BUSINESS일 때 접속 불가하게
 				Member m = (Member)obj; // 로그인된 사용자 정보
-				System.out.println(m);
 				if (m.getRole() == Role.BUSINESS) {
 					if (requestURI.equals("/developer/Info")) {
 						return true;

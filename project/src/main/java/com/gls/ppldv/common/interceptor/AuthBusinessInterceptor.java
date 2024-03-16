@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 
+import com.gls.ppldv.user.entity.Member;
+import com.gls.ppldv.user.entity.Role;
+
 public class AuthBusinessInterceptor implements HandlerInterceptor {
 
 	@Override
@@ -40,7 +43,40 @@ public class AuthBusinessInterceptor implements HandlerInterceptor {
 			return true;
 		// 로그인된 사용자
 		} else {
-			return true;
+			if (request.getMethod().equalsIgnoreCase("get")) {
+				// 로그인 된 사용자가 DEVELOPER일 때 접속 불가하게
+				Member m = (Member)obj; // 로그인된 사용자 정보
+				if (m.getRole() == Role.DEVELOPER) {
+					out = response.getWriter();
+					
+					out.println("<script>");
+					out.println("alert('비즈니스 회원만 접속 가능합니다.');");
+					out.println("history.go(-1)");
+					out.println("</script>");
+					
+					return false;
+				} else {
+					// 로그인된 사용자가 BUSINESS
+					String uno = request.getParameter("id");
+					// 쿼리스트링 id가 숫자일때만
+					if (uno != null && !uno.trim().equals("") && uno.matches(regex)) {
+						int id = Integer.parseInt(uno);
+						Member mem = (Member)obj;
+						// 로그인한 회원만 등록할 수 있도록 요청 id와 로그인한 회원이 같지 않으면
+						if (!requestURI.equals("/business/register")) {
+							if (mem.getId() != id) {
+								out = response.getWriter();
+								
+								out.println("<script>");
+								out.println("alert('접속할 수 없는 등록 페이지 정보입니다.');");
+								out.println("history.go(-1)");
+								out.println("</script>");
+								return false;
+							} else return true; // 같을때,
+						} else return true; // business/register가 아닐때
+					} else return true; // 숫자가 아닐때 404가 뜰거임
+				}
+			} else return true; // post 방식일 때
 		}
 	}
 

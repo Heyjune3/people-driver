@@ -30,11 +30,6 @@
 		        <div id="second"><h2>사이트</h2></div>
 		        <div id="second"><h2>두둥!</h2></div>
 			</div>
-			<div>
-				<div id="third" class="wrap">
-		            <div class="word">많이 이용해 주세요!</div>
-		        </div>
-			</div>
 			<button id="aniBtn" onclick="controlAnimation();">애니메이션 버튼 중지하기</button>
 		</div>
 		
@@ -128,30 +123,23 @@
 	});
 	
 	
-	
-	
-	
-	
 	var animationPaused = false; // 애니메이션 중지 여부
 	
 	function controlAnimation() {
 		const firstElement = $("#first");
 		const secondElement = $(".second #second");
-		const wordElement = $(".wrap .word");
 		const aniBtn = $("#aniBtn");
 		
 		if (animationPaused) {
 			// 애니메이션이 중지된 상태일 때, 다시 시작하기
 	        firstElement.css('animation-play-state', 'running');
 	        secondElement.css('animation-play-state', 'running');
-	        wordElement.css('animation-play-state', 'running');
 	        
 	        aniBtn.text("애니메이션 중지하기");
 		} else {
 			// 각 요소의 애니메이션을 중지시킵니다.
 		    firstElement.css('animation-play-state', 'paused');
 	        secondElement.css('animation-play-state', 'paused');
-	        wordElement.css('animation-play-state', 'paused');
 		    
 		    aniBtn.text("애니메이션 시작하기");
 		}
