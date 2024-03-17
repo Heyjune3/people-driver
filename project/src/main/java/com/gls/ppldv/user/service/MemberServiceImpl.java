@@ -53,7 +53,7 @@ public class MemberServiceImpl implements MemberService {
 		Member m = mm.idCheck(member.getEmail());
 		// 아이디 중복 체크
 		if (m != null) {
-			throw new Exception("아이디 중복입니다. 다시 선택해주세요.");
+			throw new IllegalArgumentException("아이디 중복입니다. 다시 선택해주세요.");
 		} else {
 			// 비밀번호 encoding
 			String encPass = CookieUtils.encrypt(member.getPassword());

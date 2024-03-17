@@ -1,8 +1,12 @@
 # 발생하는 오류 (V2에서 수정 예정)
 ```
-> 회원가입 시 response로 전달 받는 한글 UTF-8 적용 안되고 있음
+> 회원가입 시, interceptor에서 처리하는 권한 관련된 메시지들을 response로 전달 받는 한글 UTF-8 적용 안되고 있음 (문제 원인을 찾는게 제일 시급)
 
 > 프로젝트 등록 페이지 validation 코드를 짜지 않아서 입력되는 값이 없을 때 500 에러 발생
+
+> 로그인 할 시 잘못된 계정 정보로 로그인하면 서버에 에러 메시지가 뜨고 있던데 확인이 필요(서버가 가동하는 데는 문제 없음)
+
+> 프론트 작업(개발자 등록 시 다른 사람 프로필 보기에서 2페이지를 클릭하면 페이지가 리로드 되면서 등록된 프로필 보기로 이동하게 됨 여기서 다른 사람 프로필 보기 누르면 페이징 처리가 잘 되고 있는 것을 확인 가능)
 
 > Route53 ssl/tls 적용 문제 --> 노션 페이지 참고 (https://tremendous-crocus-4a0.notion.site/Route53-55f0a8e8bc5c4f38a5f3993100dc88cc?pvs=4)
 ```
@@ -29,46 +33,27 @@
 <img src="./db-diagram/classDiagram.png" style="width:100%; height: auto;" />
 
 # 피그마 페이지
-CSS 하기 전까지 완료
+<a href="https://www.figma.com/file/T7KEgv4NuViS8cwPf4S3L3/PEOPLE.DRIVER?type=design&node-id=0%3A1&mode=design&t=3vQVC9808Ltxab2s-1">피그마 페이지 링크</a>
 
 # 웹 사이트 로직 흐름
 <img src="./flowchart/flowChart.png" style="width:100%; height: auto;" />
 
 # 실행 영상
-마지막 작업
+<a href="https://youtu.be/vMHdKvY89Lk"> S3에 업로드 하는 영상 </a> <br/>
+<a href="https://youtu.be/vMHdKvY89Lk"> 에러 404, 405 처리 페이지 </a> <br/>
+<a href="https://youtu.be/vMHdKvY89Lk"> 권한 관련된 영상 (간단 축약) </a> <br/>
+<a href="https://youtu.be/vMHdKvY89Lk"> 전체 시연 영상 </a> <br/>
 
 # 간단한 소개
-마지막 작업
+개발자로의　ｒｏａｄ를　걷는　길에　프리랜서는　무엇을　하는　걸까？라는　질문에서　시작하여，　우리는　개발자들이　많은　참여　기회와　소통의　폭을　넓힐　수　있는　플랫폼을　만들고자　하였습니다．　이　플랫폼을　통해　개발자들은　마음껏　다양한　프로젝트를　경험하고，　편안하게　업무를　수행할　수　있는　환경을　제공받을　것을　목표로　합니다．
+
 
 # 발표 ppt와 발표 자료 및 포트폴리오 자료
-마지막 작업
+추가 예정 - - - -
 
 
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
-
-
-# 피그마 usecase
-
-## 반응형 prototype 만들기
-https://cyanindesign.blogspot.com/2021/12/figma-prototype.html
-
-
-## 
-
-
-# javascript
-## jquery
-
-1. jquery에서는 태그의 value 속성을 가져올 때 val()을 사용
-    - 참고 : 일반적일때는 tag.value 로 값을 가져옴
-
-2. 길이를 가져올 때 tag.length는 tag의 요소들의 개수
-    - 참고 : tag.val().length는 tag의 value 속성의 길이
-
-3. tag.val() 은 value값을 가져오고, tag.val('') 은 value 값을 초기화
-
-4. 
 
 # Docker
 

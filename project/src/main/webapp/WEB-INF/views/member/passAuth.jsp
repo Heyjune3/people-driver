@@ -5,30 +5,6 @@
 
 <link rel="stylesheet" type="text/css" href="${path}/resources/css/member/passAuth.css"/>
 
-<!-- <style>
-.form {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		text-align: center;
-	
-		border: 1px solid #ccc;
-		border-radius: 1%;
-		
-		width : 80%;
-		height: 90%;
-	}
-	.form h1 {
-	text-align: center;
-}
-
-	.form .checkCodeForm input {
-		width : 80%;
-		height : 30px;
-		margin-bottom: 10px;
-	}
-</style> -->
 <c:set var="content">
 	<div class="form">
 		<form action="/user/changePass" method="post">

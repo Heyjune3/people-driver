@@ -66,7 +66,9 @@ public class MemberController {
 
 	// 로그인 처리
 	@PostMapping("/login")
-	public ResponseEntity<Object> login(LoginDTO member, HttpServletRequest request, HttpServletResponse response) {
+	public ResponseEntity<Object> login(LoginDTO member,
+			HttpServletRequest request,
+			HttpServletResponse response) {
 		HttpSession session = request.getSession(); // 세션을 받아와서
 		ResponseEntity<Object> result = null; // 로그인성공,실패 보낼 전송 데이터
 		Member m = null;
