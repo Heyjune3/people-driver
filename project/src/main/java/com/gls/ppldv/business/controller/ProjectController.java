@@ -1,5 +1,7 @@
 package com.gls.ppldv.business.controller;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 
 import org.springframework.stereotype.Controller;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gls.ppldv.business.dto.BusinessDTO;
 import com.gls.ppldv.business.service.BusinessService;
+import com.gls.ppldv.common.util.Criteria;
 
 import lombok.RequiredArgsConstructor;
 
@@ -30,6 +33,11 @@ public class ProjectController {
 		BusinessDTO bd = bs.readBusiness(bno);
 		model.addAttribute("dto",bd);
 		return "/business/project";
+	}
+	
+	@GetMapping("/search")
+	public String listReply() {
+		return "/business/search";
 	}
 
 	@GetMapping("/register")

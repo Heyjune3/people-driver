@@ -160,16 +160,33 @@
 
 <script>
 
+	
+
 	$(document).ready(function() {
-		$('.firstRow').css({
-        	display: 'none'
-        });
-        $('.secondRow').css({
-        	display: 'block'
-        });
-        $('.thirdRow').css({
-        	display: 'none'
-        });
+		
+		if (${!empty param.page1}) {
+			$('.firstRow').css({
+	        	display: 'none'
+	        });
+	        $('.secondRow').css({
+	        	display: 'block'
+	        });
+	        $('.thirdRow').css({
+	        	display: 'none'
+	        });	
+		}
+		else if (${!empty param.page}) {
+			$('.firstRow').css({
+	        	display: 'none'
+	        });
+	        $('.secondRow').css({
+	        	display: 'none'
+	        });
+	        $('.thirdRow').css({
+	        	display: 'block'
+	        });	
+		}
+		
 	});
 
 	// 탭 버튼 구현

@@ -89,62 +89,67 @@
 		
 	
 	<!-- 개별 프로젝트 -->	
-	<div class="ProjectBar">
-		<div id="Ellipse4"></div>
-		<div class="proTitleText">
-			<span id="ProTitle">
-				<a href="/business/project" >어플리케이션 회계 페이지 구축</a>
-			</span>
-		</div>
-		
-		<div id="Ellipse5"></div>
-		<div>
-			<span id="ProClarlification">프로젝트 설명</span>
-		</div>
-		
-		<div class="ProClarlificationBar">
-			<span id="Explain">
-				-Health Kihosk의 회계 페이지 UI 구축<br/>
-				-당일 매출, 월 매출, 년 매출 개발 필요<br/>
-				-SenceBuilder를 이용해 개발해줄 인재
-			</span>
-		</div>
-		
-		<div>
-			<img src="resources/img/won.png" alt="icon" id="ClarityWonSolid" />
-		</div>
-		<div class="proPayment">
-			<span id="ProPay">금액</span>
-			<span id="Payment">100,000,000 원</span>
-		</div>
-		
-		
-		<div class="proStatus">
-			<span id="Choose">선택분야</span>
-			<div class="ChooseStatus">
-				<div id="Ellipse7"></div>
-				<span id="Back_0001">프론트앤드</span>
-			</div>
-			<br/>
-			<span id="Term">기간</span>
-			<div class="termStatus">
-				<div id="Ellipse8"></div>
-				<span id="TermDate">
-				시작일 : 2023.09.18<br/>
-				근무 기간 : 30일
-				</span>
-			</div>
-			<br/>
-			<span id="Company">회사명</span>
-			<div class="companyStatus">
-				<div id="Ellipse9"></div>
-				<span id="CompanyName">(주) Health - Kihosk</span>
-			</div>
-			
-		</div>
-		
-		<div id="OutsourcingBar_0001">외주</div>
-	</div>
+	<c:choose>
+		<c:when test="${!empty qnaList}">
+		<input type="hidden" value="${business.bno}" name="bno"/>
+			<c:forEach var="business" items="${qnaList}">
+				
+					<div class="ProjectBar">
+					<div id="Ellipse4"></div>
+					<div class="proTitleText">
+						<span id="ProTitle">
+							<a href="/business/project?bno=${business.bno}">${business.title}</a>
+						</span>
+					</div>
+					
+					<div id="Ellipse5"></div>
+					<div>
+						<span id="ProClarlification">프로젝트 설명</span>
+					</div>
+					
+					<div class="ProClarlificationBar">
+						<span id="Explain">${business.content}</span>
+					</div>
+					
+					<div>
+						<img src="resources/img/won.png" alt="icon" id="ClarityWonSolid" />
+					</div>
+					<div class="proPayment">
+						<span id="ProPay">금액</span>
+						<span id="Payment">${business.payment}</span>
+					</div>
+					
+					
+					<div class="proStatus">
+						<span id="Choose">선택분야</span>
+						<div class="ChooseStatus">
+							<div id="Ellipse7"></div>
+							<span id="Back_0001">${business.process}</span>
+						</div>
+						<br/>
+						<span id="Term">기간</span>
+						<div class="termStatus">
+							<div id="Ellipse8"></div>
+							<span id="TermDate">
+							시작일 : ${business.startDate}<br/>
+							<!-- 근무 기간 : 30일 -->
+							</span>
+						</div>
+						<br/>
+						<span id="Company">회사명</span>
+						<div class="companyStatus">
+							<div id="Ellipse9"></div>
+							<span id="CompanyName">(주) Health - Kihosk</span>
+						</div>
+						
+					</div>
+					
+					<div id="OutsourcingBar_0001">${business.process}</div>
+				</div>
+			</c:forEach>
+		</c:when>
+	</c:choose>
+	
 	
 	
 	

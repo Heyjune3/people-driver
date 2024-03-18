@@ -8,6 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.gls.ppldv.business.dto.BusinessDTO;
 import com.gls.ppldv.business.mapper.AttachmentMapper;
 import com.gls.ppldv.business.mapper.BusinessMapper;
+import com.gls.ppldv.common.util.Criteria;
+import com.gls.ppldv.common.util.PageMaker;
 
 import lombok.RequiredArgsConstructor;
 
@@ -36,7 +38,6 @@ public class BusinessService {
 		return dto;
 	}
 
-	
 
 	
 }
