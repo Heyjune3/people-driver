@@ -55,10 +55,10 @@
 
 
 # 발표 ppt와 발표 자료 및 포트폴리오 자료
-추가 예정 - - - -
+<a href="https://drive.google.com/drive/folders/1oT8zLsgzaDR7fEcAwtLTcFsmb_s1rQBm?usp=sharing">PEOPLE.DRIVER PPT</a>
 
 
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/>
 
 
 # Docker
