@@ -38,6 +38,9 @@
 # 웹 사이트 로직 흐름
 <img src="./flowchart/flowChart.png" style="width:100%; height: auto;" />
 
+# AWS Architecture
+<img src="./awsArchitecture/awsArchitecture.png" style="width:100%; height: auto;" />
+
 # 실행 영상
 <a href="https://youtu.be/vMHdKvY89Lk"> S3에 업로드 하는 영상 </a> <br/>
 <a href="https://youtu.be/vMHdKvY89Lk"> 에러 404, 405 처리 페이지 </a> <br/>
@@ -46,6 +49,9 @@
 
 # 간단한 소개
 개발자로의　ｒｏａｄ를　걷는　길에　프리랜서는　무엇을　하는　걸까？라는　질문에서　시작하여，　우리는　개발자들이　많은　참여　기회와　소통의　폭을　넓힐　수　있는　플랫폼을　만들고자　하였습니다．　이　플랫폼을　통해　개발자들은　마음껏　다양한　프로젝트를　경험하고，　편안하게　업무를　수행할　수　있는　환경을　제공받을　것을　목표로　합니다．
+
+# 운영중인 사이트
+<a href="http://43.203.24.137:8080">PEOPLE.DRIVER </a>
 
 
 # 발표 ppt와 발표 자료 및 포트폴리오 자료
